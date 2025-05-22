@@ -5,18 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rutgers Economics Labs</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="styles.css">
-    <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
-    <link rel="icon" type="image/x-icon" href="images/favicon/favicon.ico">
-    <link rel="manifest" href="site.webmanifest">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         
         * {
             font-family: 'Inter', sans-serif;
+        }
+        
+        .animated-bg {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        }
+        
+        .animated-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.3;
+        }
+        
+        .stock-chart {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.4;
+        }
+        
+        .chart-line {
+            fill: none;
+            stroke: #DC2626;
+            stroke-width: 3;
+            opacity: 0.9;
+        }
+        
+        .prediction-line {
+            fill: none;
+            stroke: #FFFF00;
+            stroke-width: 2;
+            stroke-dasharray: 8,4;
+            opacity: 0.8;
+        }
+        
+        .current-point {
+            fill: #DC2626;
+            stroke: #FF4444;
+            stroke-width: 2;
+            opacity: 1;
+            filter: drop-shadow(0 0 8px rgba(220, 38, 38, 0.8));
         }
         
         .fade-in {
@@ -76,46 +121,6 @@
                 box-shadow: 0 0 0 10px rgba(220, 38, 38, 0);
             }
         }
-        
-        .typing-animation {
-            overflow: hidden;
-            border-right: 2px solid #DC2626;
-            white-space: nowrap;
-            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
-        }
-        
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
-        }
-        
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: #DC2626; }
-        }
-        
-        .floating {
-            animation: floating 3s ease-in-out infinite;
-        }
-        
-        @keyframes floating {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        .section {
-            display: none;
-        }
-        
-        .section.active {
-            display: block;
-        }
-        
-        .project-card {
-            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
-        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -133,6 +138,8 @@
                     <a href="index.html" class="nav-link text-white hover:text-red-200 font-medium">Home</a>
                     <a href="about.html" class="nav-link text-white hover:text-red-200 font-medium">About</a>
                     <a href="projects.html" class="nav-link text-white hover:text-red-200 font-medium">Projects</a>
+                    <a href="resources.html" class="nav-link text-white hover:text-red-200 font-medium">Resources</a>
+                    <a href="people.html" class="nav-link text-white hover:text-red-200 font-medium">People</a>
                     <a href="apply.html" class="nav-link text-white hover:text-red-200 font-medium">Apply</a>
                 </div>
                 <button class="md:hidden text-white" onclick="toggleMobileMenu()">
@@ -148,18 +155,28 @@
                 <a href="index.html" class="block text-white hover:text-red-200 py-2">Home</a>
                 <a href="about.html" class="block text-white hover:text-red-200 py-2">About</a>
                 <a href="projects.html" class="block text-white hover:text-red-200 py-2">Projects</a>
+                <a href="resources.html" class="block text-white hover:text-red-200 py-2">Resources</a>
+                <a href="people.html" class="block text-white hover:text-red-200 py-2">People</a>
                 <a href="apply.html" class="block text-white hover:text-red-200 py-2">Apply</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <div class="gradient-bg min-h-screen flex items-center relative overflow-hidden">
-        <div class="absolute inset-0 bg-black opacity-20"></div>
+    <div class="animated-bg min-h-screen flex items-center relative overflow-hidden">
+        <svg class="stock-chart" viewBox="0 0 1000 400" preserveAspectRatio="none">
+            <!-- Historical stock line -->
+            <path id="stockPath" class="chart-line" d="M0,200"></path>
+            <!-- Prediction line -->
+            <path id="predictionPath" class="prediction-line" d="M0,200"></path>
+            <!-- Current point indicator -->
+            <circle id="currentPoint" class="current-point" cx="0" cy="200" r="8"></circle>
+        </svg>
+        
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center">
-                <h2 class="text-5xl md:text-7xl font-bold text-white mb-6 fade-in typing-animation">
-                    Economics Research
+                <h2 class="text-5xl md:text-7xl font-bold text-white mb-6 fade-in">
+                    Rutgers Economics Labs
                 </h2>
                 <p class="text-xl md:text-2xl text-red-100 mb-8 fade-in max-w-3xl mx-auto">
                     Student-driven economic research for government agencies, think tanks, and public policy organizations
@@ -169,10 +186,6 @@
                 </a>
             </div>
         </div>
-        <!-- Floating Elements -->
-        <div class="absolute top-20 left-10 w-20 h-20 bg-white opacity-10 rounded-full floating"></div>
-        <div class="absolute bottom-20 right-10 w-32 h-32 bg-white opacity-10 rounded-full floating" style="animation-delay: 1s;"></div>
-        <div class="absolute top-1/2 left-20 w-16 h-16 bg-white opacity-10 rounded-full floating" style="animation-delay: 2s;"></div>
     </div>
 
     <!-- Mission Section -->
@@ -192,16 +205,16 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="text-center card-hover bg-white p-8 rounded-xl shadow-lg">
-                    <div class="text-4xl font-bold text-red-600 mb-2">100+</div>
-                    <div class="text-gray-600 font-medium">Students Engaged</div>
+                    <div class="text-4xl font-bold text-red-600 mb-2">2</div>
+                    <div class="text-gray-600 font-medium">Talented Student Teams</div>
                 </div>
                 <div class="text-center card-hover bg-white p-8 rounded-xl shadow-lg">
-                    <div class="text-4xl font-bold text-red-600 mb-2">5+</div>
+                    <div class="text-4xl font-bold text-red-600 mb-2">3+</div>
                     <div class="text-gray-600 font-medium">Partner Organizations</div>
                 </div>
                 <div class="text-center card-hover bg-white p-8 rounded-xl shadow-lg">
-                    <div class="text-4xl font-bold text-red-600 mb-2">10+</div>
-                    <div class="text-gray-600 font-medium">Research Papers</div>
+                    <div class="text-4xl font-bold text-red-600 mb-2">15+</div>
+                    <div class="text-gray-600 font-medium">Analysts</div>
                 </div>
             </div>
         </div>
@@ -218,7 +231,12 @@
                 <p class="text-red-100 mb-6">Empowering students through economic research</p>
                 <div class="flex justify-center space-x-6">
                     <a href="#" class="text-red-200 hover:text-white transition-colors duration-300">Contact</a>
-                    <a href="#" class="text-red-200 hover:text-white transition-colors duration-300">LinkedIn</a>
+                    <a href="https://www.linkedin.com/company/rutgers-economics-labs" class="text-red-200 hover:text-white transition-colors duration-300">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://www.instagram.com/rutgers.economics.labs" class="text-red-200 hover:text-white transition-colors duration-300">
+                        <i class="fab fa-instagram"></i>
+                    </a>
                     <a href="#" class="text-red-200 hover:text-white transition-colors duration-300">Research</a>
                 </div>
                 <div class="mt-8 pt-8 border-t border-red-700">
@@ -228,6 +246,144 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Stock price animation with continuous updating
+        let stockData = [];
+        let predictionData = [];
+        let currentIndex = 0;
+        let animationRunning = false;
+        
+        // Generate continuous stock data points
+        function generateNextStockPoint(previousPrice, index) {
+            // Create realistic stock movement with trends and volatility
+            const trendComponent = Math.sin(index * 0.05) * 25;
+            const volatilityComponent = (Math.random() - 0.5) * 15;
+            const meanReversion = (200 - previousPrice) * 0.02;
+            
+            let newPrice = previousPrice + trendComponent * 0.2 + volatilityComponent + meanReversion;
+            
+            // Keep price in reasonable bounds
+            newPrice = Math.max(80, Math.min(320, newPrice));
+            
+            return newPrice;
+        }
+        
+        // Generate prediction from current point
+        function generatePredictionFromCurrent(currentPrice, startX) {
+            const points = [];
+            let price = currentPrice;
+            
+            // Generate prediction points
+            for (let i = 1; i <= 30; i++) {
+                const x = startX + (i * 8);
+                
+                // Prediction with some optimistic bias and smoothing
+                const trend = Math.sin((currentIndex + i) * 0.05) * 20;
+                const uncertainty = (Math.random() - 0.5) * 8; // Less volatile than actual
+                
+                price += trend * 0.15 + uncertainty;
+                price = Math.max(80, Math.min(320, price));
+                
+                points.push({ x, y: price });
+                
+                if (x > 1000) break; // Don't go beyond SVG bounds
+            }
+            
+            return points;
+        }
+        
+        // Convert points to SVG path
+        function pointsToPath(points) {
+            if (points.length === 0) return '';
+            
+            let path = `M${points[0].x},${points[0].y}`;
+            for (let i = 1; i < points.length; i++) {
+                path += ` L${points[i].x},${points[i].y}`;
+            }
+            return path;
+        }
+        
+        // Main animation function
+        function animateChart() {
+            if (animationRunning) return;
+            animationRunning = true;
+            
+            // Reset if we've reached the end
+            if (currentIndex >= 125 || (stockData.length > 0 && stockData[stockData.length - 1].x >= 1000)) {
+                stockData = [];
+                predictionData = [];
+                currentIndex = 0;
+                
+                // Start with random initial price
+                const initialPrice = 150 + (Math.random() - 0.5) * 100;
+                stockData.push({ x: 0, y: initialPrice });
+            }
+            
+            const stockPath = document.getElementById('stockPath');
+            const predictionPath = document.getElementById('predictionPath');
+            const currentPoint = document.getElementById('currentPoint');
+            
+            function updateFrame() {
+                if (!animationRunning) return;
+                
+                // Add new stock data point
+                if (currentIndex < 125) {
+                    const x = currentIndex * 8; // 8 pixels per step
+                    const lastPrice = stockData.length > 0 ? stockData[stockData.length - 1].y : 200;
+                    const newPrice = generateNextStockPoint(lastPrice, currentIndex);
+                    
+                    stockData.push({ x, y: newPrice });
+                    currentIndex++;
+                    
+                    // Update stock path
+                    stockPath.setAttribute('d', pointsToPath(stockData));
+                    
+                    // Update current point position
+                    const currentStockPoint = stockData[stockData.length - 1];
+                    currentPoint.setAttribute('cx', currentStockPoint.x);
+                    currentPoint.setAttribute('cy', currentStockPoint.y);
+                    
+                    // Generate and update prediction
+                    predictionData = generatePredictionFromCurrent(currentStockPoint.y, currentStockPoint.x);
+                    if (predictionData.length > 0) {
+                        predictionPath.setAttribute('d', pointsToPath(predictionData));
+                    }
+                }
+                
+                // Continue animation
+                if (currentIndex < 125) {
+                    setTimeout(() => requestAnimationFrame(updateFrame), 100); // ~10fps for smooth but visible movement
+                } else {
+                    // Wait a moment then restart
+                    setTimeout(() => {
+                        animationRunning = false;
+                        animateChart();
+                    }, 200);
+                }
+            }
+            
+            updateFrame();
+        }
+        
+        // Start animation when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add fade-in effect to elements
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.classList.add('visible');
+                }, index * 200);
+            });
+            
+            // Start stock animation
+            setTimeout(animateChart, 1000);
+        });
+        
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+    </script>
 </body>
 </html>

@@ -1,0 +1,57 @@
+{
+    "executiveBoard": [
+        {
+            "name": "Tejas Sinha",
+            "position": "President",
+            "image": "images/people/tejas-sinha.jpg",
+            "description": "Leading the organization's vision and strategy.",
+            "team": "Executive Board"
+        }
+    ],
+    "teamLeads": [
+        {
+            "name": "Kushaan Jain",
+            "position": "USDA Project Lead",
+            "image": "images/people/kushaan-jain.jpg",
+            "description": "Leading the USDA meat industry analysis project.",
+            "team": "USDA Team"
+        },
+        {
+            "name": "Akash Dubey",
+            "position": "NJDCA Project Lead",
+            "image": "images/people/akash-dubey.jpg",
+            "description": "Leading the NJDCA project.",
+            "team": "NJDCA Team"
+        }
+    ],
+    "analysts": [
+        {
+            "name": "Emily Chen",
+            "position": "Data Analyst",
+            "image": "images/people/analyst1.jpg",
+            "description": "Data analysis and visualization specialist.",
+            "team": "USDA Team"
+        },
+        {
+            "name": "Alex Rodriguez",
+            "position": "Statistical Analyst",
+            "image": "images/people/analyst2.jpg",
+            "description": "Statistical modeling expert.",
+            "team": "USDA Team"
+        },
+        {
+            "name": "Lisa Patel",
+            "position": "Economic Analyst",
+            "image": "images/people/analyst3.jpg",
+            "description": "Economic impact analysis specialist.",
+            "team": "NJDCA Team"
+        },
+        {
+            "name": "James Wilson",
+            "position": "Policy Analyst",
+            "image": "images/people/analyst4.jpg",
+            "description": "Policy research and writing expert.",
+            "team": "NJDCA Team"
+        }
+    ]
+} 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About - Rutgers Economics Labs</title>
+    <title>People - Rutgers Economics Labs</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="styles.css">
     <!-- Favicon -->
@@ -12,6 +12,8 @@
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
     <link rel="icon" type="image/x-icon" href="images/favicon/favicon.ico">
     <link rel="manifest" href="site.webmanifest">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body class="bg-gray-50">
     <!-- Navigation -->
@@ -52,67 +54,38 @@
         </div>
     </nav>
 
-    <!-- About Section -->
+    <!-- People Section -->
     <div class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h3 class="text-4xl font-bold text-gray-900 mb-8 fade-in">What We Do</h3>
+                <h3 class="text-4xl font-bold text-gray-900 mb-8 fade-in">Our Team</h3>
+                <p class="text-xl text-gray-600 max-w-4xl mx-auto fade-in">
+                    Meet the dedicated individuals who make Rutgers Economics Labs possible.
+                </p>
             </div>
-            
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div class="fade-in">
-                    <p class="text-lg text-gray-600 mb-6 leading-relaxed">
-                        We partner with government agencies, think tanks, and other public policy organizations to produce data-driven research using statistical and econometric methods. Our work is completely pro bono and designed to help policymakers where they have the greatest need.
-                    </p>
-                    <p class="text-lg text-gray-600 mb-6 leading-relaxed">
-                        Each semester, our students work in teams of six to write research papers for our partner organizations using tools such as Python and R. Papers include a literature review, statistical analysis, and interpretation of results.
-                    </p>
-                    <p class="text-lg text-gray-600 leading-relaxed">
-                        Students from all majors are encouraged to apply, including but not limited to Economics, Data Science, Statistics, Computer Science, Public Policy, Political Science, Business Analytics, Finance, and Math. While no previous experience in economic research is required, a strong quantitative aptitude and comfort with data are essential.
-                    </p>
-                </div>
-                
-                <div class="fade-in">
-                    <div class="bg-gradient-to-br from-red-50 to-red-100 p-8 rounded-2xl">
-                        <h4 class="text-2xl font-bold text-red-800 mb-6">Our Process</h4>
-                        <div class="space-y-4">
-                            <div class="flex items-start space-x-3">
-                                <div class="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center text-white font-bold text-sm">1</div>
-                                <div>
-                                    <h5 class="font-semibold text-red-800">Partner Collaboration</h5>
-                                    <p class="text-red-700">Work directly with government agencies and think tanks</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start space-x-3">
-                                <div class="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center text-white font-bold text-sm">2</div>
-                                <div>
-                                    <h5 class="font-semibold text-red-800">Team Formation</h5>
-                                    <p class="text-red-700">Students work in collaborative teams of six</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start space-x-3">
-                                <div class="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center text-white font-bold text-sm">3</div>
-                                <div>
-                                    <h5 class="font-semibold text-red-800">Research & Analysis</h5>
-                                    <p class="text-red-700">Conduct statistical analysis using Python and R</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start space-x-3">
-                                <div class="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center text-white font-bold text-sm">4</div>
-                                <div>
-                                    <h5 class="font-semibold text-red-800">Policy Impact</h5>
-                                    <p class="text-red-700">Deliver actionable insights to policymakers</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+            <!-- E-Board Section -->
+            <div class="mb-20">
+                <h4 class="text-2xl font-bold text-gray-900 mb-12 fade-in">Executive Board</h4>
+                <div id="executive-board" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Executive Board members will be loaded here -->
                 </div>
             </div>
-            
-            <div class="text-center mt-16">
-                <a href="apply.html" class="bg-red-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-red-700 transition-all duration-300 transform hover:scale-105 inline-block">
-                    Interested? Apply Now
-                </a>
+
+            <!-- Team Leads Section -->
+            <div class="mb-20">
+                <h4 class="text-2xl font-bold text-gray-900 mb-12 fade-in">Team Leads</h4>
+                <div id="team-leads" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Team Leads will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Analysts Section -->
+            <div>
+                <h4 class="text-2xl font-bold text-gray-900 mb-12 fade-in">Research Analysts</h4>
+                <div id="analysts" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Analysts will be loaded here -->
+                </div>
             </div>
         </div>
     </div>
@@ -144,5 +117,56 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        // Function to create a team member card
+        function createTeamMemberCard(member) {
+            return `
+                <div class="card-hover bg-white p-6 rounded-xl shadow-lg fade-in">
+                    <div class="aspect-w-1 aspect-h-1 mb-4">
+                        <img src="${member.image}" alt="${member.name}" class="w-full h-64 object-cover rounded-lg">
+                    </div>
+                    <h5 class="text-xl font-semibold text-gray-900 mb-2">${member.name}</h5>
+                    <p class="text-red-600 font-medium mb-4">${member.position}</p>
+                    <p class="text-gray-600">${member.description}</p>
+                </div>
+            `;
+        }
+
+        // Function to load team data
+        async function loadTeamData() {
+            try {
+                const response = await fetch('data/team.json');
+                const data = await response.json();
+
+                // Load Executive Board
+                const executiveBoardContainer = document.getElementById('executive-board');
+                data.executiveBoard.forEach(member => {
+                    executiveBoardContainer.innerHTML += createTeamMemberCard(member);
+                });
+
+                // Load Team Leads
+                const teamLeadsContainer = document.getElementById('team-leads');
+                data.teamLeads.forEach(member => {
+                    teamLeadsContainer.innerHTML += createTeamMemberCard(member);
+                });
+
+                // Load Analysts
+                const analystsContainer = document.getElementById('analysts');
+                data.analysts.forEach(member => {
+                    analystsContainer.innerHTML += createTeamMemberCard(member);
+                });
+
+                // Trigger fade-in animations
+                document.querySelectorAll('.fade-in').forEach(element => {
+                    element.classList.add('visible');
+                });
+            } catch (error) {
+                console.error('Error loading team data:', error);
+            }
+        }
+
+        // Load team data when the page loads
+        document.addEventListener('DOMContentLoaded', loadTeamData);
+    </script>
 </body>
 </html> 
