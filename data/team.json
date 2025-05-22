@@ -5,7 +5,8 @@
             "position": "President",
             "image": "images/people/tejas-sinha.jpg",
             "description": "Leading the organization's vision and strategy.",
-            "team": "Executive Board"
+            "team": "Executive Board",
+            "linkedin": "https://www.linkedin.com/in/sinhatejas"
         }
     ],
     "teamLeads": [
@@ -14,44 +15,74 @@
             "position": "USDA Project Lead",
             "image": "images/people/kushaan-jain.jpg",
             "description": "Leading the USDA meat industry analysis project.",
-            "team": "USDA Team"
+            "team": "USDA Team",
+            "linkedin": "https://www.linkedin.com/in/kushaanjain"
         },
         {
             "name": "Akash Dubey",
             "position": "NJDCA Project Lead",
             "image": "images/people/akash-dubey.jpg",
             "description": "Leading the NJDCA project.",
-            "team": "NJDCA Team"
+            "team": "NJDCA Team",
+            "linkedin": "https://www.linkedin.com/in/akash-dubey-your-boss"
         }
     ],
     "analysts": [
         {
-            "name": "Emily Chen",
+            "name": "Subhronil Mukherjee",
             "position": "Data Analyst",
-            "image": "images/people/analyst1.jpg",
+            "image": "images/people/subhronil-mukherjee.jpg",
             "description": "Data analysis and visualization specialist.",
-            "team": "USDA Team"
+            "team": "USDA Team",
+            "linkedin": "https://www.linkedin.com/in/subhronil-mukherjee-312ab9231/"
         },
         {
-            "name": "Alex Rodriguez",
+            "name": "Vikram Krishnaswamy",
             "position": "Statistical Analyst",
-            "image": "images/people/analyst2.jpg",
+            "image": "images/people/vikram.jpg",
             "description": "Statistical modeling expert.",
-            "team": "USDA Team"
+            "team": "NJDCA Team",
+            "linkedin": "https://www.linkedin.com/in/vikram-krishnaswamy"
         },
         {
-            "name": "Lisa Patel",
+            "name": "Aryan Malik",
             "position": "Economic Analyst",
-            "image": "images/people/analyst3.jpg",
+            "image": "images/people/aryan-malik.jpg",
             "description": "Economic impact analysis specialist.",
-            "team": "NJDCA Team"
+            "team": "USDA Team",
+            "linkedin": "https://www.linkedin.com/in/aryan-malik-xd/"
         },
         {
-            "name": "James Wilson",
+            "name": "Eric Wenz",
+            "position": "Statistical Analyst",
+            "image": "images/people/eric-wenz.jpg",
+            "description": "Statistical modeling expert.",
+            "team": "NJDCA Team",
+            "linkedin": "https://www.linkedin.com/in/ericwenz"
+        },
+        {
+            "name": "Alex Zhang",
             "position": "Policy Analyst",
-            "image": "images/people/analyst4.jpg",
+            "image": "images/people/alex-zhang.jpg",
             "description": "Policy research and writing expert.",
-            "team": "NJDCA Team"
+            "team": "USDA Team",
+            "linkedin": "https://www.linkedin.com/in/alexzhang0930"
+        },
+        {
+            "name": "Khushi Bora",
+            "position": "Statistical Analyst",
+            "image": "images/people/khushi-bora.jpg",
+            "description": "Statistical modeling expert.",
+            "team": "NJDCA Team",
+            "linkedin": "https://www.linkedin.com/in/khushibora23"
+        },
+        {
+            "name": "Rahul Rajkumar",
+            "position": "Policy Analyst",
+            "image": "images/people/rahul.jpg",
+            "description": "Policy research and writing expert.",
+            "team": "USDA Team",
+            "linkedin": "https://www.linkedin.com/in/rahulrajkumar01"
         }
     ]
 } 

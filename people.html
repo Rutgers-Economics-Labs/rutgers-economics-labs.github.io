@@ -65,25 +65,25 @@
             </div>
 
             <!-- E-Board Section -->
-            <div class="mb-20">
-                <h4 class="text-2xl font-bold text-gray-900 mb-12 fade-in">Executive Board</h4>
-                <div id="executive-board" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="mb-20 text-center">
+                <h4 class="text-2xl font-bold text-gray-900 mb-7 fade-in text-center">Executive Board</h4>
+                <div id="executive-board" class="flex flex-wrap justify-center gap-8 text-center">
                     <!-- Executive Board members will be loaded here -->
                 </div>
             </div>
 
             <!-- Team Leads Section -->
-            <div class="mb-20">
-                <h4 class="text-2xl font-bold text-gray-900 mb-12 fade-in">Team Leads</h4>
-                <div id="team-leads" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="mb-20 text-center">
+                <h4 class="text-2xl font-bold text-gray-900 mb-12 fade-in text-center">Team Leads</h4>
+                <div id="team-leads" class="flex flex-wrap justify-center gap-8 text-center">
                     <!-- Team Leads will be loaded here -->
                 </div>
             </div>
 
             <!-- Analysts Section -->
-            <div>
-                <h4 class="text-2xl font-bold text-gray-900 mb-12 fade-in">Research Analysts</h4>
-                <div id="analysts" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="text-center">
+                <h4 class="text-2xl font-bold text-gray-900 mb-12 fade-in text-center">Research Analysts</h4>
+                <div id="analysts" class="flex flex-wrap justify-center gap-8 text-center">
                     <!-- Analysts will be loaded here -->
                 </div>
             </div>
@@ -121,14 +121,16 @@
         // Function to create a team member card
         function createTeamMemberCard(member) {
             return `
-                <div class="card-hover bg-white p-6 rounded-xl shadow-lg fade-in">
-                    <div class="aspect-w-1 aspect-h-1 mb-4">
-                        <img src="${member.image}" alt="${member.name}" class="w-full h-64 object-cover rounded-lg">
+                <a href="${member.linkedin}" target="_blank" class="block w-full max-w-sm">
+                    <div class="card-hover bg-white p-6 rounded-xl shadow-lg fade-in text-center cursor-pointer transform transition-transform duration-300 hover:scale-105">
+                        <div class="aspect-w-1 aspect-h-1 mb-4">
+                            <img src="${member.image}" alt="${member.name}" class="w-full rounded-lg">
+                        </div>
+                        <h5 class="text-xl font-semibold text-gray-900 mb-2">${member.name}</h5>
+                        <p class="text-red-600 font-medium mb-4">${member.position}</p>
+                        <p class="text-gray-600">${member.description}</p>
                     </div>
-                    <h5 class="text-xl font-semibold text-gray-900 mb-2">${member.name}</h5>
-                    <p class="text-red-600 font-medium mb-4">${member.position}</p>
-                    <p class="text-gray-600">${member.description}</p>
-                </div>
+                </a>
             `;
         }
 
