@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Rutgers Economics Labs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/x-icon" href="images/favicon/favicon.ico">
+    <link rel="manifest" href="site.webmanifest">
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="gradient-bg shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-3">
+                    <a href="index.html" class="flex items-center space-x-3">
+                        <img src="images/REL Logo.JPEG" alt="REL Logo" class="w-10 h-10 rounded-full">
+                        <h1 class="text-white text-xl font-bold">Rutgers Economics Labs</h1>
+                    </a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="nav-link text-white hover:text-red-200 font-medium">Home</a>
+                    <a href="about.html" class="nav-link text-white hover:text-red-200 font-medium">About</a>
+                    <a href="projects.html" class="nav-link text-white hover:text-red-200 font-medium">Projects</a>
+                    <a href="apply.html" class="nav-link text-white hover:text-red-200 font-medium">Apply</a>
+                </div>
+                <button class="md:hidden text-white" onclick="toggleMobileMenu()">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-red-700 py-4">
+            <div class="space-y-2 px-4">
+                <a href="index.html" class="block text-white hover:text-red-200 py-2">Home</a>
+                <a href="about.html" class="block text-white hover:text-red-200 py-2">About</a>
+                <a href="projects.html" class="block text-white hover:text-red-200 py-2">Projects</a>
+                <a href="apply.html" class="block text-white hover:text-red-200 py-2">Apply</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- About Section -->
+    <div class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h3 class="text-4xl font-bold text-gray-900 mb-8 fade-in">What We Do</h3>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="fade-in">
+                    <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                        We partner with government agencies, think tanks, and other public policy organizations to produce data-driven research using statistical and econometric methods. Our work is completely pro bono and designed to help policymakers where they have the greatest need.
+                    </p>
+                    <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                        Each semester, our students work in teams of six to write research papers for our partner organizations using tools such as Python and R. Papers include a literature review, statistical analysis, and interpretation of results.
+                    </p>
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        Students from all majors are encouraged to apply, including but not limited to Economics, Data Science, Statistics, Computer Science, Public Policy, Political Science, Business Analytics, Finance, and Math. While no previous experience in economic research is required, a strong quantitative aptitude and comfort with data are essential.
+                    </p>
+                </div>
+                
+                <div class="fade-in">
+                    <div class="bg-gradient-to-br from-red-50 to-red-100 p-8 rounded-2xl">
+                        <h4 class="text-2xl font-bold text-red-800 mb-6">Our Process</h4>
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-3">
+                                <div class="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center text-white font-bold text-sm">1</div>
+                                <div>
+                                    <h5 class="font-semibold text-red-800">Partner Collaboration</h5>
+                                    <p class="text-red-700">Work directly with government agencies and think tanks</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div class="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center text-white font-bold text-sm">2</div>
+                                <div>
+                                    <h5 class="font-semibold text-red-800">Team Formation</h5>
+                                    <p class="text-red-700">Students work in collaborative teams of six</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div class="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center text-white font-bold text-sm">3</div>
+                                <div>
+                                    <h5 class="font-semibold text-red-800">Research & Analysis</h5>
+                                    <p class="text-red-700">Conduct statistical analysis using Python and R</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div class="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center text-white font-bold text-sm">4</div>
+                                <div>
+                                    <h5 class="font-semibold text-red-800">Policy Impact</h5>
+                                    <p class="text-red-700">Deliver actionable insights to policymakers</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-16">
+                <a href="apply.html" class="bg-red-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-red-700 transition-all duration-300 transform hover:scale-105 inline-block">
+                    Interested? Apply Now
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="gradient-bg py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="flex items-center justify-center space-x-3 mb-6">
+                    <img src="images/REL Logo.JPEG" alt="REL Logo" class="w-10 h-10 rounded-full">
+                    <h4 class="text-white text-xl font-bold">Rutgers Economics Labs</h4>
+                </div>
+                <p class="text-red-100 mb-6">Empowering students through economic research</p>
+                <div class="flex justify-center space-x-6">
+                    <a href="#" class="text-red-200 hover:text-white transition-colors duration-300">Contact</a>
+                    <a href="#" class="text-red-200 hover:text-white transition-colors duration-300">LinkedIn</a>
+                    <a href="#" class="text-red-200 hover:text-white transition-colors duration-300">Research</a>
+                </div>
+                <div class="mt-8 pt-8 border-t border-red-700">
+                    <p class="text-red-200 text-sm">© 2025 Rutgers Economics Labs. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
