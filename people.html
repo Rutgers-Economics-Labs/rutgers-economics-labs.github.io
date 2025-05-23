@@ -81,10 +81,18 @@
             </div>
 
             <!-- Analysts Section -->
-            <div class="text-center">
+            <div class="mb-20 text-center">
                 <h4 class="text-2xl font-bold text-gray-900 mb-12 fade-in text-center">Research Analysts</h4>
                 <div id="analysts" class="flex flex-wrap justify-center gap-8 text-center">
                     <!-- Analysts will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Members Section -->
+            <div class="text-center">
+                <h4 class="text-2xl font-bold text-gray-900 mb-12 fade-in text-center">Members</h4>
+                <div id="members" class="flex flex-wrap justify-center gap-8 text-center">
+                    <!-- members will be loaded here -->
                 </div>
             </div>
         </div>
@@ -118,17 +126,43 @@
 
     <script src="script.js"></script>
     <script>
-        // Function to create a team member card
-        function createTeamMemberCard(member) {
+        // Organization logo mapping
+        const orgLogos = {
+            'NJEDA': 'images/logo/njeda.jpg',
+            'NJDCA': 'images/logo/njdca.png',
+            'USDA': 'images/logo/usda.png'
+        };
+
+        function createTeamMemberCard(member, section) {
+            const isMember = section === 'members';
+            const cardClass = isMember ? 'max-w-[200px]' : 'max-w-sm';
+            const imageClass = isMember ? 'w-32 h-32 mx-auto' : 'w-full';
+            const textClass = isMember ? 'text-sm' : 'text-base';
+            
+            // Create organization logos section
+            const orgLogosSection = member.team ? `
+                <div class="flex justify-center space-x-3">
+                    ${(Array.isArray(member.team) ? member.team : [member.team])
+                        .filter((org, index, self) => self.indexOf(org) === index) // Remove duplicates
+                        .map(org => `
+                            <img src="${orgLogos[org]}" 
+                                    alt="${org}" 
+                                    class="h-8 object-contain"
+                                    title="${org}">
+                        `).join('')}
+                </div>
+            ` : '';
+            
             return `
-                <a href="${member.linkedin}" target="_blank" class="block w-full max-w-sm">
+                <a href="${member.linkedin}" target="_blank" class="block w-full ${cardClass}">
                     <div class="card-hover bg-white p-6 rounded-xl shadow-lg fade-in text-center cursor-pointer transform transition-transform duration-300 hover:scale-105">
                         <div class="aspect-w-1 aspect-h-1 mb-4">
-                            <img src="${member.image}" alt="${member.name}" class="w-full rounded-lg">
+                            <img src="${member.image}" alt="${member.name}" class="${imageClass} rounded-lg object-cover">
                         </div>
-                        <h5 class="text-xl font-semibold text-gray-900 mb-2">${member.name}</h5>
-                        <p class="text-red-600 font-medium mb-4">${member.position}</p>
-                        <p class="text-gray-600">${member.description}</p>
+                        <h5 class="text-xl font-semibold text-gray-900 mb-2 ${textClass}">${member.name}</h5>
+                        <p class="text-red-600 font-medium mb-4 ${textClass}">${member.position}</p>
+                        <p class="text-gray-600 ${textClass} mb-2">${member.description}</p>
+                        ${orgLogosSection}
                     </div>
                 </a>
             `;
@@ -143,19 +177,25 @@
                 // Load Executive Board
                 const executiveBoardContainer = document.getElementById('executive-board');
                 data.executiveBoard.forEach(member => {
-                    executiveBoardContainer.innerHTML += createTeamMemberCard(member);
+                    executiveBoardContainer.innerHTML += createTeamMemberCard(member, 'executive');
                 });
 
                 // Load Team Leads
                 const teamLeadsContainer = document.getElementById('team-leads');
                 data.teamLeads.forEach(member => {
-                    teamLeadsContainer.innerHTML += createTeamMemberCard(member);
+                    teamLeadsContainer.innerHTML += createTeamMemberCard(member, 'leads');
                 });
 
                 // Load Analysts
                 const analystsContainer = document.getElementById('analysts');
                 data.analysts.forEach(member => {
-                    analystsContainer.innerHTML += createTeamMemberCard(member);
+                    analystsContainer.innerHTML += createTeamMemberCard(member, 'analysts');
+                });
+
+                // Load Members
+                const membersContainer = document.getElementById('members');
+                data.members.forEach(member => {
+                    membersContainer.innerHTML += createTeamMemberCard(member, 'members');
                 });
 
                 // Trigger fade-in animations

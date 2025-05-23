@@ -5,7 +5,7 @@
             "position": "President",
             "image": "images/people/tejas-sinha.jpg",
             "description": "Leading the organization's vision and strategy.",
-            "team": "Executive Board",
+            "team": [],
             "linkedin": "https://www.linkedin.com/in/sinhatejas"
         }
     ],
@@ -15,7 +15,7 @@
             "position": "USDA Project Lead",
             "image": "images/people/kushaan-jain.jpg",
             "description": "Leading the USDA meat industry analysis project.",
-            "team": "USDA Team",
+            "team": ["NJEDA", "USDA"],
             "linkedin": "https://www.linkedin.com/in/kushaanjain"
         },
         {
@@ -23,7 +23,7 @@
             "position": "NJDCA Project Lead",
             "image": "images/people/akash-dubey.jpg",
             "description": "Leading the NJDCA project.",
-            "team": "NJDCA Team",
+            "team": ["NJEDA", "NJDCA"],
             "linkedin": "https://www.linkedin.com/in/akash-dubey-your-boss"
         }
     ],
@@ -33,7 +33,7 @@
             "position": "Data Analyst",
             "image": "images/people/subhronil-mukherjee.jpg",
             "description": "Data analysis and visualization specialist.",
-            "team": "USDA Team",
+            "team": ["NJEDA", "USDA"],
             "linkedin": "https://www.linkedin.com/in/subhronil-mukherjee-312ab9231/"
         },
         {
@@ -41,7 +41,7 @@
             "position": "Statistical Analyst",
             "image": "images/people/vikram.jpg",
             "description": "Statistical modeling expert.",
-            "team": "NJDCA Team",
+            "team": ["NJDCA"],
             "linkedin": "https://www.linkedin.com/in/vikram-krishnaswamy"
         },
         {
@@ -49,7 +49,7 @@
             "position": "Economic Analyst",
             "image": "images/people/aryan-malik.jpg",
             "description": "Economic impact analysis specialist.",
-            "team": "USDA Team",
+            "team": ["NJEDA", "USDA"],
             "linkedin": "https://www.linkedin.com/in/aryan-malik-xd/"
         },
         {
@@ -57,7 +57,7 @@
             "position": "Statistical Analyst",
             "image": "images/people/eric-wenz.jpg",
             "description": "Statistical modeling expert.",
-            "team": "NJDCA Team",
+            "team": ["NJDCA"],
             "linkedin": "https://www.linkedin.com/in/ericwenz"
         },
         {
@@ -65,7 +65,7 @@
             "position": "Policy Analyst",
             "image": "images/people/alex-zhang.jpg",
             "description": "Policy research and writing expert.",
-            "team": "USDA Team",
+            "team": ["NJEDA", "USDA"],
             "linkedin": "https://www.linkedin.com/in/alexzhang0930"
         },
         {
@@ -73,7 +73,7 @@
             "position": "Statistical Analyst",
             "image": "images/people/khushi-bora.jpg",
             "description": "Statistical modeling expert.",
-            "team": "NJDCA Team",
+            "team": ["NJDCA"],
             "linkedin": "https://www.linkedin.com/in/khushibora23"
         },
         {
@@ -81,11 +81,34 @@
             "position": "Policy Analyst",
             "image": "images/people/rahul.jpg",
             "description": "Policy research and writing expert.",
-            "team": "USDA Team",
+            "team": ["USDA"],
             "linkedin": "https://www.linkedin.com/in/rahulrajkumar01"
         }
     ],
     "members": [
-        
+        {
+            "name": "Lukian Wernyj",
+            "position": "Statistical Analyst",
+            "image": "images/people/lukian.jpg",
+            "description": "Statistical modeling expert.",
+            "team": ["NJEDA", "NJDCA"],
+            "linkedin": "https://www.linkedin.com/in/lukianwernyj"
+        },
+        {
+            "name": "Reese Feldman",
+            "position": "Statistical Analyst",
+            "image": "images/people/reese.jpg",
+            "description": "Statistical modeling expert.",
+            "team": ["NJDCA"],
+            "linkedin": "https://www.linkedin.com/in/reese-feldman"
+        },
+        {
+            "name": "Joseph George",
+            "position": "Statistical Analyst",
+            "image": "images/people/joe.jpg",
+            "description": "Statistical modeling expert.",
+            "team": ["NJEDA"],
+            "linkedin": "https://www.linkedin.com/in/jogeo"
+        }
     ]
 } 
