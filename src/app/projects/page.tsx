@@ -15,7 +15,7 @@ export default function ProjectsPage() {
               <div className="flex flex-col lg:flex-row items-start lg:items-center lg:space-x-6">
                 <div className="w-full lg:w-16 lg:h-16 h-20 flex items-center justify-center flex-shrink-0 overflow-hidden mb-4 lg:mb-0">
                   <Image 
-                    src={"/website" + project.logo}
+                    src={project.logo}
                     alt={project.logoAlt}
                     width={48}
                     height={48}

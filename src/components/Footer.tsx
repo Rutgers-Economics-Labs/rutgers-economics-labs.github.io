@@ -19,7 +19,7 @@ const Footer = () => (
           <div className="flex items-center justify-center md:justify-start space-x-3 mb-6 group">
             <div className="relative">
               <Image 
-                src={"/website/images/REL Logo.JPEG"}
+                src={"/images/REL Logo.JPEG"}
                 alt="REL Logo"
                 width={48}
                 height={48}
