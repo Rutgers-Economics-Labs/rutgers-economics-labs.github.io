@@ -42,7 +42,7 @@ const AnimatedStockChart: React.FC = () => {
   const stockPathRef = useRef<SVGPathElement>(null);
   const predictionPathRef = useRef<SVGPathElement>(null);
   const currentPointRef = useRef<SVGCircleElement>(null);
-  const animationRef = useRef<number>();
+  const animationRef = useRef<number | null>(null);
 
   useEffect(() => {
     let stockData: { x: number; y: number }[] = [];

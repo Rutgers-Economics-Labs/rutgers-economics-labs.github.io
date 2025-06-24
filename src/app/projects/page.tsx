@@ -1,6 +1,8 @@
 import projects from '../../data/projects.json';
+import Image from 'next/image';
 
 export default function ProjectsPage() {
+
   return (
     <div className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -12,7 +14,13 @@ export default function ProjectsPage() {
             <div key={idx} className="project-card card-hover p-8 rounded-2xl">
               <div className="flex flex-col lg:flex-row items-start lg:items-center lg:space-x-6">
                 <div className="w-full lg:w-16 lg:h-16 h-20 flex items-center justify-center flex-shrink-0 overflow-hidden mb-4 lg:mb-0">
-                  <img src={project.logo} alt={project.logoAlt} className={project.logo.endsWith('.jpg') ? 'h-full object-contain' : 'h-full object-contain'} />
+                  <Image 
+                    src={"/website" + project.logo}
+                    alt={project.logoAlt}
+                    width={48}
+                    height={48}
+                    className={project.logo.endsWith('.jpg') ? 'h-full object-contain' : 'h-full object-contain'} 
+                  />
                 </div>
                 <div className="flex-1 w-full">
                   <h4 className="text-2xl font-bold text-gray-900 mb-3">{project.title}</h4>

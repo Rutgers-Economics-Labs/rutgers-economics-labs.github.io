@@ -1,5 +1,6 @@
 import React from 'react';
 import { Mail, Linkedin, Instagram, ExternalLink, Heart, MapPin, Phone } from 'lucide-react';
+import Image from 'next/image';
 
 const Footer = () => (
   <footer className="gradient-bg py-16 mt-8 relative overflow-hidden">
@@ -17,9 +18,11 @@ const Footer = () => (
         <div className="text-center md:text-left">
           <div className="flex items-center justify-center md:justify-start space-x-3 mb-6 group">
             <div className="relative">
-              <img 
-                src="/images/REL Logo.JPEG" 
-                alt="REL Logo" 
+              <Image 
+                src={"/website/images/REL Logo.JPEG"}
+                alt="REL Logo"
+                width={48}
+                height={48}
                 className="w-12 h-12 rounded-full transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-white/30" 
               />
               <div className="absolute inset-0 rounded-full bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>

@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { useState } from 'react';
+import Image from 'next/image';
 
 const navLinks = [
   { to: '/', label: 'Home' },
@@ -15,7 +16,6 @@ const navLinks = [
 const Header: React.FC = () => {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
@@ -28,10 +28,12 @@ const Header: React.FC = () => {
           <div className="flex items-center space-x-3">
             <Link href="/" className="flex items-center space-x-3 group">
               <div className="relative">
-                <img 
-                  src="/images/REL Logo.JPEG" 
+                <Image 
+                  src={"/images/REL Logo.JPEG"} 
                   alt="REL Logo" 
                   className="w-12 h-12 rounded-full transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-white/30" 
+                  width={48}
+                  height={48}
                 />
                 <div className="absolute inset-0 rounded-full bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
