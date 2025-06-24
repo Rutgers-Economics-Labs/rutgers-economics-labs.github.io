@@ -2,6 +2,11 @@
 
 import React, { useState } from 'react';
 
+export const metadata = {
+  title: 'Apply - Rutgers Economics Labs',
+  description: 'Apply to Rutgers Economics Labs.',
+};
+
 export default function ApplyPage() {
   // State variables to hold the form input values
   const [firstName, setFirstName] = useState('');

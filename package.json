@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "deploy": "next build && touch ./out/.nojekyll && gh-pages -d out -t true"
+    "deploy": "next build && touch ./out/.nojekyll && gh-pages -d out --nojekyll"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.7.2",

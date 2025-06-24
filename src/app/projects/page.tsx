@@ -1,6 +1,11 @@
 import projects from '../../data/projects.json';
 import Image from 'next/image';
 
+export const metadata = {
+  title: 'Projects - Rutgers Economics Labs',
+  description: 'Projects by Rutgers Economics Labs.',
+};
+
 export default function ProjectsPage() {
 
   return (
