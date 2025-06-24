@@ -1,0 +1,42 @@
+[
+  {
+    "title": "US Department of Agriculture",
+    "description": "We worked with the United States Department of Agriculture (USDA) to identify potential anticompetitive practices in the meat industry through a time series analysis of price spreads.",
+    "logo": "/images/logo/usda.png",
+    "logoAlt": "USDA Logo",
+    "tags": [
+      { "label": "Paper Completed", "color": "green" },
+      { "label": "Spring 2025", "color": "gray" },
+      { "label": "Public", "color": "green" }
+    ],
+    "paperStatus": "completed",
+    "isPublic": true,
+    "pdfLink": "/papers/usda.pdf"
+  },
+  {
+    "title": "New Jersey Department of Community Affairs",
+    "description": "We worked with the New Jersey Department of Community Affairs to evaluate the impact of the Zone Assistance Fund (ZAF) program on Urban Enterprize Zones (UEZs) in New Jersey.",
+    "logo": "/images/logo/njdca.png",
+    "logoAlt": "NJDCA Logo",
+    "tags": [
+      { "label": "Paper Withheld", "color": "blue" },
+      { "label": "Spring 2025", "color": "gray" },
+      { "label": "Private", "color": "gray" }
+    ],
+    "paperStatus": "withheld",
+    "isPublic": false
+  },
+  {
+    "title": "New Jersey Economic Development Authority",
+    "description": "In our first project, we worked with the New Jersey Economic Development Authority (NJEDA) to evaluate the impact of the NJ ZIP program on medium and heavy duty electric vehicle (MDHEV) sales and model how the price premium for MDHEVs will change over time.",
+    "logo": "/images/logo/njeda.jpg",
+    "logoAlt": "NJEDA Logo",
+    "tags": [
+      { "label": "Paper Withheld", "color": "blue" },
+      { "label": "Fall 2024", "color": "gray" },
+      { "label": "Private", "color": "gray" }
+    ],
+    "paperStatus": "withheld",
+    "isPublic": false
+  }
+]
