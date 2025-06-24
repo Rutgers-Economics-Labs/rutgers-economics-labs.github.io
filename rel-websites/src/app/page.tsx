@@ -2,10 +2,11 @@
 import Link from "next/link";
 import Script from "next/script";
 import { useEffect } from "react";
+import AnimatedStockChart from "../components/AnimatedStockChart";
 
 export default function Home() {
   useEffect(() => {
-    <Script src="main.js" />
+    // <Script src="main.js" />
   }, []);
 
   return (
@@ -13,14 +14,7 @@ export default function Home() {
       <div>
         {/* Hero Section */}
         <div className="animated-bg min-h-screen flex items-center relative overflow-hidden">
-          <svg className="stock-chart" viewBox="0 0 1000 400" preserveAspectRatio="none">
-            {/* Historical stock line */}
-            <path id="stockPath" className="chart-line" d="M0,200" />
-            {/* Prediction line */}
-            <path id="predictionPath" className="prediction-line" d="M0,200" />
-            {/* Current point indicator */}
-            <circle id="currentPoint" className="current-point" cx="0" cy="200" r="8" />
-          </svg>
+          <AnimatedStockChart />
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center">
               <h2 className="text-5xl md:text-7xl font-bold text-white mb-6 ">
