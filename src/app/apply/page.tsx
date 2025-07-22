@@ -75,7 +75,10 @@ export default function ApplyPage() {
         <div className="text-center mb-16">
           <h3 className="text-4xl font-bold text-gray-900 mb-8 ">Apply Now!</h3>
           <p className="text-xl text-gray-600 ">
-            Applications for the Spring 2025 semester are now open and will close on Wednesday, February 12 at 11:59 pm.
+            Applications for the Spring 2025 semester are closed.
+          </p>
+          <p className="text-xl text-gray-600 ">
+            Applications for the Fall 2025 semester will open in September 2025 and close (TENTATIVELY) September 19th at 11:59 pm. Afterward, we will review applications and invite selected applicants to interview.
           </p>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
