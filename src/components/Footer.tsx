@@ -83,14 +83,14 @@ const Footer = () => (
             </div>
             <div className="flex items-center justify-center md:justify-end space-x-2 text-red-200">
               <Mail className="w-4 h-4" />
-              <span className="text-sm">rel@rutgerseconomicslabs.org</span>
+              <span className="text-sm">rel@rutgerseconomics.org</span>
             </div>
           </div>
 
           {/* Social Links */}
           <div className="flex justify-center md:justify-end space-x-4">
             <a
-              href="mailto:rel@rutgerseconomicslabs.org"
+              href="mailto:rel@rutgerseconomics.org"
               className="group relative p-3 bg-white/10 rounded-full hover:bg-white/20 transition-all duration-300 hover:scale-110"
               aria-label="Email us"
             >
