@@ -37,7 +37,7 @@
     ],
     "boardMembers": [
         {
-            "name": "Gokul",
+            "name": "Gokulraj Kumarassamy",
             "position": "Operations Director",
             "image": "images/people/gokul.jpeg",
             "description": "Managing organizational operations and logistics.",
@@ -54,7 +54,7 @@
         },
         {
             "name": "Vikram Krishnaswamy",
-            "position": "Marketing Director",
+            "position": "Director of Member Outreach",
             "image": "images/people/vikram.jpg",
             "description": "Leading marketing and outreach initiatives.",
             "team": ["NJDCA"],
