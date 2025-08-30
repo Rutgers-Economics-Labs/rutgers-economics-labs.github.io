@@ -1,5 +1,33 @@
 [
   {
+    "title": "New Jersey Department of Labor",
+    "description": "We are working with the New Jersey Department of Labor to develop population and labor force projections for New Jersey and its counties from 2022–2050. This project will produce a reference framework for planning and policy by extrapolating long-term demographic trends, accounting for demographic shifts revealed by the 2020 Decennial Census and COVID-19 pandemic impacts. The project will develop three distinct scenarios (Medium, High-Growth, and Low-Growth) based on different assumptions about the components of population change.",
+    "logo": "/images/logo/njdol.png",
+    "logoAlt": "NJDOL Logo",
+    "tags": [
+      { "label": "In Progress", "color": "yellow" },
+      { "label": "Fall 2025", "color": "gray" },
+      { "label": "Private", "color": "gray" }
+    ],
+    "paperStatus": "in_progress",
+    "isPublic": false,
+    "lead": "Alex Zhang"
+  },
+  {
+    "title": "Virginia Center for Public Policy",
+    "description": "We are working with the Virginia Center for Public Policy to conduct a comprehensive analysis of post-incarceration employment and economic opportunity in Virginia from 2025-2030. The research will identify regions where formerly incarcerated individuals return, analyze regional labor market structures, and assess alignment between available 'second-chance' employment opportunities and vocational skills. The project will produce a five-year projection of employment trends to inform policy and workforce development strategies, ultimately identifying systemic barriers and providing actionable recommendations for successful reentry.",
+    "logo": "/images/logo/virginia.png",
+    "logoAlt": "Virginia Center for Public Policy Logo",
+    "tags": [
+      { "label": "In Progress", "color": "yellow" },
+      { "label": "Fall 2025", "color": "gray" },
+      { "label": "Private", "color": "gray" }
+    ],
+    "paperStatus": "in_progress",
+    "isPublic": false,
+    "lead": "Aryan Malik"
+  },
+  {
     "title": "US Department of Agriculture",
     "description": "We worked with the United States Department of Agriculture (USDA) to identify potential anticompetitive practices in the meat industry through a time series analysis of price spreads.",
     "logo": "/images/logo/usda.png",

@@ -1,6 +1,62 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+
+// Countdown Timer Component
+function CountdownTimer() {
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0
+  });
+
+  useEffect(() => {
+    const deadline = new Date('2025-09-27T23:59:59').getTime();
+
+    const timer = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = deadline - now;
+
+      if (distance > 0) {
+        setTimeLeft({
+          days: Math.floor(distance / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+          minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+          seconds: Math.floor((distance % (1000 * 60)) / 1000)
+        });
+      } else {
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+      }
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="bg-gradient-to-r from-red-600 to-red-700 text-white p-6 rounded-2xl mb-8">
+      <h4 className="text-2xl font-bold text-center mb-4">Applications Close In:</h4>
+      <div className="grid grid-cols-4 gap-4 text-center">
+        <div className="bg-white/20 rounded-lg p-3 backdrop-blur-sm">
+          <div className="text-3xl font-bold">{timeLeft.days}</div>
+          <div className="text-sm opacity-90">Days</div>
+        </div>
+        <div className="bg-white/20 rounded-lg p-3 backdrop-blur-sm">
+          <div className="text-3xl font-bold">{timeLeft.hours.toString().padStart(2, '0')}</div>
+          <div className="text-sm opacity-90">Hours</div>
+        </div>
+        <div className="bg-white/20 rounded-lg p-3 backdrop-blur-sm">
+          <div className="text-3xl font-bold">{timeLeft.minutes.toString().padStart(2, '0')}</div>
+          <div className="text-sm opacity-90">Minutes</div>
+        </div>
+        <div className="bg-white/20 rounded-lg p-3 backdrop-blur-sm">
+          <div className="text-3xl font-bold">{timeLeft.seconds.toString().padStart(2, '0')}</div>
+          <div className="text-sm opacity-90">Seconds</div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function ApplyPage() {
   // State variables to hold the form input values
@@ -15,6 +71,16 @@ export default function ApplyPage() {
 
   // Google Apps Script endpoint
   const googleAppsScriptUrl = 'https://script.google.com/macros/s/AKfycbyyRKTWKnIO73UD1rp2s0iStMuX3xVcqiTpdL14MnCwvhaC1Ro8seYAhcoS273IsVVXbg/exec';
+
+  // Application form URL
+  const applicationFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSe_brbuCJu9sFJd0GCBAIL67axhrAd2R9yey2A2Lebx1nwHug/viewform';
+
+  // Check if applications are closed
+  const isApplicationsClosed = () => {
+    const deadline = new Date('2025-09-27T23:59:59').getTime();
+    const now = new Date().getTime();
+    return now >= deadline;
+  };
 
   /**
    * Handles the form submission event.
@@ -69,29 +135,64 @@ export default function ApplyPage() {
     }
   };
 
+  const applicationsClosed = isApplicationsClosed();
+
   return (
     <div className="py-20 bg-white">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h3 className="text-4xl font-bold text-gray-900 mb-8 ">Apply Now!</h3>
-          <p className="text-xl text-gray-600 ">
-            Applications for the Spring 2025 semester are closed.
-          </p>
-          <p className="text-xl text-gray-600 ">
-            Applications for the Fall 2025 semester will open in September 2025 and close (TENTATIVELY) September 19th at 11:59 pm. Afterward, we will review applications and invite selected applicants to interview.
-          </p>
+          <h3 className="text-4xl font-bold text-gray-900 mb-8">Apply Now!</h3>
+          
+          {applicationsClosed ? (
+            <>
+              <p className="text-xl text-gray-600 mb-4">
+                Applications for the Fall 2025 semester are now closed.
+              </p>
+              <p className="text-lg text-gray-600 mb-8">
+                Thank you for your interest! Applications closed on Friday, September 27th, 2025. We will review all submissions and contact selected applicants for interviews.
+              </p>
+            </>
+          ) : (
+            <>
+              <p className="text-xl text-gray-600 mb-4">
+                Applications for the Fall 2025 semester are now open!
+              </p>
+              <p className="text-lg text-gray-600 mb-8">
+                Applications close on Friday, September 27th, 2025 at 11:59 PM. Afterward, we will review applications and invite selected applicants to interview.
+              </p>
+              
+              {/* Countdown Timer */}
+              <CountdownTimer />
+            </>
+          )}
         </div>
+        
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Application CTA */}
           <div className="">
             <div className="bg-gradient-to-br from-red-50 to-red-100 p-8 rounded-2xl text-center">
-              <h4 className="text-2xl font-bold text-red-800 mb-4">Ready to Join?</h4>
-              <p className="text-red-700 mb-6">Click below to access our application form and take the first step toward impactful economic research.</p>
-              <button className="bg-red-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-red-700 transition-all duration-300 transform hover:scale-105 w-full">
-                Apply Here
-              </button>
+              <h4 className="text-2xl font-bold text-red-800 mb-4">
+                {applicationsClosed ? 'Applications Closed' : 'Ready to Join?'}
+              </h4>
+              <p className="text-red-700 mb-6">
+                {applicationsClosed 
+                  ? 'Applications for this semester are now closed. Please check back for future opportunities.'
+                  : 'Click below to access our application form and take the first step toward impactful economic research.'
+                }
+              </p>
+              {!applicationsClosed && (
+                <a 
+                  href={applicationFormUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block bg-red-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-red-700 transition-all duration-300 transform hover:scale-105 w-full"
+                >
+                  Apply Here
+                </a>
+              )}
             </div>
           </div>
+          
           {/* Mailing List */}
           <div className="">
             <div className="bg-gray-50 p-8 rounded-2xl">

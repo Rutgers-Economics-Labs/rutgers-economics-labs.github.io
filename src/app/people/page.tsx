@@ -10,6 +10,8 @@ const orgLogos: Record<string, string> = {
   NJEDA: '/images/logo/njeda.jpg',
   NJDCA: '/images/logo/njdca.png',
   USDA: '/images/logo/usda.png',
+  NJDOL: '/images/logo/njdol.png',
+  Virginia: '/images/logo/virginia.png',
 };
 
 async function getTeamData() {
@@ -18,9 +20,10 @@ async function getTeamData() {
 
 function TeamMemberCard({ member, section }: { member: any; section: string }) {
   const isMember = section === 'members';
-  const cardClass = isMember ? 'max-w-[200px]' : 'max-w-sm';
-  const imageClass = isMember ? 'w-32 h-32 mx-auto' : 'w-full';
-  const textClass = isMember ? 'text-sm' : 'text-base';
+  const isAlumni = section === 'alumni';
+  const cardClass = isMember || isAlumni ? 'max-w-[200px]' : 'max-w-sm';
+  const imageClass = isMember || isAlumni ? 'w-32 h-32 mx-auto' : 'w-full';
+  const textClass = isMember || isAlumni ? 'text-sm' : 'text-base';
   const orgLogosSection = member.team && member.team.length > 0 ? (
     <div className="flex justify-center space-x-3 mt-2">
       {member.team.filter((org: string, idx: number, self: string[]) => self.indexOf(org) === idx).map((org: string) => (
@@ -38,7 +41,7 @@ function TeamMemberCard({ member, section }: { member: any; section: string }) {
   ) : null;
   return (
     <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className={`block w-full ${cardClass}`} key={member.name}>
-      <div className="card-hover bg-white p-6 rounded-xl shadow-lg text-center cursor-pointer transform transition-transform duration-300 hover:scale-105">
+      <div className={`card-hover bg-white p-6 rounded-xl shadow-lg text-center cursor-pointer transform transition-transform duration-300 hover:scale-105 ${isAlumni ? 'opacity-75' : ''}`}>
         <div className="aspect-w-1 aspect-h-1 mb-4">
           <Image src={`/${member.image}`} alt={member.name} width={128} height={128} className={`${imageClass} rounded-lg object-cover`} />
         </div>
@@ -80,21 +83,30 @@ export default async function PeoplePage() {
             ))}
           </div>
         </div>
-        {/* Analysts */}
+        {/* Board Members */}
         <div className="mb-20 text-center">
-          <h4 className="text-2xl font-bold text-gray-900 mb-12 text-center">Research Analysts</h4>
+          <h4 className="text-2xl font-bold text-gray-900 mb-12 text-center">Board Members</h4>
           <div className="flex flex-wrap justify-center gap-8 text-center">
-            {team.analysts.map((member: any) => (
-              <TeamMemberCard key={member.name} member={member} section="analysts" />
+            {team.boardMembers.map((member: any) => (
+              <TeamMemberCard key={member.name} member={member} section="board" />
             ))}
           </div>
         </div>
         {/* Members */}
-        <div className="text-center">
+        <div className="mb-20 text-center">
           <h4 className="text-2xl font-bold text-gray-900 mb-12 text-center">Members</h4>
           <div className="flex flex-wrap justify-center gap-8 text-center">
             {team.members.map((member: any) => (
               <TeamMemberCard key={member.name} member={member} section="members" />
+            ))}
+          </div>
+        </div>
+        {/* Alumni */}
+        <div className="text-center">
+          <h4 className="text-2xl font-bold text-gray-900 mb-12 text-center">Alumni</h4>
+          <div className="flex flex-wrap justify-center gap-8 text-center">
+            {team.alumni.map((member: any) => (
+              <TeamMemberCard key={member.name} member={member} section="alumni" />
             ))}
           </div>
         </div>
