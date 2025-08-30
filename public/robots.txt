@@ -1,9 +1,11 @@
 # *
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /admin/
 
 # Host
-Host: https://rutgers-economics-labs.github.io/
+Host: https://rutgerseconomics.org/
 
 # Sitemaps
-Sitemap: https://rutgers-economics-labs.github.io/sitemap.xml
+Sitemap: https://rutgerseconomics.org/sitemap.xml
