@@ -21,9 +21,12 @@ async function getTeamData() {
 function TeamMemberCard({ member, section }: { member: any; section: string }) {
   const isMember = section === 'members';
   const isAlumni = section === 'alumni';
-  const cardClass = isMember || isAlumni ? 'max-w-[200px]' : 'max-w-sm';
-  const imageClass = isMember || isAlumni ? 'w-32 h-32 mx-auto' : 'w-full';
-  const textClass = isMember || isAlumni ? 'text-sm' : 'text-base';
+  const isBoard = section === 'board';
+  
+  // Card sizing: Executive/Team Leads (large), Board (medium), Members/Alumni (small)
+  const cardClass = isBoard ? 'max-w-[280px]' : (isMember || isAlumni ? 'max-w-[200px]' : 'max-w-sm');
+  const imageClass = isBoard ? 'w-40 h-40 mx-auto' : (isMember || isAlumni ? 'w-32 h-32 mx-auto' : 'w-full');
+  const textClass = isBoard ? 'text-base' : (isMember || isAlumni ? 'text-sm' : 'text-base');
   const orgLogosSection = member.team && member.team.length > 0 ? (
     <div className="flex justify-center space-x-3 mt-2">
       {member.team.filter((org: string, idx: number, self: string[]) => self.indexOf(org) === idx).map((org: string) => (
