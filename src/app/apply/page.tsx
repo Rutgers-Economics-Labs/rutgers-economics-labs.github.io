@@ -12,22 +12,31 @@ function CountdownTimer() {
   });
 
   useEffect(() => {
-    const deadline = new Date('2025-09-27T23:59:59').getTime();
+    const deadline = new Date('2025-09-20T23:59:59').getTime();
 
-    const timer = setInterval(() => {
+    // Calculate initial time immediately
+    const calculateTimeLeft = () => {
       const now = new Date().getTime();
       const distance = deadline - now;
 
       if (distance > 0) {
-        setTimeLeft({
+        return {
           days: Math.floor(distance / (1000 * 60 * 60 * 24)),
           hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
           minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
           seconds: Math.floor((distance % (1000 * 60)) / 1000)
-        });
+        };
       } else {
-        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        return { days: 0, hours: 0, minutes: 0, seconds: 0 };
       }
+    };
+
+    // Set initial time immediately
+    setTimeLeft(calculateTimeLeft());
+
+    // Then set up the interval for updates
+    const timer = setInterval(() => {
+      setTimeLeft(calculateTimeLeft());
     }, 1000);
 
     return () => clearInterval(timer);
@@ -77,7 +86,7 @@ export default function ApplyPage() {
 
   // Check if applications are closed
   const isApplicationsClosed = () => {
-    const deadline = new Date('2025-09-27T23:59:59').getTime();
+    const deadline = new Date('2025-09-20T23:59:59').getTime();
     const now = new Date().getTime();
     return now >= deadline;
   };
@@ -158,7 +167,7 @@ export default function ApplyPage() {
                 Applications for the Fall 2025 semester are now open!
               </p>
               <p className="text-lg text-gray-600 mb-8">
-                Applications close on Friday, September 27th, 2025 at 11:59 PM. Afterward, we will review applications and invite selected applicants to interview.
+                Applications close on Friday, September 20th, 2025 at 11:59 PM. Afterward, we will review applications and invite selected applicants to interview.
               </p>
               
               {/* Countdown Timer */}
