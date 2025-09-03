@@ -52,7 +52,8 @@ const Footer = () => (
               { label: 'About Us', href: '/about' },
               { label: 'Join Our Team', href: '/apply' },
               { label: 'Resources', href: '/resources' },
-              { label: 'Meet the Team', href: '/people' }
+              { label: 'Meet the Team', href: '/people' },
+              { label: 'Unsubscribe', href: '/unsubscribe' }
             ].map((link, index) => (
               <a
                 key={index}

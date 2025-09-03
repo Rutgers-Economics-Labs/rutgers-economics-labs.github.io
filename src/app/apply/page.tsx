@@ -79,7 +79,7 @@ export default function ApplyPage() {
   const [isError, setIsError] = useState(false);
 
   // Google Apps Script endpoint
-  const googleAppsScriptUrl = 'https://script.google.com/macros/s/AKfycbyyRKTWKnIO73UD1rp2s0iStMuX3xVcqiTpdL14MnCwvhaC1Ro8seYAhcoS273IsVVXbg/exec';
+  const googleAppsScriptUrl = 'https://script.google.com/macros/s/AKfycbzvpa0kUiO5HW-BV-vOCh8ZDeTmIHH2IN8QRYfHQAyc2TqfDluTrvZIXrJUKzVa9hzT6Q/exec';
 
   // Application form URL
   const applicationFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSe_brbuCJu9sFJd0GCBAIL67axhrAd2R9yey2A2Lebx1nwHug/viewform';
@@ -259,6 +259,16 @@ export default function ApplyPage() {
                   </p>
                 )}
               </form>
+              
+              <div className="mt-6 text-center">
+                <p className="text-gray-500 text-sm">
+                  Need to unsubscribe?{' '}
+                  <a href="/unsubscribe" className="text-red-600 hover:text-red-700 font-medium underline">
+                    Click here
+                  </a>
+                  .
+                </p>
+              </div>
             </div>
           </div>
         </div>
