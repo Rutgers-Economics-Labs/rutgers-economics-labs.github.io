@@ -129,11 +129,6 @@ const Footer = () => (
           <p className="text-red-200 text-sm flex items-center space-x-2">
             <span>© 2025 Rutgers Economics Labs. All rights reserved.</span>
           </p>
-          <div className="flex items-center space-x-6 text-sm">
-            <a href="#" className="text-red-200 hover:text-white transition-colors duration-300">Privacy Policy</a>
-            <a href="#" className="text-red-200 hover:text-white transition-colors duration-300">Terms of Service</a>
-            <a href="#" className="text-red-200 hover:text-white transition-colors duration-300">Accessibility</a>
-          </div>
         </div>
       </div>
     </div>
