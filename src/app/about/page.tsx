@@ -1,3 +1,19 @@
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "About Us - Rutgers Economics Labs",
+  description: "Learn about our student-driven economic research process, team collaboration with government agencies, and how we produce data-driven insights for policymakers.",
+  openGraph: {
+    title: "About Us - Rutgers Economics Labs",
+    description: "Learn about our student-driven economic research process, team collaboration with government agencies, and how we produce data-driven insights for policymakers.",
+    url: "https://www.rutgerseconomics.org/about",
+  },
+  twitter: {
+    title: "About Us - Rutgers Economics Labs",
+    description: "Learn about our student-driven economic research process, team collaboration with government agencies, and how we produce data-driven insights for policymakers.",
+  },
+};
+
 export default function AboutPage() {
   return (
     <div className="py-20 bg-white">
