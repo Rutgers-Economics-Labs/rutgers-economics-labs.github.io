@@ -158,7 +158,7 @@ export default function ApplyPage() {
                 Applications for the Fall 2025 semester are now closed.
               </p>
               <p className="text-lg text-gray-600 mb-8">
-                Thank you for your interest! Applications closed on Friday, September 27th, 2025. We will review all submissions and contact selected applicants for interviews.
+                Thank you for your interest! Applications closed on Saturday, September 27th, 2025. We will review all submissions and contact selected applicants for interviews.
               </p>
             </>
           ) : (
@@ -167,7 +167,7 @@ export default function ApplyPage() {
                 Applications for the Fall 2025 semester are now open!
               </p>
               <p className="text-lg text-gray-600 mb-8">
-                Applications close on Friday, September 20th, 2025 at 11:59 PM. Afterward, we will review applications and invite selected applicants to interview.
+                Applications close on Saturday, September 20th, 2025 at 11:59 PM. Afterward, we will review applications and invite selected applicants to interview.
               </p>
               
               {/* Countdown Timer */}
