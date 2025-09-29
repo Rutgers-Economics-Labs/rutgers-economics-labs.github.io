@@ -20,17 +20,17 @@
     "teamLeads": [
         {
             "name": "Alex Zhang",
-            "position": "Policy Research Lead",
+            "position": "Team Lead",
             "image": "images/people/alex-zhang.jpg",
-            "description": "Leading policy research and analysis initiatives.",
+            "description": "Leading NJDOL research project.",
             "team": ["NJEDA", "USDA", "NJDOL"],
             "linkedin": "https://www.linkedin.com/in/alexzhang0930"
         },
         {
             "name": "Aryan Malik",
-            "position": "Economic Analysis Lead",
+            "position": "Team Lead",
             "image": "images/people/aryan-malik.jpg",
-            "description": "Leading economic impact analysis and modeling.",
+            "description": "Leading Viginia Interfaith Center for Public Policy project.",
             "team": ["NJEDA", "USDA", "Virginia"],
             "linkedin": "https://www.linkedin.com/in/aryan-malik-xd/"
         }
