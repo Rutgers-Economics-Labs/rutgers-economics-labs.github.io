@@ -93,6 +93,70 @@
             "description": "Statistical modeling expert.",
             "team": ["NJEDA", "NJDCA"],
             "linkedin": "https://www.linkedin.com/in/lukianwernyj"
+        },
+        {
+            "name": "Priya Rana",
+            "position": "Data Analyst",
+            "image": "images/people/priya.jpeg",
+            "description": "Data analysis and research specialist.",
+            "team": [],
+            "linkedin": "https://www.linkedin.com/in/prana24/"
+        },
+        {
+            "name": "Ani Tiwary",
+            "position": "Data Analyst",
+            "image": "images/people/ani.jpeg",
+            "description": "Data analysis and research specialist.",
+            "team": [],
+            "linkedin": "https://www.linkedin.com/in/ani-tiwary/"
+        },
+        {
+            "name": "Naomi George",
+            "position": "Data Analyst",
+            "image": "images/people/naomi.jpeg",
+            "description": "Data analysis and research specialist.",
+            "team": [],
+            "linkedin": "https://www.linkedin.com/in/naomi-george-312b07281/"
+        },
+        {
+            "name": "Michelle Rozenfeld",
+            "position": "Data Analyst",
+            "image": "images/people/michelle.jpeg",
+            "description": "Data analysis and research specialist.",
+            "team": [],
+            "linkedin": "https://www.linkedin.com/in/michelle5555/"
+        },
+        {
+            "name": "Aadith Muthukumar",
+            "position": "Data Analyst",
+            "image": "images/people/aadith.jpeg",
+            "description": "Data analysis and research specialist.",
+            "team": [],
+            "linkedin": "https://www.linkedin.com/in/aadith-muthukumar-50b4a1280/"
+        },
+        {
+            "name": "Ryaan Zahidani",
+            "position": "Data Analyst",
+            "image": "images/people/ryaan.jpeg",
+            "description": "Data analysis and research specialist.",
+            "team": [],
+            "linkedin": "https://www.linkedin.com/in/ryaan-zahidani-733064253/"
+        },
+        {
+            "name": "Ethan Poon",
+            "position": "Data Analyst",
+            "image": "images/people/ethan.jpeg",
+            "description": "Data analysis and research specialist.",
+            "team": [],
+            "linkedin": "https://www.linkedin.com/in/ethan-poon-64b7b5325/"
+        },
+        {
+            "name": "Valart Magjuni",
+            "position": "Data Analyst",
+            "image": "images/people/valart.jpeg",
+            "description": "Data analysis and research specialist.",
+            "team": [],
+            "linkedin": "https://www.linkedin.com/in/valart-magjuni-5b8ab4290/"
         }
     ],
     "alumni": [
