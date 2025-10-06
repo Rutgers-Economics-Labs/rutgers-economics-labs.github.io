@@ -99,7 +99,7 @@
             "position": "Data Analyst",
             "image": "images/people/priya.jpeg",
             "description": "Data analysis and research specialist.",
-            "team": [],
+            "team": ["Virginia"],
             "linkedin": "https://www.linkedin.com/in/prana24/"
         },
         {
@@ -107,7 +107,7 @@
             "position": "Data Analyst",
             "image": "images/people/ani.jpeg",
             "description": "Data analysis and research specialist.",
-            "team": [],
+            "team": ["NJDOL"],
             "linkedin": "https://www.linkedin.com/in/ani-tiwary/"
         },
         {
@@ -115,7 +115,7 @@
             "position": "Data Analyst",
             "image": "images/people/naomi.jpeg",
             "description": "Data analysis and research specialist.",
-            "team": [],
+            "team": ["NJDOL"],
             "linkedin": "https://www.linkedin.com/in/naomi-george-312b07281/"
         },
         {
@@ -123,7 +123,7 @@
             "position": "Data Analyst",
             "image": "images/people/michelle.jpeg",
             "description": "Data analysis and research specialist.",
-            "team": [],
+            "team": ["Virginia"],
             "linkedin": "https://www.linkedin.com/in/michelle5555/"
         },
         {
@@ -131,7 +131,7 @@
             "position": "Data Analyst",
             "image": "images/people/aadith.jpeg",
             "description": "Data analysis and research specialist.",
-            "team": [],
+            "team": ["NJDOL"],
             "linkedin": "https://www.linkedin.com/in/aadith-muthukumar-50b4a1280/"
         },
         {
@@ -139,7 +139,7 @@
             "position": "Data Analyst",
             "image": "images/people/ryaan.jpeg",
             "description": "Data analysis and research specialist.",
-            "team": [],
+            "team": ["Virginia"],
             "linkedin": "https://www.linkedin.com/in/ryaan-zahidani-733064253/"
         },
         {
@@ -147,7 +147,7 @@
             "position": "Data Analyst",
             "image": "images/people/ethan.jpeg",
             "description": "Data analysis and research specialist.",
-            "team": [],
+            "team": ["NJDOL"],
             "linkedin": "https://www.linkedin.com/in/ethan-poon-64b7b5325/"
         },
         {
@@ -155,7 +155,7 @@
             "position": "Data Analyst",
             "image": "images/people/valart.jpeg",
             "description": "Data analysis and research specialist.",
-            "team": [],
+            "team": ["Virginia"],
             "linkedin": "https://www.linkedin.com/in/valart-magjuni-5b8ab4290/"
         }
     ],
