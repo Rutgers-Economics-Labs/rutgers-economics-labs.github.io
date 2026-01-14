@@ -128,7 +128,7 @@ const Footer = () => (
       <div className="pt-8 border-t border-red-700/50">
         <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <p className="text-red-200 text-sm flex items-center space-x-2">
-            <span>© 2025 Rutgers Economics Labs. All rights reserved.</span>
+            <span>© 2026 Rutgers Economics Labs. All rights reserved.</span>
           </p>
         </div>
       </div>

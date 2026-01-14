@@ -76,9 +76,9 @@ export default function Home() {
         </div>
 
         {/* Partners Logo Section */}
-        <div className="py-16 bg-white border-b border-gray-100">
+        <div className="py-16 bg-[var(--bg-secondary)] border-b border-[var(--border-color)]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <p className="text-center text-gray-500 text-sm font-medium uppercase tracking-wider mb-10">
+            <p className="text-center text-[var(--text-muted)] text-sm font-medium uppercase tracking-wider mb-10">
               Trusted by Leading Government Agencies & Organizations
             </p>
             <div className="relative overflow-hidden">
@@ -103,12 +103,12 @@ export default function Home() {
         </div>
 
         {/* Mission Section - Enhanced */}
-        <div className="py-24 bg-gradient-to-b from-white to-gray-50">
+        <div className="py-24 bg-[var(--bg-primary)]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h3 className="text-4xl font-bold text-gray-900 mb-6">Our Mission</h3>
+              <h3 className="text-4xl font-bold text-[var(--text-primary)] mb-6">Our Mission</h3>
               <div className="w-24 h-1 bg-red-600 mx-auto mb-8 rounded-full"></div>
-              <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+              <p className="text-xl text-[var(--text-secondary)] max-w-4xl mx-auto leading-relaxed">
                 We are a <strong>student-led, data-driven research organization</strong> at Rutgers University that provides
                 pro bono technical economic analysis for government agencies, think tanks, and public policy organizations.
                 Our mission is to bridge the gap between academic rigor and real-world policy impact.
@@ -120,13 +120,13 @@ export default function Home() {
               {capabilities.map((cap, idx) => (
                 <div
                   key={idx}
-                  className="group p-8 bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-red-100 text-center"
+                  className="group p-8 bg-[var(--card-bg)] rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-[var(--card-border)] text-center"
                 >
-                  <div className="w-14 h-14 bg-red-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-red-100 transition-colors duration-300 mx-auto">
+                  <div className="w-14 h-14 bg-red-600/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-red-600/20 transition-colors duration-300 mx-auto">
                     <i className={`fas ${cap.icon} text-2xl text-red-600`}></i>
                   </div>
-                  <h4 className="text-xl font-bold text-gray-900 mb-3">{cap.title}</h4>
-                  <p className="text-gray-600 leading-relaxed">{cap.description}</p>
+                  <h4 className="text-xl font-bold text-[var(--text-primary)] mb-3">{cap.title}</h4>
+                  <p className="text-[var(--text-secondary)] leading-relaxed">{cap.description}</p>
                 </div>
               ))}
             </div>
@@ -168,10 +168,10 @@ export default function Home() {
         </div>
 
         {/* CTA Section */}
-        <div className="py-24 bg-white">
+        <div className="py-24 bg-[var(--bg-secondary)]">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h3 className="text-4xl font-bold text-gray-900 mb-6">Ready to Make an Impact?</h3>
-            <p className="text-xl text-gray-600 mb-10 leading-relaxed">
+            <h3 className="text-4xl font-bold text-[var(--text-primary)] mb-6">Ready to Make an Impact?</h3>
+            <p className="text-xl text-[var(--text-secondary)] mb-10 leading-relaxed">
               Whether you're a student looking to gain real-world research experience or an organization
               seeking data-driven policy analysis, we'd love to connect.
             </p>
@@ -184,7 +184,7 @@ export default function Home() {
               </Link>
               <Link
                 href="/projects"
-                className="px-8 py-4 bg-gray-100 text-gray-900 rounded-full text-lg font-semibold hover:bg-gray-200 transition-all duration-300 transform hover:scale-105"
+                className="px-8 py-4 bg-[var(--bg-tertiary)] text-[var(--text-primary)] rounded-full text-lg font-semibold hover:bg-[var(--border-color)] transition-all duration-300 transform hover:scale-105"
               >
                 View Our Work
               </Link>

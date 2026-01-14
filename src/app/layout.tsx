@@ -71,12 +71,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <meta name="color-scheme" content="light dark" />
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
         />
       </head>
-      <body className="bg-gray-50">
+      <body className="bg-[var(--bg-primary)] text-[var(--text-primary)] transition-colors duration-300">
         <Header />
         <main>{children}</main>
         <Footer />
