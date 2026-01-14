@@ -1,15 +1,90 @@
 [
   {
+    "title": "New Jersey Department of Environmental Protection",
+    "description": "We are working with the New Jersey Department of Environmental Protection to evaluate the 'Resilience Premium' in New Jersey municipal bond markets from 2015-2025. This research quantifies the relationship between climate risk, adaptation measures, and municipal borrowing costs. Using matched-pair econometric analysis and Difference-in-Differences models, the project analyzes the SLR Penalty (higher yields for high-exposure coastal municipalities) and the Resilience Premium (reduced borrowing costs for municipalities with significant adaptation measures). Data sources include NJ FloodMapper, FEMA CRS scores, NJ I-Bank funding data, and MSRB EMMA bond filings.",
+    "logo": "/images/logo/njdep.png",
+    "logoAlt": "NJDEP Logo",
+    "tags": [
+      {
+        "label": "In Progress",
+        "color": "yellow"
+      },
+      {
+        "label": "Spring 2026",
+        "color": "gray"
+      },
+      {
+        "label": "Private",
+        "color": "gray"
+      }
+    ],
+    "paperStatus": "in_progress",
+    "isPublic": false
+  },
+  {
+    "title": "New Jersey Board of Public Utilities",
+    "description": "We are working with the New Jersey Board of Public Utilities to analyze PJM electricity auction markets. This research examines competitive dynamics in wholesale electricity markets using Independent Market Monitor (IMM) annual reports and auction data to assess market efficiency, price formation, and potential improvements to New Jersey's energy procurement strategies.",
+    "logo": "/images/logo/njbpu.png",
+    "logoAlt": "NJBPU Logo",
+    "tags": [
+      {
+        "label": "In Progress",
+        "color": "yellow"
+      },
+      {
+        "label": "Spring 2026",
+        "color": "gray"
+      },
+      {
+        "label": "Private",
+        "color": "gray"
+      }
+    ],
+    "paperStatus": "in_progress",
+    "isPublic": false
+  },
+  {
+    "title": "Federal Department of Housing and Urban Development",
+    "description": "We are working with the Federal Department of Housing and Urban Development (HUD) to develop population projections and housing demand estimates for New Jersey and the tri-state area. This project analyzes migration patterns and demographic components to project population 3-5 years into the future, with a focus on major metropolitan areas including Baltimore, DC, and NYC as defined by the Office of Management and Budget. The research supports regional planning for housing supply and infrastructure needs.",
+    "logo": "/images/logo/hud.svg",
+    "logoAlt": "HUD Logo",
+    "tags": [
+      {
+        "label": "In Progress",
+        "color": "yellow"
+      },
+      {
+        "label": "Spring 2026",
+        "color": "gray"
+      },
+      {
+        "label": "Private",
+        "color": "gray"
+      }
+    ],
+    "paperStatus": "in_progress",
+    "isPublic": false
+  },
+  {
     "title": "New Jersey Department of Labor",
     "description": "We are working with the New Jersey Department of Labor to develop population and labor force projections for New Jersey and its counties from 2022–2050. This project will produce a reference framework for planning and policy by extrapolating long-term demographic trends, accounting for demographic shifts revealed by the 2020 Decennial Census and COVID-19 pandemic impacts. The project will develop three distinct scenarios (Medium, High-Growth, and Low-Growth) based on different assumptions about the components of population change.",
     "logo": "/images/logo/njdol.png",
     "logoAlt": "NJDOL Logo",
     "tags": [
-      { "label": "In Progress", "color": "yellow" },
-      { "label": "Fall 2025", "color": "gray" },
-      { "label": "Private", "color": "gray" }
+      {
+        "label": "Paper Completed",
+        "color": "green"
+      },
+      {
+        "label": "Fall 2025",
+        "color": "gray"
+      },
+      {
+        "label": "Private",
+        "color": "gray"
+      }
     ],
-    "paperStatus": "in_progress",
+    "paperStatus": "completed",
     "isPublic": false,
     "lead": "Alex Zhang"
   },
@@ -19,11 +94,20 @@
     "logo": "/images/logo/virginia.png",
     "logoAlt": "Virginia Center for Public Policy Logo",
     "tags": [
-      { "label": "In Progress", "color": "yellow" },
-      { "label": "Fall 2025", "color": "gray" },
-      { "label": "Private", "color": "gray" }
+      {
+        "label": "Completed",
+        "color": "green"
+      },
+      {
+        "label": "Fall 2025",
+        "color": "gray"
+      },
+      {
+        "label": "Private",
+        "color": "gray"
+      }
     ],
-    "paperStatus": "in_progress",
+    "paperStatus": "completed",
     "isPublic": false,
     "lead": "Aryan Malik"
   },
@@ -33,9 +117,18 @@
     "logo": "/images/logo/usda.png",
     "logoAlt": "USDA Logo",
     "tags": [
-      { "label": "Paper Completed", "color": "green" },
-      { "label": "Spring 2025", "color": "gray" },
-      { "label": "Public", "color": "green" }
+      {
+        "label": "Completed",
+        "color": "green"
+      },
+      {
+        "label": "Spring 2025",
+        "color": "gray"
+      },
+      {
+        "label": "Public",
+        "color": "green"
+      }
     ],
     "paperStatus": "completed",
     "isPublic": true,
@@ -47,9 +140,18 @@
     "logo": "/images/logo/njdca.png",
     "logoAlt": "NJDCA Logo",
     "tags": [
-      { "label": "Paper Withheld", "color": "blue" },
-      { "label": "Spring 2025", "color": "gray" },
-      { "label": "Private", "color": "gray" }
+      {
+        "label": "Paper Withheld",
+        "color": "blue"
+      },
+      {
+        "label": "Spring 2025",
+        "color": "gray"
+      },
+      {
+        "label": "Private",
+        "color": "gray"
+      }
     ],
     "paperStatus": "withheld",
     "isPublic": false
@@ -60,9 +162,18 @@
     "logo": "/images/logo/njeda.jpg",
     "logoAlt": "NJEDA Logo",
     "tags": [
-      { "label": "Paper Withheld", "color": "blue" },
-      { "label": "Fall 2024", "color": "gray" },
-      { "label": "Private", "color": "gray" }
+      {
+        "label": "Paper Withheld",
+        "color": "blue"
+      },
+      {
+        "label": "Fall 2024",
+        "color": "gray"
+      },
+      {
+        "label": "Private",
+        "color": "gray"
+      }
     ],
     "paperStatus": "withheld",
     "isPublic": false

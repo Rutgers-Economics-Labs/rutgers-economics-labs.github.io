@@ -72,7 +72,7 @@ export default function ApplyPage() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
-  
+
   // State to manage the submission process
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
@@ -97,12 +97,12 @@ export default function ApplyPage() {
    */
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault(); // Prevent the default form submission behavior
-    
+
     // Simple validation
     if (!firstName || !lastName || !email) {
-        setSubmitMessage('Please fill out all required fields.');
-        setIsError(true);
-        return;
+      setSubmitMessage('Please fill out all required fields.');
+      setIsError(true);
+      return;
     }
 
     setIsSubmitting(true);
@@ -147,50 +147,50 @@ export default function ApplyPage() {
   const applicationsClosed = isApplicationsClosed();
 
   return (
-    <div className="py-20 bg-white">
+    <div className="py-20 bg-[var(--bg-secondary)]">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h3 className="text-4xl font-bold text-gray-900 mb-8">Apply Now!</h3>
-          
+          <h3 className="text-4xl font-bold text-[var(--text-primary)] mb-8">Apply Now!</h3>
+
           {applicationsClosed ? (
             <>
-              <p className="text-xl text-gray-600 mb-4">
+              <p className="text-xl text-[var(--text-secondary)] mb-4">
                 Applications for the Fall 2025 semester are now closed.
               </p>
-              <p className="text-lg text-gray-600 mb-8">
+              <p className="text-lg text-[var(--text-secondary)] mb-8">
                 Thank you for your interest! Applications closed on Saturday, September 20th, 2025. We will review all submissions and contact selected applicants for interviews.
               </p>
             </>
           ) : (
             <>
-              <p className="text-xl text-gray-600 mb-4">
+              <p className="text-xl text-[var(--text-secondary)] mb-4">
                 Applications for the Fall 2025 semester are now open!
               </p>
-              <p className="text-lg text-gray-600 mb-8">
+              <p className="text-lg text-[var(--text-secondary)] mb-8">
                 Applications close on Saturday, September 20th, 2025 at 11:59 PM. Afterward, we will review applications and invite selected applicants to interview. If you have any questions, please email us at rel@rutgerseconomics.org.
               </p>
-              
+
               {/* Countdown Timer */}
               <CountdownTimer />
             </>
           )}
         </div>
-        
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Application CTA */}
           <div className="">
-            <div className="bg-gradient-to-br from-red-50 to-red-100 p-8 rounded-2xl text-center">
-              <h4 className="text-2xl font-bold text-red-800 mb-4">
+            <div className="bg-red-600/10 border border-red-600/20 p-8 rounded-2xl text-center">
+              <h4 className="text-2xl font-bold text-red-500 mb-4">
                 {applicationsClosed ? 'Applications Closed' : 'Ready to Join?'}
               </h4>
-              <p className="text-red-700 mb-6">
-                {applicationsClosed 
+              <p className="text-red-400 mb-6">
+                {applicationsClosed
                   ? 'Applications for this semester are now closed. Please check back for future opportunities.'
                   : 'Click below to access our application form and take the first step toward impactful economic research.'
                 }
               </p>
               {!applicationsClosed && (
-                <a 
+                <a
                   href={applicationFormUrl}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -201,54 +201,54 @@ export default function ApplyPage() {
               )}
             </div>
           </div>
-          
+
           {/* Mailing List */}
           <div className="">
-            <div className="bg-gray-50 p-8 rounded-2xl">
-              <h4 className="text-2xl font-bold text-gray-900 mb-4">Join Our Mailing List</h4>
-              <p className="text-gray-600 mb-6">Stay updated on application openings, events, and important news.</p>
+            <div className="bg-[var(--bg-tertiary)] p-8 rounded-2xl">
+              <h4 className="text-2xl font-bold text-[var(--text-primary)] mb-4">Join Our Mailing List</h4>
+              <p className="text-[var(--text-secondary)] mb-6">Stay updated on application openings, events, and important news.</p>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">First Name *</label>
+                    <label htmlFor="firstName" className="block text-sm font-medium text-[var(--text-secondary)] mb-2">First Name *</label>
                     <input
                       id="firstName"
                       type="text"
                       required
                       value={firstName}
                       onChange={(e) => setFirstName(e.target.value)}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-300"
+                      className="w-full px-4 py-3 border border-[var(--border-color)] bg-[var(--bg-secondary)] text-[var(--text-primary)] rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-300"
                       disabled={isSubmitting}
                     />
                   </div>
                   <div>
-                    <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-2">Last Name *</label>
+                    <label htmlFor="lastName" className="block text-sm font-medium text-[var(--text-secondary)] mb-2">Last Name *</label>
                     <input
                       id="lastName"
                       type="text"
                       required
                       value={lastName}
                       onChange={(e) => setLastName(e.target.value)}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-300"
+                      className="w-full px-4 py-3 border border-[var(--border-color)] bg-[var(--bg-secondary)] text-[var(--text-primary)] rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-300"
                       disabled={isSubmitting}
                     />
                   </div>
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">Email *</label>
+                  <label htmlFor="email" className="block text-sm font-medium text-[var(--text-secondary)] mb-2">Email *</label>
                   <input
                     id="email"
                     type="email"
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-300"
+                    className="w-full px-4 py-3 border border-[var(--border-color)] bg-[var(--bg-secondary)] text-[var(--text-primary)] rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-300"
                     disabled={isSubmitting}
                   />
                 </div>
                 <button
                   type="submit"
-                  className="w-full bg-gray-900 text-white py-3 rounded-lg hover:bg-gray-800 transition-all duration-300 font-medium disabled:bg-gray-400 disabled:cursor-not-allowed"
+                  className="w-full bg-[var(--text-primary)] text-[var(--bg-primary)] py-3 rounded-lg hover:opacity-80 transition-all duration-300 font-medium disabled:opacity-40 disabled:cursor-not-allowed"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? 'Submitting...' : 'Submit'}
@@ -259,9 +259,9 @@ export default function ApplyPage() {
                   </p>
                 )}
               </form>
-              
+
               <div className="mt-6 text-center">
-                <p className="text-gray-500 text-sm">
+                <p className="text-[var(--text-muted)] text-sm">
                   Need to unsubscribe?{' '}
                   <a href="/unsubscribe" className="text-red-600 hover:text-red-700 font-medium underline">
                     Click here
@@ -275,4 +275,4 @@ export default function ApplyPage() {
       </div>
     </div>
   );
-} 
+}
