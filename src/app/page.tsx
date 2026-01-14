@@ -1,14 +1,53 @@
 "use client";
 import Link from "next/link";
 import Script from "next/script";
-import { useEffect } from "react";
+import Image from "next/image";
 import AnimatedStockChart from "../components/AnimatedStockChart";
+import projects from "../data/projects.json";
+import team from "../data/team.json";
+
+// Partner logos from projects - deduplicated
+const partners = [
+  { name: "NJ Department of Labor", logo: "/images/logo/njdol.png" },
+  { name: "NJ Department of Environmental Protection", logo: "/images/logo/njdep.png" },
+  { name: "NJ Board of Public Utilities", logo: "/images/logo/njbpu.png" },
+  { name: "Federal HUD", logo: "/images/logo/hud.svg" },
+  { name: "Virginia Center for Public Policy", logo: "/images/logo/virginia.png" },
+  { name: "USDA", logo: "/images/logo/usda.png" },
+  { name: "NJ DCA", logo: "/images/logo/njdca.png" },
+  { name: "NJEDA", logo: "/images/logo/njeda.jpg" },
+];
+
+const capabilities = [
+  {
+    icon: "fa-chart-line",
+    title: "Econometric Analysis",
+    description: "Advanced statistical modeling and causal inference using cutting-edge econometric techniques"
+  },
+  {
+    icon: "fa-database",
+    title: "Data Engineering",
+    description: "Large-scale data collection, cleaning, and pipeline development for policy research"
+  },
+  {
+    icon: "fa-code",
+    title: "Technical Research",
+    description: "Python, R, Stata, and SQL expertise for rigorous quantitative analysis"
+  },
+  {
+    icon: "fa-lightbulb",
+    title: "Policy Insights",
+    description: "Translating complex data into actionable recommendations for policymakers"
+  }
+];
+
+// Calculate stats from data files
+const totalPartners = projects.length;
+const completedProjects = projects.filter(p => p.paperStatus === "completed" || p.paperStatus === "withheld").length;
+const activeTeams = projects.filter(p => p.paperStatus === "in_progress").length;
+const studentAnalysts = team.executiveBoard.length + team.teamLeads.length + team.boardMembers.length + team.members.length;
 
 export default function Home() {
-  useEffect(() => {
-    // <Script src="main.js" />
-  }, []);
-
   return (
     <>
       <div>
@@ -17,45 +56,138 @@ export default function Home() {
           <AnimatedStockChart />
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center">
-              <h2 className="text-5xl md:text-7xl font-bold text-white mb-6 ">
+              <h2 className="text-5xl md:text-7xl font-bold text-white mb-6">
                 Rutgers Economics Labs
               </h2>
-              <p className="text-xl md:text-2xl text-white mb-8  max-w-3xl mx-auto">
-                Student-driven economic research for government agencies, think tanks, and public policy organizations
+              <p className="text-xl md:text-2xl text-white/90 mb-10 max-w-3xl mx-auto">
+                A <span className="text-red-300 font-semibold">data-oriented technical research group</span> providing
+                pro bono economic analysis for government agencies and policy organizations
               </p>
-              <Link href="/about" className="pulse-red bg-white text-red-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-red-50 transition-all duration-300 transform hover:scale-105  inline-block">
-                Learn More
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link href="/about" className="pulse-red bg-white text-red-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-red-50 transition-all duration-300 transform hover:scale-105 inline-block shadow-lg">
+                  Learn More
+                </Link>
+                <Link href="/apply" className="bg-transparent text-white px-8 py-4 rounded-full text-lg font-semibold border-2 border-white/50 hover:bg-white/10 hover:border-white transition-all duration-300 transform hover:scale-105 inline-block">
+                  Join Our Team
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Partners Logo Section */}
+        <div className="py-16 bg-white border-b border-gray-100">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p className="text-center text-gray-500 text-sm font-medium uppercase tracking-wider mb-10">
+              Trusted by Leading Government Agencies & Organizations
+            </p>
+            <div className="relative overflow-hidden">
+              <div className="flex animate-scroll gap-16 items-center">
+                {[...partners, ...partners].map((partner, idx) => (
+                  <div
+                    key={idx}
+                    className="flex-shrink-0 grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-300"
+                  >
+                    <Image
+                      src={partner.logo}
+                      alt={partner.name}
+                      width={80}
+                      height={80}
+                      className="h-16 w-auto object-contain"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Mission Section - Enhanced */}
+        <div className="py-24 bg-gradient-to-b from-white to-gray-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h3 className="text-4xl font-bold text-gray-900 mb-6">Our Mission</h3>
+              <div className="w-24 h-1 bg-red-600 mx-auto mb-8 rounded-full"></div>
+              <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+                We are a <strong>student-led, data-driven research organization</strong> at Rutgers University that provides
+                pro bono technical economic analysis for government agencies, think tanks, and public policy organizations.
+                Our mission is to bridge the gap between academic rigor and real-world policy impact.
+              </p>
+            </div>
+
+            {/* Capabilities Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
+              {capabilities.map((cap, idx) => (
+                <div
+                  key={idx}
+                  className="group p-8 bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-red-100 text-center"
+                >
+                  <div className="w-14 h-14 bg-red-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-red-100 transition-colors duration-300 mx-auto">
+                    <i className={`fas ${cap.icon} text-2xl text-red-600`}></i>
+                  </div>
+                  <h4 className="text-xl font-bold text-gray-900 mb-3">{cap.title}</h4>
+                  <p className="text-gray-600 leading-relaxed">{cap.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Stats Section - Enhanced */}
+        <div className="py-24 bg-gradient-to-br from-gray-900 to-gray-800 relative overflow-hidden">
+          {/* Background decoration */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-0 left-1/4 w-96 h-96 bg-red-500 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-red-600 rounded-full blur-3xl"></div>
+          </div>
+
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="text-center mb-16">
+              <h3 className="text-4xl font-bold text-white mb-4">Our Impact</h3>
+              <p className="text-gray-400 text-lg">Making a difference through data-driven research</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+              <div className="text-center p-8 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300">
+                <div className="text-5xl font-bold text-red-500 mb-3">{totalPartners}</div>
+                <div className="text-gray-300 font-medium">Partner Organizations</div>
+              </div>
+              <div className="text-center p-8 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300">
+                <div className="text-5xl font-bold text-red-500 mb-3">{completedProjects}</div>
+                <div className="text-gray-300 font-medium">Completed Projects</div>
+              </div>
+              <div className="text-center p-8 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300">
+                <div className="text-5xl font-bold text-red-500 mb-3">{studentAnalysts}</div>
+                <div className="text-gray-300 font-medium">Student Analysts</div>
+              </div>
+              <div className="text-center p-8 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300">
+                <div className="text-5xl font-bold text-red-500 mb-3">{activeTeams}</div>
+                <div className="text-gray-300 font-medium">Active Teams</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* CTA Section */}
+        <div className="py-24 bg-white">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h3 className="text-4xl font-bold text-gray-900 mb-6">Ready to Make an Impact?</h3>
+            <p className="text-xl text-gray-600 mb-10 leading-relaxed">
+              Whether you're a student looking to gain real-world research experience or an organization
+              seeking data-driven policy analysis, we'd love to connect.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="/apply"
+                className="px-8 py-4 bg-red-600 text-white rounded-full text-lg font-semibold hover:bg-red-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+              >
+                Apply to Join
               </Link>
-            </div>
-          </div>
-        </div>
-        {/* Mission Section */}
-        <div className="py-20 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center">
-              <h3 className="text-4xl font-bold text-gray-900 mb-8 ">Our Mission</h3>
-              <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed ">
-                We are a student organization at Rutgers University that conducts pro bono economic research for government agencies, think tanks, and other public policy organizations. Our mission is to provide Rutgers students with research opportunities in the social sciences while producing data-driven insights that inform policymakers.
-              </p>
-            </div>
-          </div>
-        </div>
-        {/* Stats Section */}
-        <div className="py-20 bg-gray-100">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="text-center card-hover bg-white p-8 rounded-xl shadow-lg">
-                <div className="text-4xl font-bold text-red-600 mb-2">2</div>
-                <div className="text-gray-600 font-medium">Talented Student Teams</div>
-              </div>
-              <div className="text-center card-hover bg-white p-8 rounded-xl shadow-lg">
-                <div className="text-4xl font-bold text-red-600 mb-2">3+</div>
-                <div className="text-gray-600 font-medium">Partner Organizations</div>
-              </div>
-              <div className="text-center card-hover bg-white p-8 rounded-xl shadow-lg">
-                <div className="text-4xl font-bold text-red-600 mb-2">15+</div>
-                <div className="text-gray-600 font-medium">Analysts</div>
-              </div>
+              <Link
+                href="/projects"
+                className="px-8 py-4 bg-gray-100 text-gray-900 rounded-full text-lg font-semibold hover:bg-gray-200 transition-all duration-300 transform hover:scale-105"
+              >
+                View Our Work
+              </Link>
             </div>
           </div>
         </div>
