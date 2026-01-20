@@ -85,7 +85,7 @@ export default function Home() {
               <div className="flex animate-scroll gap-16 items-center">
                 {[...partners, ...partners].map((partner, idx) => (
                   <div
-                    key={idx}
+                    key={`${idx}-${partner.name}`}
                     className="flex-shrink-0 grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-300"
                   >
                     <Image
