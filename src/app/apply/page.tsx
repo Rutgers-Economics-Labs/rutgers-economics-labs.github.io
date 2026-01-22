@@ -12,7 +12,7 @@ function CountdownTimer() {
   });
 
   useEffect(() => {
-    const deadline = new Date('2025-09-20T23:59:59').getTime();
+    const deadline = new Date('2026-02-06T23:59:59').getTime();
 
     // Calculate initial time immediately
     const calculateTimeLeft = () => {
@@ -82,11 +82,11 @@ export default function ApplyPage() {
   const googleAppsScriptUrl = 'https://script.google.com/macros/s/AKfycbzvpa0kUiO5HW-BV-vOCh8ZDeTmIHH2IN8QRYfHQAyc2TqfDluTrvZIXrJUKzVa9hzT6Q/exec';
 
   // Application form URL
-  const applicationFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSe_brbuCJu9sFJd0GCBAIL67axhrAd2R9yey2A2Lebx1nwHug/viewform';
+  const applicationFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSdHAChiYJsCOMYAyFnt7w7cN8_w-u0OI4M6EfN642CpciCHAA/viewform?usp=publish-editor';
 
   // Check if applications are closed
   const isApplicationsClosed = () => {
-    const deadline = new Date('2025-09-20T23:59:59').getTime();
+    const deadline = new Date('2026-02-06T23:59:59').getTime();
     const now = new Date().getTime();
     return now >= deadline;
   };
@@ -149,32 +149,48 @@ export default function ApplyPage() {
   return (
     <div className="py-20 bg-[var(--bg-secondary)]">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <h3 className="text-4xl font-bold text-[var(--text-primary)] mb-8">Apply Now!</h3>
 
           {applicationsClosed ? (
             <>
               <p className="text-xl text-[var(--text-secondary)] mb-4">
-                Applications for the Fall 2025 semester are now closed.
+                Applications for the Spring 2026 semester are now closed.
               </p>
               <p className="text-lg text-[var(--text-secondary)] mb-8">
-                Thank you for your interest! Applications closed on Saturday, September 20th, 2025. We will review all submissions and contact selected applicants for interviews.
+                Thank you for your interest! Applications closed on Friday, February 6th, 2026. We will review all submissions and contact selected applicants for interviews.
               </p>
             </>
           ) : (
             <>
               <p className="text-xl text-[var(--text-secondary)] mb-4">
-                Applications for the Fall 2025 semester are now open!
+                Ready to dive into real-world economic research and make an impact? Join Rutgers Economics Labs!
               </p>
-              <p className="text-lg text-[var(--text-secondary)] mb-8">
-                Applications close on Saturday, September 20th, 2025 at 11:59 PM. Afterward, we will review applications and invite selected applicants to interview. If you have any questions, please email us at rel@rutgerseconomics.org.
+              <p className="text-lg text-[var(--text-secondary)] mb-6">
+                REL offers undergraduate students the opportunity to produce economic research papers for government agencies, think tanks, and other public policy organizations using statistical and econometric methods.
               </p>
-
-              {/* Countdown Timer */}
-              <CountdownTimer />
+              <p className="text-lg text-[var(--text-secondary)] mb-6">
+                Students work in teams of six over the course of the semester to write research papers for our partner organizations using tools such as Python and R. Papers include a literature review, statistical analysis, and interpretation of results.
+              </p>
+              <p className="text-lg text-[var(--text-secondary)] mb-6">
+                <strong>Students from all majors are encouraged to apply</strong>, including but not limited to Economics, Data Science, Statistics, Computer Science, Public Policy, Political Science, Business Analytics, Finance, and Math. While no previous experience in economic research is required, <strong>a strong quantitative aptitude and comfort with data are essential</strong>.
+              </p>
             </>
           )}
         </div>
+
+        {/* Application Deadline Info */}
+        {!applicationsClosed && (
+          <div className="text-center mb-8">
+            <p className="text-lg text-[var(--text-secondary)] mb-4">
+              Applications are now open and will close on <strong>Friday, February 6 at 11:59 PM</strong>.*
+            </p>
+            <p className="text-sm text-[var(--text-muted)] italic">* Applications will be reviewed on a rolling basis</p>
+            <div className="mt-6">
+              <CountdownTimer />
+            </div>
+          </div>
+        )}
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Application CTA */}
