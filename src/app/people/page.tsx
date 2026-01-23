@@ -12,6 +12,9 @@ const orgLogos: Record<string, string> = {
   USDA: '/images/logo/usda.png',
   NJDOL: '/images/logo/njdol.png',
   Virginia: '/images/logo/virginia.png',
+  HUD: '/images/logo/hud.svg',
+  NJDEP: '/images/logo/njdep.png',
+  NJBPU: '/images/logo/njbpu.png',
 };
 
 async function getTeamData() {

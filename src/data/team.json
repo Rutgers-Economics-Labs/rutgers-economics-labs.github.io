@@ -1,19 +1,14 @@
 {
     "executiveBoard": [
         {
-            "name": "Kushaan Jain",
-            "position": "President",
-            "image": "images/people/kushaan-jain.jpg",
-            "description": "Leading the organization's vision and strategy.",
-            "team": ["NJEDA", "USDA"],
-            "linkedin": "https://www.linkedin.com/in/kushaanjain"
-        },
-        {
             "name": "Akash Dubey",
-            "position": "Research Director",
+            "position": "President",
             "image": "images/people/akash-dubey.jpg",
-            "description": "Leading research initiatives and project coordination.",
-            "team": ["NJEDA", "NJDCA"],
+            "description": "Leading the organization's vision and strategy.",
+            "team": [
+                "NJEDA",
+                "NJDCA"
+            ],
             "linkedin": "https://www.linkedin.com/in/akash-dubey-your-boss"
         }
     ],
@@ -22,42 +17,62 @@
             "name": "Alex Zhang",
             "position": "Team Lead",
             "image": "images/people/alex-zhang.jpg",
-            "description": "Leading NJDOL research project.",
-            "team": ["NJEDA", "USDA", "NJDOL"],
+            "description": "Leading Federal HUD and NJDOL research projects.",
+            "team": [
+                "NJEDA",
+                "USDA",
+                "NJDOL",
+                "HUD"
+            ],
             "linkedin": "https://www.linkedin.com/in/alexzhang0930"
         },
         {
             "name": "Aryan Malik",
             "position": "Team Lead",
             "image": "images/people/aryan-malik.jpg",
-            "description": "Leading Viginia Interfaith Center for Public Policy project.",
-            "team": ["NJEDA", "USDA", "Virginia"],
+            "description": "Leading NJDEP and Virginia Interfaith Center for Public Policy projects.",
+            "team": [
+                "NJEDA",
+                "USDA",
+                "Virginia",
+                "NJDEP"
+            ],
             "linkedin": "https://www.linkedin.com/in/aryan-malik-xd/"
-        }
-    ],
-    "boardMembers": [
+        },
         {
             "name": "Gokulraj Kumarassamy",
-            "position": "Operations Director",
+            "position": "Team Lead",
             "image": "images/people/gokul.jpeg",
-            "description": "Managing organizational operations and logistics.",
-            "team": ["USDA"],
+            "description": "Leading NJBPU research project.",
+            "team": [
+                "USDA",
+                "Virginia",
+                "NJBPU"
+            ],
             "linkedin": "https://www.linkedin.com/in/gokulrajk1/"
         },
         {
             "name": "Rahul Rajkumar",
-            "position": "Operations Director",
+            "position": "Team Lead",
             "image": "images/people/rahul.jpg",
-            "description": "Managing organizational operations and logistics.",
-            "team": ["USDA"],
+            "description": "Leading NJDEP research project.",
+            "team": [
+                "USDA",
+                "NJDOL",
+                "NJDEP"
+            ],
             "linkedin": "https://www.linkedin.com/in/rahulrajkumar01"
-        },
+        }
+    ],
+    "boardMembers": [
         {
             "name": "Vikram Krishnaswamy",
             "position": "Recruiting Director",
             "image": "images/people/vikram.jpg",
             "description": "Responsible for recruiting talented new members.",
-            "team": ["NJDCA"],
+            "team": [
+                "NJDCA"
+            ],
             "linkedin": "https://www.linkedin.com/in/vikram-krishnaswamy"
         }
     ],
@@ -67,7 +82,10 @@
             "position": "Data Analyst",
             "image": "images/people/subhronil-mukherjee.jpg",
             "description": "Data analysis and visualization specialist.",
-            "team": ["NJEDA", "USDA"],
+            "team": [
+                "NJEDA",
+                "USDA"
+            ],
             "linkedin": "https://www.linkedin.com/in/subhronil-mukherjee-312ab9231/"
         },
         {
@@ -75,7 +93,9 @@
             "position": "Statistical Analyst",
             "image": "images/people/eric-wenz.jpg",
             "description": "Statistical modeling expert.",
-            "team": ["NJDCA"],
+            "team": [
+                "NJDCA"
+            ],
             "linkedin": "https://www.linkedin.com/in/ericwenz"
         },
         {
@@ -83,7 +103,9 @@
             "position": "Statistical Analyst",
             "image": "images/people/khushi-bora.jpg",
             "description": "Statistical modeling expert.",
-            "team": ["NJDCA"],
+            "team": [
+                "NJDCA"
+            ],
             "linkedin": "https://www.linkedin.com/in/khushibora23"
         },
         {
@@ -91,7 +113,10 @@
             "position": "Statistical Analyst",
             "image": "images/people/lukian.jpg",
             "description": "Statistical modeling expert.",
-            "team": ["NJEDA", "NJDCA"],
+            "team": [
+                "NJEDA",
+                "NJDCA"
+            ],
             "linkedin": "https://www.linkedin.com/in/lukianwernyj"
         },
         {
@@ -99,7 +124,9 @@
             "position": "Data Analyst",
             "image": "images/people/priya.jpeg",
             "description": "Data analysis and research specialist.",
-            "team": ["Virginia"],
+            "team": [
+                "Virginia"
+            ],
             "linkedin": "https://www.linkedin.com/in/prana24/"
         },
         {
@@ -107,7 +134,9 @@
             "position": "Data Analyst",
             "image": "images/people/ani.jpeg",
             "description": "Data analysis and research specialist.",
-            "team": ["NJDOL"],
+            "team": [
+                "NJDOL"
+            ],
             "linkedin": "https://www.linkedin.com/in/ani-tiwary/"
         },
         {
@@ -115,7 +144,9 @@
             "position": "Data Analyst",
             "image": "images/people/naomi.jpeg",
             "description": "Data analysis and research specialist.",
-            "team": ["NJDOL"],
+            "team": [
+                "NJDOL"
+            ],
             "linkedin": "https://www.linkedin.com/in/naomi-george-312b07281/"
         },
         {
@@ -123,7 +154,9 @@
             "position": "Data Analyst",
             "image": "images/people/michelle.jpeg",
             "description": "Data analysis and research specialist.",
-            "team": ["Virginia"],
+            "team": [
+                "Virginia"
+            ],
             "linkedin": "https://www.linkedin.com/in/michelle5555/"
         },
         {
@@ -131,7 +164,9 @@
             "position": "Data Analyst",
             "image": "images/people/aadith.jpeg",
             "description": "Data analysis and research specialist.",
-            "team": ["NJDOL"],
+            "team": [
+                "NJDOL"
+            ],
             "linkedin": "https://www.linkedin.com/in/aadith-muthukumar-50b4a1280/"
         },
         {
@@ -139,7 +174,9 @@
             "position": "Data Analyst",
             "image": "images/people/ryaan.jpeg",
             "description": "Data analysis and research specialist.",
-            "team": ["Virginia"],
+            "team": [
+                "Virginia"
+            ],
             "linkedin": "https://www.linkedin.com/in/ryaan-zahidani-733064253/"
         },
         {
@@ -147,7 +184,9 @@
             "position": "Data Analyst",
             "image": "images/people/ethan.jpeg",
             "description": "Data analysis and research specialist.",
-            "team": ["NJDOL"],
+            "team": [
+                "NJDOL"
+            ],
             "linkedin": "https://www.linkedin.com/in/ethan-poon-64b7b5325/"
         },
         {
@@ -155,7 +194,9 @@
             "position": "Data Analyst",
             "image": "images/people/valart.jpeg",
             "description": "Data analysis and research specialist.",
-            "team": ["Virginia"],
+            "team": [
+                "Virginia"
+            ],
             "linkedin": "https://www.linkedin.com/in/valart-magjuni-5b8ab4290/"
         }
     ],
@@ -169,11 +210,24 @@
             "linkedin": "https://www.linkedin.com/in/sinhatejas"
         },
         {
+            "name": "Kushaan Jain",
+            "position": "Founder and President",
+            "image": "images/people/kushaan-jain.jpg",
+            "description": "Founder of Rutgers Economics Labs",
+            "team": [
+                "NJEDA",
+                "USDA"
+            ],
+            "linkedin": "https://www.linkedin.com/in/kushaanjain"
+        },
+        {
             "name": "Joseph George",
             "position": "Former Statistical Analyst",
             "image": "images/people/joe.jpg",
             "description": "",
-            "team": ["NJEDA"],
+            "team": [
+                "NJEDA"
+            ],
             "linkedin": "https://www.linkedin.com/in/jogeo"
         },
         {
@@ -181,8 +235,10 @@
             "position": "Former Statistical Analyst",
             "image": "images/people/reese.jpg",
             "description": "",
-            "team": ["NJDCA"],
+            "team": [
+                "NJDCA"
+            ],
             "linkedin": "https://www.linkedin.com/in/reese-feldman"
         }
     ]
-} 
+}

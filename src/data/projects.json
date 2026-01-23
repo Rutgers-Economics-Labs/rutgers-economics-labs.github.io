@@ -19,7 +19,8 @@
       }
     ],
     "paperStatus": "in_progress",
-    "isPublic": false
+    "isPublic": false,
+    "lead": "Aryan and Rahul"
   },
   {
     "title": "New Jersey Board of Public Utilities",
@@ -41,7 +42,8 @@
       }
     ],
     "paperStatus": "in_progress",
-    "isPublic": false
+    "isPublic": false,
+    "lead": "Gokul"
   },
   {
     "title": "Federal Department of Housing and Urban Development",
@@ -63,7 +65,8 @@
       }
     ],
     "paperStatus": "in_progress",
-    "isPublic": false
+    "isPublic": false,
+    "lead": "Alex"
   },
   {
     "title": "New Jersey Department of Labor",
