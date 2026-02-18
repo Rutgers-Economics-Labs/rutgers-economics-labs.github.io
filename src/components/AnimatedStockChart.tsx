@@ -105,7 +105,7 @@ const AnimatedStockChart: React.FC = () => {
   }, []);
 
   return (
-    <svg className="stock-chart" viewBox="0 0 1000 400" preserveAspectRatio="none" style={{ width: '100%', height: '100%', position: 'absolute', top: 0, left: 0, opacity: 0.4 }}>
+    <svg className="stock-chart" viewBox="0 0 1000 400" preserveAspectRatio="none" style={{ width: '100%', height: '100%', position: 'absolute', top: 0, left: 0, opacity: 0.4, zIndex: 2, pointerEvents: 'none' }}>
       <path ref={stockPathRef} className="chart-line" d="M0,200" fill="none" stroke="#DC2626" strokeWidth={3} opacity={0.9} />
       <path ref={predictionPathRef} className="prediction-line" d="M0,200" fill="none" stroke="#FFFF00" strokeWidth={2} strokeDasharray="8,4" opacity={0.8} />
       <circle ref={currentPointRef} className="current-point" cx={0} cy={200} r={8} fill="#DC2626" stroke="#FF4444" strokeWidth={2} opacity={1} />

@@ -3,6 +3,7 @@ import Link from "next/link";
 import Script from "next/script";
 import Image from "next/image";
 import AnimatedStockChart from "../components/AnimatedStockChart";
+import ParticleNetwork from "../components/ParticleNetwork";
 import projects from "../data/projects.json";
 import team from "../data/team.json";
 
@@ -53,6 +54,7 @@ export default function Home() {
       <div>
         {/* Hero Section */}
         <div className="animated-bg min-h-screen flex items-center relative overflow-hidden">
+          <ParticleNetwork />
           <AnimatedStockChart />
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center">
