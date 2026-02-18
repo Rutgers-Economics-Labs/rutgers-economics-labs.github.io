@@ -25,20 +25,20 @@ export default function ParticleNetwork() {
     useEffect(() => {
         const canvas = canvasRef.current;
         if (!canvas) return;
-        const ctx = canvas.getContext("2d");
+        const el = canvas; // non-null alias for use inside closures
+        const ctx = el.getContext("2d");
         if (!ctx) return;
+        const gfx = ctx; // non-null alias for closures
 
         function resize() {
-            if (!canvas) return;
-            canvas.width = canvas.offsetWidth;
-            canvas.height = canvas.offsetHeight;
+            el.width = el.offsetWidth;
+            el.height = el.offsetHeight;
         }
 
         function initParticles() {
-            if (!canvas) return;
             particlesRef.current = Array.from({ length: PARTICLE_COUNT }, () => ({
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
+                x: Math.random() * el.width,
+                y: Math.random() * el.height,
                 vx: (Math.random() - 0.5) * PARTICLE_SPEED,
                 vy: (Math.random() - 0.5) * PARTICLE_SPEED,
                 radius: Math.random() * 1.5 + 0.8,
@@ -47,8 +47,7 @@ export default function ParticleNetwork() {
         }
 
         function draw() {
-            if (!canvas || !ctx) return;
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            gfx.clearRect(0, 0, el.width, el.height);
 
             const mouse = mouseRef.current;
             const particles = particlesRef.current;
@@ -80,10 +79,10 @@ export default function ParticleNetwork() {
                 p.y += p.vy;
 
                 // Wrap around edges
-                if (p.x < 0) p.x = canvas.width;
-                if (p.x > canvas.width) p.x = 0;
-                if (p.y < 0) p.y = canvas.height;
-                if (p.y > canvas.height) p.y = 0;
+                if (p.x < 0) p.x = el.width;
+                if (p.x > el.width) p.x = 0;
+                if (p.y < 0) p.y = el.height;
+                if (p.y > el.height) p.y = 0;
             }
 
             // Draw connections
@@ -94,29 +93,29 @@ export default function ParticleNetwork() {
                     const dist = Math.sqrt(dx * dx + dy * dy);
                     if (dist < CONNECTION_DISTANCE) {
                         const alpha = (1 - dist / CONNECTION_DISTANCE) * 0.25;
-                        ctx.beginPath();
-                        ctx.strokeStyle = `rgba(255, 255, 255, ${alpha})`;
-                        ctx.lineWidth = 0.8;
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.stroke();
+                        gfx.beginPath();
+                        gfx.strokeStyle = `rgba(255, 255, 255, ${alpha})`;
+                        gfx.lineWidth = 0.8;
+                        gfx.moveTo(particles[i].x, particles[i].y);
+                        gfx.lineTo(particles[j].x, particles[j].y);
+                        gfx.stroke();
                     }
                 }
             }
 
             // Draw particles
             for (const p of particles) {
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(255, 255, 255, ${p.opacity})`;
-                ctx.fill();
+                gfx.beginPath();
+                gfx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                gfx.fillStyle = `rgba(255, 255, 255, ${p.opacity})`;
+                gfx.fill();
             }
 
             rafRef.current = requestAnimationFrame(draw);
         }
 
         function onMouseMove(e: MouseEvent) {
-            const rect = canvas.getBoundingClientRect();
+            const rect = el.getBoundingClientRect();
             mouseRef.current = {
                 x: e.clientX - rect.left,
                 y: e.clientY - rect.top,
@@ -132,14 +131,14 @@ export default function ParticleNetwork() {
         draw();
 
         window.addEventListener("resize", () => { resize(); initParticles(); });
-        canvas.addEventListener("mousemove", onMouseMove);
-        canvas.addEventListener("mouseleave", onMouseLeave);
+        el.addEventListener("mousemove", onMouseMove);
+        el.addEventListener("mouseleave", onMouseLeave);
 
         return () => {
             if (rafRef.current) cancelAnimationFrame(rafRef.current);
             window.removeEventListener("resize", resize);
-            canvas.removeEventListener("mousemove", onMouseMove);
-            canvas.removeEventListener("mouseleave", onMouseLeave);
+            el.removeEventListener("mousemove", onMouseMove);
+            el.removeEventListener("mouseleave", onMouseLeave);
         };
     }, []);
 
