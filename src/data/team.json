@@ -60,6 +60,17 @@
             "linkedin": "https://www.linkedin.com/in/aryan-malik-xd/"
         },
         {
+            "name": "Ani Tiwary",
+            "position": "Team Lead",
+            "image": "images/people/ani.png",
+            "description": "Leading the Rutgers Agentic Intelligence Lab (RAIL), an internal REL initiative building a general-purpose framework for economic data analysis.",
+            "team": [
+                "NJDOL",
+                "REL"
+            ],
+            "linkedin": "https://www.linkedin.com/in/ani-tiwary/"
+        },
+        {
             "name": "Gokulraj Kumarassamy",
             "position": "Team Lead",
             "image": "images/people/gokul.jpeg",
@@ -82,17 +93,6 @@
                 "NJDEP"
             ],
             "linkedin": "https://www.linkedin.com/in/rahulrajkumar01"
-        },
-        {
-            "name": "Ani Tiwary",
-            "position": "Team Lead",
-            "image": "images/people/ani.png",
-            "description": "Leading the Rutgers Agentic Intelligence Lab (RAIL), an internal REL initiative building a general-purpose framework for economic data analysis.",
-            "team": [
-                "NJDOL",
-                "REL"
-            ],
-            "linkedin": "https://www.linkedin.com/in/ani-tiwary/"
         }
     ],
     "boardMembers": [],

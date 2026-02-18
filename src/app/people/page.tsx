@@ -28,7 +28,7 @@ function TeamMemberCard({ member, section }: { member: any; section: string }) {
   const isBoard = section === 'board';
 
   // Card sizing: Executive/Team Leads (large), Board (medium), Members/Alumni (small)
-  const cardClass = isBoard ? 'max-w-[200px]' : (isMember || isAlumni ? 'max-w-[160px]' : 'max-w-[220px]');
+  const cardClass = isBoard ? 'max-w-[200px]' : (isMember || isAlumni ? 'max-w-[160px]' : 'max-w-[200px]');
   const imageClass = isBoard ? 'w-28 h-28 mx-auto' : (isMember || isAlumni ? 'w-24 h-24 mx-auto' : 'w-28 h-28 mx-auto');
   const textClass = isBoard ? 'text-sm' : (isMember || isAlumni ? 'text-xs' : 'text-sm');
   const orgLogosSection = member.team && member.team.length > 0 ? (
@@ -84,7 +84,7 @@ export default async function PeoplePage() {
         {/* Team Leads */}
         <div className="mb-20 text-center">
           <h4 className="text-2xl font-bold text-[var(--text-primary)] mb-12 text-center">Team Leads</h4>
-          <div className="flex flex-wrap justify-center gap-8 text-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 justify-items-center text-center">
             {team.teamLeads.map((member: any) => (
               <TeamMemberCard key={member.name} member={member} section="leads" />
             ))}
