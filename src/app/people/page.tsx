@@ -54,7 +54,7 @@ function TeamMemberCard({ member, section }: { member: any; section: string }) {
         </div>
         <h5 className={`text-xl font-semibold text-[var(--text-primary)] mb-2 ${textClass}`}>{member.name}</h5>
         <p className={`text-red-600 font-medium mb-4 ${textClass}`}>{member.position}</p>
-        <p className={`text-[var(--text-secondary)] ${textClass} mb-2`}>{member.description}</p>
+        {!isMember && !isAlumni && <p className={`text-[var(--text-secondary)] ${textClass} mb-2`}>{member.description}</p>}
         {orgLogosSection}
       </div>
     </a>
