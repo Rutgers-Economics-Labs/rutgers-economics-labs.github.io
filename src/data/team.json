@@ -10,6 +10,26 @@
                 "NJDCA"
             ],
             "linkedin": "https://www.linkedin.com/in/akash-dubey-your-boss"
+        },
+        {
+            "name": "Valart Magjuni",
+            "position": "Research Director",
+            "image": "images/people/valart.jpeg",
+            "description": "Directing research initiatives and strategy.",
+            "team": [
+                "Virginia"
+            ],
+            "linkedin": "https://www.linkedin.com/in/valart-magjuni-5b8ab4290/"
+        },
+        {
+            "name": "Vikram Krishnaswamy",
+            "position": "Recruiting Director",
+            "image": "images/people/vikram.jpg",
+            "description": "Responsible for recruiting talented new members.",
+            "team": [
+                "NJDCA"
+            ],
+            "linkedin": "https://www.linkedin.com/in/vikram-krishnaswamy"
         }
     ],
     "teamLeads": [
@@ -62,20 +82,20 @@
                 "NJDEP"
             ],
             "linkedin": "https://www.linkedin.com/in/rahulrajkumar01"
-        }
-    ],
-    "boardMembers": [
+        },
         {
-            "name": "Vikram Krishnaswamy",
-            "position": "Recruiting Director",
-            "image": "images/people/vikram.jpg",
-            "description": "Responsible for recruiting talented new members.",
+            "name": "Ani Tiwary",
+            "position": "Team Lead",
+            "image": "images/people/ani.png",
+            "description": "Leading the Rutgers Agentic Intelligence Lab (RAIL), an internal REL initiative building a general-purpose framework for economic data analysis.",
             "team": [
-                "NJDCA"
+                "NJDOL",
+                "REL"
             ],
-            "linkedin": "https://www.linkedin.com/in/vikram-krishnaswamy"
+            "linkedin": "https://www.linkedin.com/in/ani-tiwary/"
         }
     ],
+    "boardMembers": [],
     "members": [
         {
             "name": "Subhronil Mukherjee",
@@ -130,16 +150,6 @@
             "linkedin": "https://www.linkedin.com/in/prana24/"
         },
         {
-            "name": "Ani Tiwary",
-            "position": "Data Analyst",
-            "image": "images/people/ani.jpeg",
-            "description": "Data analysis and research specialist.",
-            "team": [
-                "NJDOL"
-            ],
-            "linkedin": "https://www.linkedin.com/in/ani-tiwary/"
-        },
-        {
             "name": "Naomi George",
             "position": "Data Analyst",
             "image": "images/people/naomi.jpeg",
@@ -180,24 +190,100 @@
             "linkedin": "https://www.linkedin.com/in/ryaan-zahidani-733064253/"
         },
         {
-            "name": "Ethan Poon",
+            "name": "Ali Khan",
             "position": "Data Analyst",
-            "image": "images/people/ethan.jpeg",
+            "image": "images/people/ali-khan.jpeg",
             "description": "Data analysis and research specialist.",
-            "team": [
-                "NJDOL"
-            ],
-            "linkedin": "https://www.linkedin.com/in/ethan-poon-64b7b5325/"
+            "team": [],
+            "linkedin": "https://www.linkedin.com/in/alikhan531/"
         },
         {
-            "name": "Valart Magjuni",
+            "name": "Arnav Nethula",
             "position": "Data Analyst",
-            "image": "images/people/valart.jpeg",
+            "image": "images/people/arnav-nethula.jpeg",
             "description": "Data analysis and research specialist.",
-            "team": [
-                "Virginia"
-            ],
-            "linkedin": "https://www.linkedin.com/in/valart-magjuni-5b8ab4290/"
+            "team": [],
+            "linkedin": "https://www.linkedin.com/in/arnav-nethula/"
+        },
+        {
+            "name": "Gourika Dhiman",
+            "position": "Data Analyst",
+            "image": "images/people/gourika.jpeg",
+            "description": "Data analysis and research specialist.",
+            "team": [],
+            "linkedin": "https://www.linkedin.com/in/gourikadhiman/"
+        },
+        {
+            "name": "Heath Deshpande",
+            "position": "Data Analyst",
+            "image": "images/people/heath-deshpande.jpeg",
+            "description": "Data analysis and research specialist.",
+            "team": [],
+            "linkedin": "https://www.linkedin.com/in/heathdesh/"
+        },
+        {
+            "name": "Joel Pulikkan",
+            "position": "Data Analyst",
+            "image": "images/people/joel.jpeg",
+            "description": "Data analysis and research specialist.",
+            "team": [],
+            "linkedin": "https://www.linkedin.com/in/joel-pulikkan-022926274/"
+        },
+        {
+            "name": "Krish Bansal",
+            "position": "Data Analyst",
+            "image": "images/people/krish-bansal.jpeg",
+            "description": "Data analysis and research specialist.",
+            "team": [],
+            "linkedin": "https://www.linkedin.com/in/krish-bansal-44725b328/"
+        },
+        {
+            "name": "Maria George",
+            "position": "Data Analyst",
+            "image": "images/people/maria-george.jpeg",
+            "description": "Data analysis and research specialist.",
+            "team": [],
+            "linkedin": "https://www.linkedin.com/in/maria-g-913782274/"
+        },
+        {
+            "name": "Nikhil Sethuraman",
+            "position": "Data Analyst",
+            "image": "images/people/nikhil.jpeg",
+            "description": "Data analysis and research specialist.",
+            "team": [],
+            "linkedin": ""
+        },
+        {
+            "name": "Raghul Krishna Srinivasan",
+            "position": "Data Analyst",
+            "image": "images/people/raghul.jpeg",
+            "description": "Data analysis and research specialist.",
+            "team": [],
+            "linkedin": "https://www.linkedin.com/in/raghulkrishnasrinivasan/"
+        },
+        {
+            "name": "Raya Rahman",
+            "position": "Data Analyst",
+            "image": "images/people/raya.jpeg",
+            "description": "Data analysis and research specialist.",
+            "team": [],
+            "linkedin": "https://www.linkedin.com/in/rayarahman2028/"
+        },
+        {
+            "name": "Sarthak Talukdar",
+            "position": "Data Analyst",
+            "image": "images/people/sarthak.jpeg",
+            "description": "Data analysis and research specialist.",
+            "team": [],
+            "linkedin": "https://www.linkedin.com/in/sarthak-talukdar/"
+        },
+        {
+            "name": "Yash Agarwal",
+            "position": "Data Analyst",
+            "image": "images/people/yash-agarwal.jpeg",
+            "description": "Data analysis and research specialist.",
+            "team": [],
+            "linkedin": "https://www.linkedin.com/in/yash-agarwal-ba6533297/"
         }
     ],
     "alumni": [

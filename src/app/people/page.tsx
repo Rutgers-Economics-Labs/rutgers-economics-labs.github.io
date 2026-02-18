@@ -15,6 +15,7 @@ const orgLogos: Record<string, string> = {
   HUD: '/images/logo/hud.svg',
   NJDEP: '/images/logo/njdep.png',
   NJBPU: '/images/logo/njbpu.png',
+  REL: '/images/REL Logo.JPEG',
 };
 
 async function getTeamData() {
@@ -27,9 +28,9 @@ function TeamMemberCard({ member, section }: { member: any; section: string }) {
   const isBoard = section === 'board';
 
   // Card sizing: Executive/Team Leads (large), Board (medium), Members/Alumni (small)
-  const cardClass = isBoard ? 'max-w-[280px]' : (isMember || isAlumni ? 'max-w-[200px]' : 'max-w-sm');
-  const imageClass = isBoard ? 'w-40 h-40 mx-auto' : (isMember || isAlumni ? 'w-32 h-32 mx-auto' : 'w-full');
-  const textClass = isBoard ? 'text-base' : (isMember || isAlumni ? 'text-sm' : 'text-base');
+  const cardClass = isBoard ? 'max-w-[200px]' : (isMember || isAlumni ? 'max-w-[160px]' : 'max-w-[220px]');
+  const imageClass = isBoard ? 'w-28 h-28 mx-auto' : (isMember || isAlumni ? 'w-24 h-24 mx-auto' : 'w-28 h-28 mx-auto');
+  const textClass = isBoard ? 'text-sm' : (isMember || isAlumni ? 'text-xs' : 'text-sm');
   const orgLogosSection = member.team && member.team.length > 0 ? (
     <div className="flex justify-center space-x-3 mt-2">
       {member.team.filter((org: string, idx: number, self: string[]) => self.indexOf(org) === idx).map((org: string) => (
@@ -47,7 +48,7 @@ function TeamMemberCard({ member, section }: { member: any; section: string }) {
   ) : null;
   return (
     <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className={`block w-full ${cardClass}`} key={member.name}>
-      <div className={`card-hover bg-[var(--card-bg)] border border-[var(--card-border)] p-6 rounded-xl shadow-lg text-center cursor-pointer transform transition-transform duration-300 hover:scale-105 ${isAlumni ? 'opacity-75' : ''}`}>
+      <div className={`card-hover bg-[var(--card-bg)] border border-[var(--card-border)] p-4 rounded-xl shadow-lg text-center cursor-pointer transform transition-transform duration-300 hover:scale-105 ${isAlumni ? 'opacity-75' : ''}`}>
         <div className="aspect-w-1 aspect-h-1 mb-4">
           <Image src={`/${member.image}`} alt={member.name} width={128} height={128} className={`${imageClass} rounded-lg object-cover`} />
         </div>
@@ -86,15 +87,6 @@ export default async function PeoplePage() {
           <div className="flex flex-wrap justify-center gap-8 text-center">
             {team.teamLeads.map((member: any) => (
               <TeamMemberCard key={member.name} member={member} section="leads" />
-            ))}
-          </div>
-        </div>
-        {/* Board Members */}
-        <div className="mb-20 text-center">
-          <h4 className="text-2xl font-bold text-[var(--text-primary)] mb-12 text-center">Board Members</h4>
-          <div className="flex flex-wrap justify-center gap-8 text-center">
-            {team.boardMembers.map((member: any) => (
-              <TeamMemberCard key={member.name} member={member} section="board" />
             ))}
           </div>
         </div>

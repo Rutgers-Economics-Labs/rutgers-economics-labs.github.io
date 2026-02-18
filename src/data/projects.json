@@ -1,5 +1,28 @@
 [
   {
+    "title": "Rutgers Agentic Intelligence Lab",
+    "description": "An internal project run by Rutgers Economics Labs (REL) aimed at creating a general-purpose framework for economic analysis. The framework makes it easy to clean, analyze, and connect data sources in an ontology-like format, enabling researchers to build structured, reusable pipelines for complex economic datasets.",
+    "logo": "/images/REL Logo.JPEG",
+    "logoAlt": "REL Logo",
+    "tags": [
+      {
+        "label": "In Progress",
+        "color": "yellow"
+      },
+      {
+        "label": "Spring 2026",
+        "color": "gray"
+      },
+      {
+        "label": "Internal",
+        "color": "blue"
+      }
+    ],
+    "paperStatus": "in_progress",
+    "isPublic": false,
+    "lead": "Ani Tiwary"
+  },
+  {
     "title": "New Jersey Department of Environmental Protection",
     "description": "We are working with the New Jersey Department of Environmental Protection to evaluate the 'Resilience Premium' in New Jersey municipal bond markets from 2015-2025. This research quantifies the relationship between climate risk, adaptation measures, and municipal borrowing costs. Using matched-pair econometric analysis and Difference-in-Differences models, the project analyzes the SLR Penalty (higher yields for high-exposure coastal municipalities) and the Resilience Premium (reduced borrowing costs for municipalities with significant adaptation measures). Data sources include NJ FloodMapper, FEMA CRS scores, NJ I-Bank funding data, and MSRB EMMA bond filings.",
     "logo": "/images/logo/njdep.png",
