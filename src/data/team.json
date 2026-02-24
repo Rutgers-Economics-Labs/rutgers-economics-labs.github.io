@@ -17,7 +17,8 @@
             "image": "images/people/valart.jpeg",
             "description": "Directing research initiatives and strategy.",
             "team": [
-                "Virginia"
+                "Virginia",
+                "NJDEP"
             ],
             "linkedin": "https://www.linkedin.com/in/valart-magjuni-5b8ab4290/"
         },
@@ -65,8 +66,8 @@
             "image": "images/people/ani.png",
             "description": "Leading the Rutgers Agentic Intelligence Lab (RAIL), an internal REL initiative building a general-purpose framework for economic data analysis.",
             "team": [
-                "NJDOL",
-                "REL"
+                "REL",
+                "NJDOL"
             ],
             "linkedin": "https://www.linkedin.com/in/ani-tiwary/"
         },
@@ -145,7 +146,8 @@
             "image": "images/people/priya.jpeg",
             "description": "Data analysis and research specialist.",
             "team": [
-                "Virginia"
+                "Virginia",
+                "NJDEP"
             ],
             "linkedin": "https://www.linkedin.com/in/prana24/"
         },
@@ -155,7 +157,8 @@
             "image": "images/people/naomi.jpeg",
             "description": "Data analysis and research specialist.",
             "team": [
-                "NJDOL"
+                "NJDOL",
+                "NJBPU"
             ],
             "linkedin": "https://www.linkedin.com/in/naomi-george-312b07281/"
         },
@@ -165,7 +168,8 @@
             "image": "images/people/michelle.jpeg",
             "description": "Data analysis and research specialist.",
             "team": [
-                "Virginia"
+                "Virginia",
+                "HUD"
             ],
             "linkedin": "https://www.linkedin.com/in/michelle5555/"
         },
@@ -175,7 +179,8 @@
             "image": "images/people/aadith.jpeg",
             "description": "Data analysis and research specialist.",
             "team": [
-                "NJDOL"
+                "NJDOL",
+                "NJBPU"
             ],
             "linkedin": "https://www.linkedin.com/in/aadith-muthukumar-50b4a1280/"
         },
@@ -194,7 +199,9 @@
             "position": "Data Analyst",
             "image": "images/people/ali-khan.jpeg",
             "description": "Data analysis and research specialist.",
-            "team": [],
+            "team": [
+                "REL"
+            ],
             "linkedin": "https://www.linkedin.com/in/alikhan531/"
         },
         {
@@ -202,7 +209,9 @@
             "position": "Data Analyst",
             "image": "images/people/arnav-nethula.jpeg",
             "description": "Data analysis and research specialist.",
-            "team": [],
+            "team": [
+                "REL"
+            ],
             "linkedin": "https://www.linkedin.com/in/arnav-nethula/"
         },
         {
@@ -210,7 +219,9 @@
             "position": "Data Analyst",
             "image": "images/people/gourika.jpeg",
             "description": "Data analysis and research specialist.",
-            "team": [],
+            "team": [
+                "NJDEP"
+            ],
             "linkedin": "https://www.linkedin.com/in/gourikadhiman/"
         },
         {
@@ -218,7 +229,9 @@
             "position": "Data Analyst",
             "image": "images/people/heath-deshpande.jpeg",
             "description": "Data analysis and research specialist.",
-            "team": [],
+            "team": [
+                "NJDEP"
+            ],
             "linkedin": "https://www.linkedin.com/in/heathdesh/"
         },
         {
@@ -226,7 +239,9 @@
             "position": "Data Analyst",
             "image": "images/people/joel.jpeg",
             "description": "Data analysis and research specialist.",
-            "team": [],
+            "team": [
+                "REL"
+            ],
             "linkedin": "https://www.linkedin.com/in/joel-pulikkan-022926274/"
         },
         {
@@ -234,7 +249,9 @@
             "position": "Data Analyst",
             "image": "images/people/krish-bansal.jpeg",
             "description": "Data analysis and research specialist.",
-            "team": [],
+            "team": [
+                "NJBPU"
+            ],
             "linkedin": "https://www.linkedin.com/in/krish-bansal-44725b328/"
         },
         {
@@ -242,7 +259,9 @@
             "position": "Data Analyst",
             "image": "images/people/maria-george.jpeg",
             "description": "Data analysis and research specialist.",
-            "team": [],
+            "team": [
+                "REL"
+            ],
             "linkedin": "https://www.linkedin.com/in/maria-g-913782274/"
         },
         {
@@ -250,7 +269,9 @@
             "position": "Data Analyst",
             "image": "images/people/nikhil.jpeg",
             "description": "Data analysis and research specialist.",
-            "team": [],
+            "team": [
+                "NJBPU"
+            ],
             "linkedin": ""
         },
         {
@@ -258,7 +279,9 @@
             "position": "Data Analyst",
             "image": "images/people/raghul.jpeg",
             "description": "Data analysis and research specialist.",
-            "team": [],
+            "team": [
+                "HUD"
+            ],
             "linkedin": "https://www.linkedin.com/in/raghulkrishnasrinivasan/"
         },
         {
@@ -266,7 +289,9 @@
             "position": "Data Analyst",
             "image": "images/people/raya.jpeg",
             "description": "Data analysis and research specialist.",
-            "team": [],
+            "team": [
+                "HUD"
+            ],
             "linkedin": "https://www.linkedin.com/in/rayarahman2028/"
         },
         {
@@ -274,7 +299,9 @@
             "position": "Data Analyst",
             "image": "images/people/sarthak.jpeg",
             "description": "Data analysis and research specialist.",
-            "team": [],
+            "team": [
+                "NJBPU"
+            ],
             "linkedin": "https://www.linkedin.com/in/sarthak-talukdar/"
         },
         {
@@ -282,7 +309,9 @@
             "position": "Data Analyst",
             "image": "images/people/yash-agarwal.jpeg",
             "description": "Data analysis and research specialist.",
-            "team": [],
+            "team": [
+                "HUD"
+            ],
             "linkedin": "https://www.linkedin.com/in/yash-agarwal-ba6533297/"
         }
     ],
