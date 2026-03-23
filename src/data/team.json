@@ -66,8 +66,9 @@
             "image": "images/people/ani.png",
             "description": "Leading the Rutgers Agentic Intelligence Lab (RAIL), an internal REL initiative building a general-purpose framework for economic data analysis.",
             "team": [
-                "REL",
-                "NJDOL"
+                "RAIL",
+                "NJDOL",
+                "HUD"
             ],
             "linkedin": "https://www.linkedin.com/in/ani-tiwary/"
         },
@@ -200,7 +201,7 @@
             "image": "images/people/ali-khan.jpeg",
             "description": "Data analysis and research specialist.",
             "team": [
-                "REL"
+                "RAIL"
             ],
             "linkedin": "https://www.linkedin.com/in/alikhan531/"
         },
@@ -210,7 +211,7 @@
             "image": "images/people/arnav-nethula.jpeg",
             "description": "Data analysis and research specialist.",
             "team": [
-                "REL"
+                "RAIL"
             ],
             "linkedin": "https://www.linkedin.com/in/arnav-nethula/"
         },
@@ -240,7 +241,7 @@
             "image": "images/people/joel.jpeg",
             "description": "Data analysis and research specialist.",
             "team": [
-                "REL"
+                "RAIL"
             ],
             "linkedin": "https://www.linkedin.com/in/joel-pulikkan-022926274/"
         },
@@ -260,7 +261,7 @@
             "image": "images/people/maria-george.jpeg",
             "description": "Data analysis and research specialist.",
             "team": [
-                "REL"
+                "RAIL"
             ],
             "linkedin": "https://www.linkedin.com/in/maria-g-913782274/"
         },

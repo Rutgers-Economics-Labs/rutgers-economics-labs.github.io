@@ -15,7 +15,7 @@ const orgLogos: Record<string, string> = {
   HUD: '/images/logo/hud.svg',
   NJDEP: '/images/logo/njdep.png',
   NJBPU: '/images/logo/njbpu.png',
-  REL: '/images/REL Logo.JPEG',
+  RAIL: '/images/REL Logo.JPEG',
 };
 
 async function getTeamData() {
