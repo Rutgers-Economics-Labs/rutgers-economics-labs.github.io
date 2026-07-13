@@ -1,13 +1,14 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "About Us - Rutgers Economics Labs",
+  title: "About Us",
   description: "Learn about our student-driven economic research process, team collaboration with government agencies, and how we produce data-driven insights for policymakers.",
   openGraph: {
-    title: "About Us - Rutgers Economics Labs",
+    title: "About Us | Rutgers Economics Labs",
     description: "Learn about our student-driven economic research process, team collaboration with government agencies, and how we produce data-driven insights for policymakers.",
     url: "https://www.rutgerseconomics.org/about",
   },
+  alternates: { canonical: '/about' },
   twitter: {
     title: "About Us - Rutgers Economics Labs",
     description: "Learn about our student-driven economic research process, team collaboration with government agencies, and how we produce data-driven insights for policymakers.",
@@ -19,7 +20,7 @@ export default function AboutPage() {
     <div className="py-20 bg-[var(--bg-secondary)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h3 className="text-4xl font-bold text-[var(--text-primary)] mb-8">What We Do</h3>
+          <h1 className="text-4xl font-bold text-[var(--text-primary)] mb-8">What We Do</h1>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="">
@@ -35,33 +36,33 @@ export default function AboutPage() {
           </div>
           <div className="">
             <div className="bg-red-600/10 border border-red-600/20 p-8 rounded-2xl">
-              <h4 className="text-2xl font-bold text-red-500 mb-6">Our Process</h4>
+              <h2 className="text-2xl font-bold text-red-500 mb-6">Our Process</h2>
               <div className="space-y-4">
                 <div className="flex items-start space-x-3">
                   <div className="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center text-white font-bold text-sm">1</div>
                   <div>
-                    <h5 className="font-semibold text-red-500">Partner Collaboration</h5>
+                    <h3 className="font-semibold text-red-500">Partner Collaboration</h3>
                     <p className="text-red-400">Work directly with government agencies and think tanks</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
                   <div className="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center text-white font-bold text-sm">2</div>
                   <div>
-                    <h5 className="font-semibold text-red-500">Team Formation</h5>
+                    <h3 className="font-semibold text-red-500">Team Formation</h3>
                     <p className="text-red-400">Students work in collaborative teams of six</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
                   <div className="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center text-white font-bold text-sm">3</div>
                   <div>
-                    <h5 className="font-semibold text-red-500">Research & Analysis</h5>
+                    <h3 className="font-semibold text-red-500">Research & Analysis</h3>
                     <p className="text-red-400">Conduct statistical analysis using Python and R</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
                   <div className="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center text-white font-bold text-sm">4</div>
                   <div>
-                    <h5 className="font-semibold text-red-500">Policy Impact</h5>
+                    <h3 className="font-semibold text-red-500">Policy Impact</h3>
                     <p className="text-red-400">Deliver actionable insights to policymakers</p>
                   </div>
                 </div>

@@ -1,6 +1,5 @@
 "use client";
 import Link from "next/link";
-import Script from "next/script";
 import Image from "next/image";
 import AnimatedStockChart from "../components/AnimatedStockChart";
 import ParticleNetwork from "../components/ParticleNetwork";
@@ -194,7 +193,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <Script src="/main.js" strategy="afterInteractive" />
     </>
   );
 }

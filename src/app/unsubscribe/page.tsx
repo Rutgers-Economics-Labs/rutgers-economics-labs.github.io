@@ -81,7 +81,7 @@ export default function UnsubscribePage() {
     <div className="py-20 bg-white">
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h3 className="text-4xl font-bold text-gray-900 mb-8">Unsubscribe</h3>
+          <h1 className="text-4xl font-bold text-gray-900 mb-8">Unsubscribe</h1>
           <p className="text-xl text-gray-600 mb-4">
             We're sorry to see you go!
           </p>
@@ -91,7 +91,7 @@ export default function UnsubscribePage() {
         </div>
         
         <div className="bg-gray-50 p-8 rounded-2xl">
-          <h4 className="text-2xl font-bold text-gray-900 mb-4 text-center">Unsubscribe from Mailing List</h4>
+          <h2 className="text-2xl font-bold text-gray-900 mb-4 text-center">Unsubscribe from Mailing List</h2>
           <p className="text-gray-600 mb-6 text-center">Enter the email address you used to subscribe.</p>
           
           <form onSubmit={handleSubmit} className="space-y-6">

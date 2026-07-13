@@ -4,7 +4,7 @@
 //
 // Docs: https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/
 
-export async function onRequest(context) {
+export async function onRequest(context: { request: Request; next: () => Promise<Response> }) {
   const { request, next } = context;
 
   // Let Pages serve the static asset first (Next.js export output)

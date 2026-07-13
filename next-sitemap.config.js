@@ -1,15 +1,13 @@
 module.exports = {
-  siteUrl: 'https://rutgerseconomics.org/',
+  siteUrl: 'https://www.rutgerseconomics.org',
+  outDir: 'out',
   generateRobotsTxt: true,
-  generateIndexSitemap: true,
+  generateIndexSitemap: false,
   changefreq: 'weekly',
   priority: 0.7,
   sitemapSize: 5000,
   exclude: ['/404', '/500'],
   robotsTxtOptions: {
-    additionalSitemaps: [
-      'https://rutgerseconomics.org/sitemap.xml',
-    ],
     policies: [
       {
         userAgent: '*',
@@ -30,7 +28,7 @@ module.exports = {
     }
     
     // About and main pages get high priority
-    if (['/about', '/people', '/projects'].includes(path)) {
+    if (['/about', '/people', '/projects', '/partner-with-rel'].includes(path)) {
       priority = 0.9;
       changefreq = 'weekly';
     }
@@ -48,4 +46,4 @@ module.exports = {
       lastmod: new Date().toISOString(),
     };
   },
-}; 
+};
