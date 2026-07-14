@@ -72,6 +72,12 @@ export default function Home() {
                   Join Our Team
                 </Link>
               </div>
+              <p className="mt-6 text-sm sm:text-base text-white/80">
+                Represent an organization?{' '}
+                <Link href="/partner-with-rel" className="font-semibold text-red-200 underline underline-offset-4 hover:text-white focus-visible:outline-white">
+                  Partner with REL →
+                </Link>
+              </p>
             </div>
           </div>
         </div>

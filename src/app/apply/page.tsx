@@ -16,6 +16,12 @@ const faqs = [
   ['Will every project be public?', 'No. REL project pages clearly label public, private, internal, and withheld work. A public artifact is shared only when one is available.'],
 ];
 
+const applicationContext = [
+  ['Relevant preparation', 'A current application may ask about coursework, tools, research, data projects, or other experience that shows how you approach evidence.'],
+  ['Your interests', 'It helps to explain the kinds of economic, data, or public-policy questions you are curious to investigate.'],
+  ['Next steps', 'REL shares any current application instructions and follow-up process directly, so the posted materials remain the source of truth.'],
+];
+
 export default function ApplyPage() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -57,18 +63,18 @@ export default function ApplyPage() {
 
   return (
     <>
-      <section className="bg-gradient-to-br from-gray-950 via-gray-900 to-red-950 text-white py-20 sm:py-28">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-[1.15fr_0.85fr] gap-12 items-center">
-          <div>
-            <p className="text-red-200 font-semibold uppercase tracking-[0.18em] text-sm mb-5">For Rutgers students</p>
-            <h1 className="text-5xl sm:text-6xl font-bold tracking-tight mb-6">Build research skills on questions that matter.</h1>
-            <p className="text-xl text-gray-200 leading-relaxed max-w-2xl">REL gives students a way to contribute to applied economic research for government agencies, think tanks, and public policy organizations — while learning how evidence becomes useful analysis.</p>
-          </div>
-          <aside className="rounded-3xl bg-white/10 border border-white/15 p-7 sm:p-8 backdrop-blur-sm">
-            <p className="text-red-200 font-semibold uppercase tracking-wider text-sm mb-4">Stay in the loop</p>
-            <h2 className="text-2xl font-bold mb-3">Application timing is shared directly.</h2>
-            <p className="text-gray-200 leading-relaxed mb-6">REL posts current application information through its mailing list. Use the form below to hear about future openings, events, and updates.</p>
-            <a href="#mailing-list" className="inline-flex rounded-full bg-white px-6 py-3 font-semibold text-red-700 hover:bg-red-50 transition-colors">Join the mailing list <span aria-hidden="true" className="ml-2">↓</span></a>
+      <section className="py-16 sm:py-20 bg-[var(--bg-secondary)] border-b border-[var(--border-color)]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-[1.15fr_0.85fr] gap-10 lg:gap-14 items-start">
+          <header className="max-w-3xl">
+            <p className="text-red-700 font-semibold uppercase tracking-[0.18em] text-sm mb-4">For Rutgers students</p>
+            <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-[var(--text-primary)] mb-5">Build research skills on questions that matter.</h1>
+            <p className="text-xl text-[var(--text-secondary)] leading-relaxed max-w-2xl">REL gives students a way to contribute to applied economic research for government agencies, think tanks, and public policy organizations — while learning how evidence becomes useful analysis.</p>
+          </header>
+          <aside className="rounded-2xl border border-red-100 bg-red-50 p-7 sm:p-8 shadow-sm">
+            <p className="text-red-700 font-semibold uppercase tracking-wider text-sm mb-4">Stay in the loop</p>
+            <h2 className="text-2xl font-bold text-gray-950 mb-3">Application timing is shared directly.</h2>
+            <p className="text-gray-700 leading-relaxed mb-5">REL posts current application information through its mailing list. Use the form below to hear about future openings, events, and updates.</p>
+            <a href="#mailing-list" className="inline-flex rounded-full bg-red-600 px-6 py-3 font-semibold text-white hover:bg-red-700 transition-colors">Join the mailing list <span aria-hidden="true" className="ml-2">↓</span></a>
           </aside>
         </div>
       </section>
@@ -103,7 +109,20 @@ export default function ApplyPage() {
         </div>
       </section>
 
-      <section id="mailing-list" className="py-20 bg-[var(--bg-secondary)]">
+      <section className="py-20 bg-[var(--bg-secondary)]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-[0.85fr_1.15fr] gap-10 lg:gap-14 items-start">
+          <div>
+            <p className="text-red-700 font-semibold uppercase tracking-wider text-sm mb-3">Application context</p>
+            <h2 className="text-4xl font-bold text-[var(--text-primary)] mb-5">What a current application can help you communicate.</h2>
+            <p className="text-lg text-[var(--text-secondary)] leading-relaxed">You do not need to infer requirements from an old date or a generic checklist. When an opportunity is posted, use its instructions and describe the preparation that is most relevant to the work.</p>
+          </div>
+          <div className="grid gap-4">
+            {applicationContext.map(([title, description]) => <article key={title} className="rounded-2xl border border-[var(--card-border)] bg-[var(--bg-primary)] p-6"><h3 className="text-xl font-bold text-[var(--text-primary)] mb-2">{title}</h3><p className="text-[var(--text-secondary)] leading-relaxed">{description}</p></article>)}
+          </div>
+        </div>
+      </section>
+
+      <section id="mailing-list" className="py-20 bg-[var(--bg-primary)] border-t border-[var(--border-color)]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-[0.85fr_1.15fr] gap-10 items-start">
           <div>
             <p className="text-red-700 font-semibold uppercase tracking-wider text-sm mb-3">Mailing list</p>

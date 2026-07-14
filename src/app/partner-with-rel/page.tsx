@@ -30,22 +30,22 @@ const process = [
 export default function PartnerWithRelPage() {
   return (
     <>
-      <section className="bg-gradient-to-br from-gray-950 via-gray-900 to-red-950 text-white py-20 sm:py-28">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
-          <div>
-            <p className="text-red-200 font-semibold uppercase tracking-[0.18em] text-sm mb-5">For public-interest organizations</p>
-            <h1 className="text-5xl sm:text-6xl font-bold tracking-tight mb-6">Partner with REL on an economics or data question.</h1>
-            <p className="text-xl text-gray-200 leading-relaxed max-w-2xl">Rutgers Economics Labs provides pro bono applied economics and data analysis for government agencies, think tanks, and public policy organizations. We pair rigorous student research with questions that matter outside the classroom.</p>
-            <div className="mt-9 flex flex-col sm:flex-row gap-4">
-              <a href="mailto:rel@rutgerseconomics.org?subject=REL%20project%20proposal" className="inline-flex justify-center items-center rounded-full bg-white px-7 py-3.5 font-semibold text-red-700 hover:bg-red-50 transition-colors shadow-lg"><Mail className="mr-2 h-5 w-5" aria-hidden="true" />Propose a Project</a>
-              <Link href="/projects" className="inline-flex justify-center items-center rounded-full border border-white/40 px-7 py-3.5 font-semibold text-white hover:bg-white/10 transition-colors">Explore project work <ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" /></Link>
+      <section className="py-16 sm:py-20 bg-[var(--bg-secondary)] border-b border-[var(--border-color)]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-[1.1fr_0.9fr] gap-10 lg:gap-14 items-start">
+          <header className="max-w-3xl">
+            <p className="text-red-700 font-semibold uppercase tracking-[0.18em] text-sm mb-4">For public-interest organizations</p>
+            <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-[var(--text-primary)] mb-5">Partner with REL on an economics or data question.</h1>
+            <p className="text-xl text-[var(--text-secondary)] leading-relaxed max-w-2xl">Rutgers Economics Labs provides pro bono applied economics and data analysis for government agencies, think tanks, and public policy organizations. We pair rigorous student research with questions that matter outside the classroom.</p>
+            <div className="mt-8 flex flex-col sm:flex-row gap-4">
+              <a href="mailto:rel@rutgerseconomics.org?subject=REL%20project%20proposal" className="inline-flex justify-center items-center rounded-full bg-red-600 px-7 py-3.5 font-semibold text-white hover:bg-red-700 transition-colors shadow-lg"><Mail className="mr-2 h-5 w-5" aria-hidden="true" />Propose a Project</a>
+              <Link href="/projects" className="inline-flex justify-center items-center rounded-full border border-[var(--border-color)] bg-[var(--bg-primary)] px-7 py-3.5 font-semibold text-[var(--text-primary)] hover:bg-[var(--bg-tertiary)] transition-colors">Explore project work <ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" /></Link>
             </div>
-          </div>
-          <aside className="rounded-3xl border border-white/15 bg-white/10 p-7 sm:p-8 backdrop-blur-sm">
-            <p className="text-red-200 font-semibold text-sm uppercase tracking-wider mb-5">A low-friction first step</p>
-            <h2 className="text-2xl font-bold mb-4">A few lines are enough to begin.</h2>
-            <p className="text-gray-200 leading-relaxed mb-6">Tell us the question you are considering, the audience for the work, and whether you expect to use public or non-public data. We can take it from there.</p>
-            <a className="text-white font-semibold underline underline-offset-4 hover:text-red-100 focus-visible:outline-white" href="mailto:rel@rutgerseconomics.org?subject=REL%20project%20proposal">rel@rutgerseconomics.org</a>
+          </header>
+          <aside className="rounded-2xl border border-red-100 bg-red-50 p-7 sm:p-8 shadow-sm">
+            <p className="text-red-700 font-semibold text-sm uppercase tracking-wider mb-4">A low-friction first step</p>
+            <h2 className="text-2xl font-bold text-gray-950 mb-3">A few lines are enough to begin.</h2>
+            <p className="text-gray-700 leading-relaxed mb-5">Tell us the question you are considering, the audience for the work, and whether you expect to use public or non-public data. We can take it from there.</p>
+            <a className="text-red-700 font-semibold underline underline-offset-4 hover:text-red-800 focus-visible:outline-red-700" href="mailto:rel@rutgerseconomics.org?subject=REL%20project%20proposal">rel@rutgerseconomics.org</a>
           </aside>
         </div>
       </section>
