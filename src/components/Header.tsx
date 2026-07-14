@@ -6,6 +6,7 @@ import Image from 'next/image';
 
 const navLinks = [
   { to: '/', label: 'Home' },
+  { to: '/partner-with-rel', label: 'Partner With REL' },
   { to: '/about', label: 'About' },
   { to: '/projects', label: 'Projects' },
   { to: '/resources', label: 'Resources' },
@@ -21,7 +22,7 @@ const Header: React.FC = () => {
   };
 
   return (
-    <nav className="gradient-bg shadow-xl sticky top-0 z-50 backdrop-blur-sm">
+    <nav className="gradient-bg shadow-xl sticky top-0 z-50 backdrop-blur-sm" aria-label="Main navigation">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           {/* Logo Section */}
@@ -37,19 +38,20 @@ const Header: React.FC = () => {
                 />
                 <div className="absolute inset-0 rounded-full bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
-              <h1 className="text-white text-xl font-bold transition-all duration-300 group-hover:text-red-100 group-hover:scale-105">
+              <span className="text-white text-xl font-bold transition-all duration-300 group-hover:text-red-100 group-hover:scale-105">
                 Rutgers Economics Labs
-              </h1>
+              </span>
             </Link>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-2">
+          <div className="hidden lg:flex space-x-1">
             {navLinks.map(link => (
               <Link
                 key={link.to}
                 href={link.to}
-                className={`relative px-4 py-2 text-white font-medium transition-all duration-300 rounded-lg group overflow-hidden ${
+                aria-current={pathname === link.to ? 'page' : undefined}
+                className={`relative px-3 py-2 text-sm text-white font-medium transition-all duration-300 rounded-lg group overflow-hidden focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white ${
                   pathname === link.to 
                     ? 'bg-white/20 text-white shadow-lg' 
                     : 'hover:bg-white/10'
@@ -78,8 +80,12 @@ const Header: React.FC = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-white p-2 rounded-lg hover:bg-white/20 transition-all duration-300 group"
+            type="button"
+            className="lg:hidden text-white p-2 rounded-lg hover:bg-white/20 transition-all duration-300 group focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             onClick={toggleMobileMenu}
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-navigation"
+            aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
           >
             <div className="relative w-6 h-6">
               <span className={`absolute top-0 left-0 w-full h-0.5 bg-white transform transition-all duration-300 ${
@@ -97,7 +103,7 @@ const Header: React.FC = () => {
       </div>
 
       {/* Mobile Menu */}
-      <div className={`md:hidden transition-all duration-300 ease-in-out ${
+      <div id="mobile-navigation" className={`lg:hidden transition-all duration-300 ease-in-out ${
         isMobileMenuOpen 
           ? 'max-h-96 opacity-100' 
           : 'max-h-0 opacity-0 overflow-hidden'
@@ -108,8 +114,9 @@ const Header: React.FC = () => {
               <Link
                 key={link.to}
                 href={link.to}
+                aria-current={pathname === link.to ? 'page' : undefined}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className={`block text-white hover:text-red-100 py-3 px-4 rounded-lg transition-all duration-300 hover:bg-white/10 hover:translate-x-2 ${
+                className={`block text-white hover:text-red-100 py-3 px-4 rounded-lg transition-all duration-300 hover:bg-white/10 hover:translate-x-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white ${
                   pathname === link.to ? 'bg-white/20 text-white' : ''
                 }`}
                 style={{
@@ -117,8 +124,8 @@ const Header: React.FC = () => {
                   animation: isMobileMenuOpen ? 'slideInLeft 0.3s ease-out forwards' : 'none'
                 }}
               >
-                <span className="flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-white rounded-full opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+                  <span className="flex items-center space-x-2">
+                  <div className="w-2 h-2 bg-white rounded-full opacity-0 transition-opacity duration-300 group-hover:opacity-100" aria-hidden="true"></div>
                   <span>{link.label}</span>
                 </span>
               </Link>
@@ -143,4 +150,4 @@ const Header: React.FC = () => {
   );
 };
 
-export default Header; 
+export default Header;

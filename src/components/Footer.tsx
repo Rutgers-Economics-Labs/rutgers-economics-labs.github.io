@@ -49,6 +49,7 @@ const Footer = () => (
           <div className="space-y-3">
             {[
               { label: 'Research Projects', href: '/projects' },
+              { label: 'Partner With REL', href: '/partner-with-rel' },
               { label: 'About Us', href: '/about' },
               { label: 'Join Our Team', href: '/apply' },
               { label: 'Resources', href: '/resources' },
@@ -84,7 +85,7 @@ const Footer = () => (
             </div>
             <div className="flex items-center justify-center md:justify-end space-x-2 text-red-200">
               <Mail className="w-4 h-4" />
-              <span className="text-sm">rel@rutgerseconomics.org</span>
+              <a href="mailto:rel@rutgerseconomics.org" className="text-sm underline-offset-2 hover:underline">rel@rutgerseconomics.org</a>
             </div>
           </div>
 
@@ -136,4 +137,4 @@ const Footer = () => (
   </footer>
 );
 
-export default Footer; 
+export default Footer;

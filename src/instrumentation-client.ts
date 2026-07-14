@@ -1,7 +1,11 @@
 // instrumentation-client.ts
 import posthog from 'posthog-js'
 
-posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {
+const posthogKey = process.env.NEXT_PUBLIC_POSTHOG_KEY;
+
+if (posthogKey) {
+  posthog.init(posthogKey, {
     api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
     defaults: '2025-11-30'
-});
+  });
+}

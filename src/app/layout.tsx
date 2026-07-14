@@ -1,6 +1,7 @@
 import './globals.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 
 // import font awesome
@@ -12,8 +13,11 @@ import type { ReactNode } from 'react';
 import Script from 'next/script';
 
 
-export const metadata = {
-  title: "Rutgers Economics Labs",
+export const metadata: Metadata = {
+  title: {
+    default: "Rutgers Economics Labs",
+    template: "%s | Rutgers Economics Labs",
+  },
   description: "Student-driven economic research for government agencies, think tanks, and public policy organizations at Rutgers University",
   keywords: ["Rutgers University", "Economics", "Research", "Public Policy", "Data Analysis", "Government", "Think Tank"],
   authors: [{ name: "Rutgers Economics Labs" }],
@@ -30,7 +34,7 @@ export const metadata = {
     siteName: "Rutgers Economics Labs",
     images: [
       {
-        url: "/images/og-image.jpg",
+        url: "/images/og-rel.png",
         width: 1200,
         height: 630,
         alt: "Rutgers Economics Labs Logo",
@@ -43,7 +47,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Rutgers Economics Labs",
     description: "Student-driven economic research for government agencies, think tanks, and public policy organizations at Rutgers University",
-    images: ["/images/og-image.jpg"],
+    images: ["/images/og-rel.png"],
     creator: "@rutgerseconomics",
     site: "@rutgerseconomics",
   },
@@ -71,7 +75,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <meta name="color-scheme" content="light dark" />
+        <meta name="color-scheme" content="light" />
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"

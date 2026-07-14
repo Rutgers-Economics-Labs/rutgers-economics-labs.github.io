@@ -1,294 +1,148 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
-// Countdown Timer Component
-function CountdownTimer() {
-  const [timeLeft, setTimeLeft] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0
-  });
+const strengths = [
+  ['Quantitative curiosity', 'Comfort engaging with numbers, data, and evidence is a useful foundation for REL work.'],
+  ['Data and technical tools', 'Python, R, Stata, SQL, spreadsheet skills, or a willingness to develop them can be relevant to a project.'],
+  ['Research and writing', 'Students help turn research questions into literature reviews, analysis, and clear written interpretation.'],
+  ['Collaborative problem-solving', 'REL projects connect students with public-interest organizations, so communication and teamwork matter alongside technical work.'],
+];
 
-  useEffect(() => {
-    const deadline = new Date('2026-02-06T23:59:59').getTime();
+const faqs = [
+  ['When are applications open?', 'REL shares application availability and any current details through its mailing list. Subscribe below so you do not need to guess at timing.'],
+  ['Do I need a specific major?', 'REL’s work brings together economics, data, policy, and technical research. Current application materials will explain any requirements when an opportunity is posted.'],
+  ['What could I produce?', 'Existing REL work includes research papers with literature review, statistical analysis, and interpretation, as well as data work and policy-focused communication.'],
+  ['Will every project be public?', 'No. REL project pages clearly label public, private, internal, and withheld work. A public artifact is shared only when one is available.'],
+];
 
-    // Calculate initial time immediately
-    const calculateTimeLeft = () => {
-      const now = new Date().getTime();
-      const distance = deadline - now;
-
-      if (distance > 0) {
-        return {
-          days: Math.floor(distance / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-          minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
-          seconds: Math.floor((distance % (1000 * 60)) / 1000)
-        };
-      } else {
-        return { days: 0, hours: 0, minutes: 0, seconds: 0 };
-      }
-    };
-
-    // Set initial time immediately
-    setTimeLeft(calculateTimeLeft());
-
-    // Then set up the interval for updates
-    const timer = setInterval(() => {
-      setTimeLeft(calculateTimeLeft());
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, []);
-
-  return (
-    <div className="bg-gradient-to-r from-red-600 to-red-700 text-white p-6 rounded-2xl mb-8">
-      <h4 className="text-2xl font-bold text-center mb-4">Applications Close In:</h4>
-      <div className="grid grid-cols-4 gap-4 text-center">
-        <div className="bg-white/20 rounded-lg p-3 backdrop-blur-sm">
-          <div className="text-3xl font-bold">{timeLeft.days}</div>
-          <div className="text-sm opacity-90">Days</div>
-        </div>
-        <div className="bg-white/20 rounded-lg p-3 backdrop-blur-sm">
-          <div className="text-3xl font-bold">{timeLeft.hours.toString().padStart(2, '0')}</div>
-          <div className="text-sm opacity-90">Hours</div>
-        </div>
-        <div className="bg-white/20 rounded-lg p-3 backdrop-blur-sm">
-          <div className="text-3xl font-bold">{timeLeft.minutes.toString().padStart(2, '0')}</div>
-          <div className="text-sm opacity-90">Minutes</div>
-        </div>
-        <div className="bg-white/20 rounded-lg p-3 backdrop-blur-sm">
-          <div className="text-3xl font-bold">{timeLeft.seconds.toString().padStart(2, '0')}</div>
-          <div className="text-sm opacity-90">Seconds</div>
-        </div>
-      </div>
-    </div>
-  );
-}
+const applicationContext = [
+  ['Relevant preparation', 'A current application may ask about coursework, tools, research, data projects, or other experience that shows how you approach evidence.'],
+  ['Your interests', 'It helps to explain the kinds of economic, data, or public-policy questions you are curious to investigate.'],
+  ['Next steps', 'REL shares any current application instructions and follow-up process directly, so the posted materials remain the source of truth.'],
+];
 
 export default function ApplyPage() {
-  // State variables to hold the form input values
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
-
-  // State to manage the submission process
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
   const [isError, setIsError] = useState(false);
-
-  // Google Apps Script endpoint
   const googleAppsScriptUrl = 'https://script.google.com/macros/s/AKfycbzvpa0kUiO5HW-BV-vOCh8ZDeTmIHH2IN8QRYfHQAyc2TqfDluTrvZIXrJUKzVa9hzT6Q/exec';
 
-  // Application form URL
-  const applicationFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSdHAChiYJsCOMYAyFnt7w7cN8_w-u0OI4M6EfN642CpciCHAA/viewform?usp=publish-editor';
-
-  // Check if applications are closed
-  const isApplicationsClosed = () => {
-    const deadline = new Date('2026-02-06T23:59:59').getTime();
-    const now = new Date().getTime();
-    return now >= deadline;
-  };
-
-  /**
-   * Handles the form submission event.
-   * @param {React.FormEvent<HTMLFormElement>} e - The form event.
-   */
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault(); // Prevent the default form submission behavior
-
-    // Simple validation
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     if (!firstName || !lastName || !email) {
-      setSubmitMessage('Please fill out all required fields.');
       setIsError(true);
+      setSubmitMessage('Please fill out all required fields.');
       return;
     }
 
     setIsSubmitting(true);
     setIsError(false);
     setSubmitMessage('');
-
-    const formData = {
-      firstName,
-      lastName,
-      email,
-    };
-
     try {
-      // Send the form data to the Google Apps Script web app
       await fetch(googleAppsScriptUrl, {
         method: 'POST',
-        redirect: "follow",
-        headers: {
-          "Content-Type": "text/plain;charset=utf-8",
-        },
-        body: JSON.stringify(formData),
+        redirect: 'follow',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({ firstName, lastName, email }),
       });
-
-      // If the fetch call completes without a network error, we assume success
-      setIsSubmitting(false);
-      setIsError(false);
-      setSubmitMessage('Success! You have been added to the mailing list.');
-      // Reset form fields after successful submission
       setFirstName('');
       setLastName('');
       setEmail('');
-
-    } catch (error) {
-      // Handle network errors or other issues with the fetch call
-      console.error('Submission Error:', error);
-      setIsSubmitting(false);
+      setSubmitMessage('Thanks — you have been added to the REL mailing list.');
+    } catch {
       setIsError(true);
-      setSubmitMessage('An error occurred. Please try again later.');
+      setSubmitMessage('We could not submit your request. Please try again later.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
-  const applicationsClosed = isApplicationsClosed();
-
   return (
-    <div className="py-20 bg-[var(--bg-secondary)]">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h3 className="text-4xl font-bold text-[var(--text-primary)] mb-8">Apply Now!</h3>
-
-          {applicationsClosed ? (
-            <>
-              <p className="text-xl text-[var(--text-secondary)] mb-4">
-                Applications for the Spring 2026 semester are now closed.
-              </p>
-              <p className="text-lg text-[var(--text-secondary)] mb-8">
-                Thank you for your interest! Applications closed on Friday, February 6th, 2026. We will review all submissions and contact selected applicants for interviews.
-              </p>
-            </>
-          ) : (
-            <>
-              <p className="text-xl text-[var(--text-secondary)] mb-4">
-                Ready to dive into real-world economic research and make an impact? Join Rutgers Economics Labs!
-              </p>
-              <p className="text-lg text-[var(--text-secondary)] mb-6">
-                REL offers undergraduate students the opportunity to produce economic research papers for government agencies, think tanks, and other public policy organizations using statistical and econometric methods.
-              </p>
-              <p className="text-lg text-[var(--text-secondary)] mb-6">
-                Students work in teams of six over the course of the semester to write research papers for our partner organizations using tools such as Python and R. Papers include a literature review, statistical analysis, and interpretation of results.
-              </p>
-              <p className="text-lg text-[var(--text-secondary)] mb-6">
-                <strong>Students from all majors are encouraged to apply</strong>, including but not limited to Economics, Data Science, Statistics, Computer Science, Public Policy, Political Science, Business Analytics, Finance, and Math. While no previous experience in economic research is required, <strong>a strong quantitative aptitude and comfort with data are essential</strong>.
-              </p>
-            </>
-          )}
+    <>
+      <section className="py-16 sm:py-20 bg-[var(--bg-secondary)] border-b border-[var(--border-color)]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-[1.15fr_0.85fr] gap-10 lg:gap-14 items-start">
+          <header className="max-w-3xl">
+            <p className="text-red-700 font-semibold uppercase tracking-[0.18em] text-sm mb-4">For Rutgers students</p>
+            <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-[var(--text-primary)] mb-5">Build research skills on questions that matter.</h1>
+            <p className="text-xl text-[var(--text-secondary)] leading-relaxed max-w-2xl">REL gives students a way to contribute to applied economic research for government agencies, think tanks, and public policy organizations — while learning how evidence becomes useful analysis.</p>
+          </header>
+          <aside className="rounded-2xl border border-red-100 bg-red-50 p-7 sm:p-8 shadow-sm">
+            <p className="text-red-700 font-semibold uppercase tracking-wider text-sm mb-4">Stay in the loop</p>
+            <h2 className="text-2xl font-bold text-gray-950 mb-3">Application timing is shared directly.</h2>
+            <p className="text-gray-700 leading-relaxed mb-5">REL posts current application information through its mailing list. Use the form below to hear about future openings, events, and updates.</p>
+            <a href="#mailing-list" className="inline-flex rounded-full bg-red-600 px-6 py-3 font-semibold text-white hover:bg-red-700 transition-colors">Join the mailing list <span aria-hidden="true" className="ml-2">↓</span></a>
+          </aside>
         </div>
+      </section>
 
-        {/* Application Deadline Info */}
-        {!applicationsClosed && (
-          <div className="text-center mb-8">
-            <p className="text-lg text-[var(--text-secondary)] mb-4">
-              Applications are now open and will close on <strong>Friday, February 6 at 11:59 PM</strong>.*
-            </p>
-            <p className="text-sm text-[var(--text-muted)] italic">* Applications will be reviewed on a rolling basis</p>
-            <div className="mt-6">
-              <CountdownTimer />
-            </div>
+      <section className="py-20 bg-[var(--bg-secondary)]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-12">
+            <p className="text-red-700 font-semibold uppercase tracking-wider text-sm mb-3">What students contribute</p>
+            <h2 className="text-4xl font-bold text-[var(--text-primary)] mb-5">Research, data work, and practical communication.</h2>
+            <p className="text-lg text-[var(--text-secondary)] leading-relaxed">REL’s existing projects show the range of work students can encounter: defining a research question, working with data, applying statistical or econometric methods, and explaining the results in a useful form.</p>
           </div>
-        )}
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Application CTA */}
-          <div className="">
-            <div className="bg-red-600/10 border border-red-600/20 p-8 rounded-2xl text-center">
-              <h4 className="text-2xl font-bold text-red-500 mb-4">
-                {applicationsClosed ? 'Applications Closed' : 'Ready to Join?'}
-              </h4>
-              <p className="text-red-400 mb-6">
-                {applicationsClosed
-                  ? 'Applications for this semester are now closed. Please check back for future opportunities.'
-                  : 'Click below to access our application form and take the first step toward impactful economic research.'
-                }
-              </p>
-              {!applicationsClosed && (
-                <a
-                  href={applicationFormUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block bg-red-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-red-700 transition-all duration-300 transform hover:scale-105 w-full"
-                >
-                  Apply Here
-                </a>
-              )}
-            </div>
+          <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+            {strengths.map(([title, description]) => <article key={title} className="rounded-2xl border border-[var(--card-border)] bg-[var(--card-bg)] p-7 shadow-sm"><h3 className="text-xl font-bold text-[var(--text-primary)] mb-3">{title}</h3><p className="text-[var(--text-secondary)] leading-relaxed">{description}</p></article>)}
           </div>
+        </div>
+      </section>
 
-          {/* Mailing List */}
-          <div className="">
-            <div className="bg-[var(--bg-tertiary)] p-8 rounded-2xl">
-              <h4 className="text-2xl font-bold text-[var(--text-primary)] mb-4">Join Our Mailing List</h4>
-              <p className="text-[var(--text-secondary)] mb-6">Stay updated on application openings, events, and important news.</p>
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="firstName" className="block text-sm font-medium text-[var(--text-secondary)] mb-2">First Name *</label>
-                    <input
-                      id="firstName"
-                      type="text"
-                      required
-                      value={firstName}
-                      onChange={(e) => setFirstName(e.target.value)}
-                      className="w-full px-4 py-3 border border-[var(--border-color)] bg-[var(--bg-secondary)] text-[var(--text-primary)] rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-300"
-                      disabled={isSubmitting}
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="lastName" className="block text-sm font-medium text-[var(--text-secondary)] mb-2">Last Name *</label>
-                    <input
-                      id="lastName"
-                      type="text"
-                      required
-                      value={lastName}
-                      onChange={(e) => setLastName(e.target.value)}
-                      className="w-full px-4 py-3 border border-[var(--border-color)] bg-[var(--bg-secondary)] text-[var(--text-primary)] rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-300"
-                      disabled={isSubmitting}
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-[var(--text-secondary)] mb-2">Email *</label>
-                  <input
-                    id="email"
-                    type="email"
-                    required
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="w-full px-4 py-3 border border-[var(--border-color)] bg-[var(--bg-secondary)] text-[var(--text-primary)] rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-300"
-                    disabled={isSubmitting}
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="w-full bg-[var(--text-primary)] text-[var(--bg-primary)] py-3 rounded-lg hover:opacity-80 transition-all duration-300 font-medium disabled:opacity-40 disabled:cursor-not-allowed"
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? 'Submitting...' : 'Submit'}
-                </button>
-                {submitMessage && (
-                  <p className={`mt-4 text-md text-center font-medium ${isError ? 'text-red-600' : 'text-green-600'}`}>
-                    {submitMessage}
-                  </p>
-                )}
-              </form>
+      <section className="py-20 bg-red-50 border-y border-red-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-start">
+          <div>
+            <p className="text-red-700 font-semibold uppercase tracking-wider text-sm mb-3">How to prepare</p>
+            <h2 className="text-4xl font-bold text-gray-950 mb-5">Focus on the work, not an assumed deadline.</h2>
+            <p className="text-lg text-gray-700 leading-relaxed mb-6">Application details can change, so REL shares any current timing and selection information with applicants directly. In the meantime, you can explore the project portfolio, build familiarity with the tools that interest you, and join the mailing list.</p>
+            <a href="/projects" className="inline-flex items-center rounded-full bg-red-600 px-6 py-3 font-semibold text-white hover:bg-red-700 transition-colors">Explore REL projects <span aria-hidden="true" className="ml-2">→</span></a>
+          </div>
+          <div className="rounded-2xl bg-white border border-red-100 p-7 shadow-sm">
+            <h2 className="text-2xl font-bold text-gray-950 mb-5">Frequently asked questions</h2>
+            <dl className="space-y-5">
+              {faqs.map(([question, answer]) => <div key={question}><dt className="font-bold text-gray-950">{question}</dt><dd className="mt-1 text-gray-700 leading-relaxed">{answer}</dd></div>)}
+            </dl>
+          </div>
+        </div>
+      </section>
 
-              <div className="mt-6 text-center">
-                <p className="text-[var(--text-muted)] text-sm">
-                  Need to unsubscribe?{' '}
-                  <a href="/unsubscribe" className="text-red-600 hover:text-red-700 font-medium underline">
-                    Click here
-                  </a>
-                  .
-                </p>
+      <section className="py-20 bg-[var(--bg-secondary)]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-[0.85fr_1.15fr] gap-10 lg:gap-14 items-start">
+          <div>
+            <p className="text-red-700 font-semibold uppercase tracking-wider text-sm mb-3">Application context</p>
+            <h2 className="text-4xl font-bold text-[var(--text-primary)] mb-5">What a current application can help you communicate.</h2>
+            <p className="text-lg text-[var(--text-secondary)] leading-relaxed">You do not need to infer requirements from an old date or a generic checklist. When an opportunity is posted, use its instructions and describe the preparation that is most relevant to the work.</p>
+          </div>
+          <div className="grid gap-4">
+            {applicationContext.map(([title, description]) => <article key={title} className="rounded-2xl border border-[var(--card-border)] bg-[var(--bg-primary)] p-6"><h3 className="text-xl font-bold text-[var(--text-primary)] mb-2">{title}</h3><p className="text-[var(--text-secondary)] leading-relaxed">{description}</p></article>)}
+          </div>
+        </div>
+      </section>
+
+      <section id="mailing-list" className="py-20 bg-[var(--bg-primary)] border-t border-[var(--border-color)]">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-[0.85fr_1.15fr] gap-10 items-start">
+          <div>
+            <p className="text-red-700 font-semibold uppercase tracking-wider text-sm mb-3">Mailing list</p>
+            <h2 className="text-4xl font-bold text-[var(--text-primary)] mb-5">Hear when there is something to act on.</h2>
+            <p className="text-lg text-[var(--text-secondary)] leading-relaxed">Subscribe for application openings, events, and REL news. You can unsubscribe at any time.</p>
+          </div>
+          <div className="bg-[var(--bg-tertiary)] p-7 sm:p-8 rounded-2xl border border-[var(--card-border)]">
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div><label htmlFor="firstName" className="block text-sm font-bold text-[var(--text-secondary)] mb-2">First name <span aria-hidden="true">*</span></label><input id="firstName" type="text" autoComplete="given-name" required value={firstName} onChange={(event) => setFirstName(event.target.value)} className="w-full px-4 py-3 border border-[var(--border-color)] bg-[var(--bg-secondary)] text-[var(--text-primary)] rounded-lg focus:ring-2 focus:ring-red-500" disabled={isSubmitting} /></div>
+                <div><label htmlFor="lastName" className="block text-sm font-bold text-[var(--text-secondary)] mb-2">Last name <span aria-hidden="true">*</span></label><input id="lastName" type="text" autoComplete="family-name" required value={lastName} onChange={(event) => setLastName(event.target.value)} className="w-full px-4 py-3 border border-[var(--border-color)] bg-[var(--bg-secondary)] text-[var(--text-primary)] rounded-lg focus:ring-2 focus:ring-red-500" disabled={isSubmitting} /></div>
               </div>
-            </div>
+              <div><label htmlFor="email" className="block text-sm font-bold text-[var(--text-secondary)] mb-2">Email <span aria-hidden="true">*</span></label><input id="email" type="email" autoComplete="email" required value={email} onChange={(event) => setEmail(event.target.value)} className="w-full px-4 py-3 border border-[var(--border-color)] bg-[var(--bg-secondary)] text-[var(--text-primary)] rounded-lg focus:ring-2 focus:ring-red-500" disabled={isSubmitting} /></div>
+              <button type="submit" className="w-full bg-red-600 text-white py-3 rounded-lg hover:bg-red-700 transition-colors font-semibold disabled:opacity-40 disabled:cursor-not-allowed" disabled={isSubmitting}>{isSubmitting ? 'Submitting…' : 'Subscribe for REL updates'}</button>
+              {submitMessage && <p role="status" aria-live="polite" className={`text-center font-medium ${isError ? 'text-red-700' : 'text-green-700'}`}>{submitMessage}</p>}
+            </form>
+            <p className="mt-6 text-center text-[var(--text-muted)] text-sm">Need to unsubscribe? <a href="/unsubscribe" className="text-red-700 hover:text-red-800 font-semibold underline">Manage your subscription</a>.</p>
           </div>
         </div>
-      </div>
-    </div>
+      </section>
+    </>
   );
 }

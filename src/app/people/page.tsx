@@ -1,9 +1,11 @@
 import Image from 'next/image';
+import type { Metadata } from 'next';
 import team from "@/data/team.json"
 
-export const metadata = {
-  title: 'People - Rutgers Economics Labs',
+export const metadata: Metadata = {
+  title: 'People',
   description: 'Meet the team behind Rutgers Economics Labs.',
+  alternates: { canonical: '/people' },
 };
 
 const orgLogos: Record<string, string> = {
@@ -52,7 +54,7 @@ function TeamMemberCard({ member, section }: { member: any; section: string }) {
         <div className="aspect-w-1 aspect-h-1 mb-4">
           <Image src={`/${member.image}`} alt={member.name} width={128} height={128} className={`${imageClass} rounded-lg object-cover`} />
         </div>
-        <h5 className={`text-xl font-semibold text-[var(--text-primary)] mb-2 ${textClass}`}>{member.name}</h5>
+        <h3 className={`text-xl font-semibold text-[var(--text-primary)] mb-2 ${textClass}`}>{member.name}</h3>
         <p className={`text-red-600 font-medium mb-4 ${textClass}`}>{member.position}</p>
         {!isMember && !isAlumni && <p className={`text-[var(--text-secondary)] ${textClass} mb-2`}>{member.description}</p>}
         {orgLogosSection}
@@ -67,14 +69,14 @@ export default async function PeoplePage() {
     <div className="py-20 bg-[var(--bg-secondary)] min-h-[60vh]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h3 className="text-4xl font-bold text-[var(--text-primary)] mb-8">Our Team</h3>
+          <h1 className="text-4xl font-bold text-[var(--text-primary)] mb-8">Our Team</h1>
           <p className="text-xl text-[var(--text-secondary)] max-w-4xl mx-auto">
             Meet the dedicated individuals who make Rutgers Economics Labs possible.
           </p>
         </div>
         {/* Executive Board */}
         <div className="mb-20 text-center">
-          <h4 className="text-2xl font-bold text-[var(--text-primary)] mb-7 text-center">Executive Board</h4>
+          <h2 className="text-2xl font-bold text-[var(--text-primary)] mb-7 text-center">Executive Board</h2>
           <div className="flex flex-wrap justify-center gap-8 text-center">
             {team.executiveBoard.map((member: any) => (
               <TeamMemberCard key={member.name} member={member} section="executive" />
@@ -83,7 +85,7 @@ export default async function PeoplePage() {
         </div>
         {/* Team Leads */}
         <div className="mb-20 text-center">
-          <h4 className="text-2xl font-bold text-[var(--text-primary)] mb-12 text-center">Team Leads</h4>
+          <h2 className="text-2xl font-bold text-[var(--text-primary)] mb-12 text-center">Team Leads</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 justify-items-center text-center">
             {team.teamLeads.map((member: any) => (
               <TeamMemberCard key={member.name} member={member} section="leads" />
@@ -92,7 +94,7 @@ export default async function PeoplePage() {
         </div>
         {/* Members */}
         <div className="mb-20 text-center">
-          <h4 className="text-2xl font-bold text-[var(--text-primary)] mb-12 text-center">Members</h4>
+          <h2 className="text-2xl font-bold text-[var(--text-primary)] mb-12 text-center">Members</h2>
           <div className="flex flex-wrap justify-center gap-8 text-center">
             {team.members.map((member: any) => (
               <TeamMemberCard key={member.name} member={member} section="members" />
@@ -101,7 +103,7 @@ export default async function PeoplePage() {
         </div>
         {/* Alumni */}
         <div className="text-center">
-          <h4 className="text-2xl font-bold text-[var(--text-primary)] mb-12 text-center">Alumni</h4>
+          <h2 className="text-2xl font-bold text-[var(--text-primary)] mb-12 text-center">Alumni</h2>
           <div className="flex flex-wrap justify-center gap-8 text-center">
             {team.alumni.map((member: any) => (
               <TeamMemberCard key={member.name} member={member} section="alumni" />
