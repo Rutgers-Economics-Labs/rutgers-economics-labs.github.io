@@ -1,4 +1,7 @@
-const SPREADSHEET_ID = '1oE_lpLA3xXhXZ7H6PRpvReGskOxUfabcI7DyiiMrxOc';
+/**
+ * @OnlyCurrentDoc
+ */
+
 const SHEET_NAME = 'Attendance';
 const MAX_BATCH_SIZE = 100;
 
@@ -23,7 +26,7 @@ function doPost(event) {
     if (!records.length) return jsonResponse({ ok: false, error: 'No records supplied.' });
 
     lock.waitLock(15000);
-    const sheet = SpreadsheetApp.openById(SPREADSHEET_ID).getSheetByName(SHEET_NAME);
+    const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(SHEET_NAME);
     if (!sheet) throw new Error('Attendance sheet not found.');
     const lastRow = sheet.getLastRow();
     const existingIds = new Set(

@@ -6,8 +6,8 @@ import type { CheckInEvent, Club, Scan } from './types';
 export const ATTENDANCE_SHEET_URL =
   'https://docs.google.com/spreadsheets/d/1oE_lpLA3xXhXZ7H6PRpvReGskOxUfabcI7DyiiMrxOc/edit';
 
-// Replaced with the deployed Apps Script web-app URL during release.
-export const DEFAULT_SYNC_URL = '';
+export const DEFAULT_SYNC_URL =
+  'https://script.google.com/macros/s/AKfycbx0YFqt0zFe7eiAPtCR6bNV_ym6FedqgPdEk0QTGDSULgqc3etjaR6-GG-Ui3p3-ZNP/exec';
 
 type SyncRecord = {
   id: string;
