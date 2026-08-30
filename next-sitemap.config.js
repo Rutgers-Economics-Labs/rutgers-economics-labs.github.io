@@ -5,7 +5,7 @@ module.exports = {
   changefreq: 'weekly',
   priority: 0.7,
   sitemapSize: 5000,
-  exclude: ['/404', '/500'],
+  exclude: ['/404', '/500', '/check-in'],
   robotsTxtOptions: {
     additionalSitemaps: [
       'https://rutgerseconomics.org/sitemap.xml',
@@ -14,7 +14,7 @@ module.exports = {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/api/', '/admin/'],
+        disallow: ['/api/', '/admin/', '/check-in'],
       },
     ],
   },
