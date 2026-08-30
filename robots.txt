@@ -3,6 +3,7 @@ User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /admin/
+Disallow: /check-in
 
 # Host
 Host: https://rutgerseconomics.org/
