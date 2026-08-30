@@ -29,7 +29,7 @@ import {
 import { useLiveQuery } from 'dexie-react-hooks';
 import { FormEvent, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { addScan, db, DEFAULT_EVENT_ID, initializeDatabase } from './db';
-import { detectAndFlattenCard, recognizeName } from './scanner';
+import { extractPortraitCard, recognizeName } from './scanner';
 import { ATTENDANCE_SHEET_URL, exportScansCsv, getSyncUrl, saveSyncUrl, syncPendingScans } from './sync';
 import type { OcrResult, Scan } from './types';
 
@@ -68,6 +68,7 @@ export default function ScarletCheckIn() {
   const [scanning, setScanning] = useState(false);
   const [progress, setProgress] = useState(0);
   const [manualName, setManualName] = useState('');
+  const [showCameraManual, setShowCameraManual] = useState(false);
   const [review, setReview] = useState<OcrResult | null>(null);
   const [notice, setNotice] = useState<Notice | null>(null);
   const [search, setSearch] = useState('');
@@ -103,7 +104,9 @@ export default function ScarletCheckIn() {
     const handleOffline = () => setOnline(false);
     window.addEventListener('online', handleOnline);
     window.addEventListener('offline', handleOffline);
-    if ('serviceWorker' in navigator) navigator.serviceWorker.register('/check-in-sw.js').catch(() => undefined);
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/check-in-sw.js').then((registration) => registration.update()).catch(() => undefined);
+    }
     return () => {
       window.removeEventListener('online', handleOnline);
       window.removeEventListener('offline', handleOffline);
@@ -137,6 +140,7 @@ export default function ScarletCheckIn() {
         await videoRef.current.play();
       }
       setCameraOn(true);
+      setShowCameraManual(false);
     } catch (error) {
       console.error('Camera could not start:', error);
       setCameraError('Camera access is unavailable. You can still check people in by name below.');
@@ -149,6 +153,7 @@ export default function ScarletCheckIn() {
     streamRef.current = null;
     if (videoRef.current) videoRef.current.srcObject = null;
     setCameraOn(false);
+    setShowCameraManual(false);
   }
 
   async function saveCheckIn(name: string, confidence: number, source: Scan['source']) {
@@ -165,6 +170,7 @@ export default function ScarletCheckIn() {
     setNotice({ tone: 'success', title: `Welcome, ${result.scan?.name}`, detail: online ? 'Saved on this device and queued for Google Sheets.' : 'Saved safely on this device. It will sync when you are online.' });
     setReview(null);
     setManualName('');
+    setShowCameraManual(false);
     if (online && syncUrl) syncPendingScans().catch(() => undefined);
   }
 
@@ -181,15 +187,17 @@ export default function ScarletCheckIn() {
       sourceCanvas.width = video.videoWidth;
       sourceCanvas.height = video.videoHeight;
       sourceCanvas.getContext('2d', { willReadFrequently: true })?.drawImage(video, 0, 0);
-      const found = await detectAndFlattenCard(sourceCanvas, cardCanvas);
-      if (!found) {
-        setNotice({ tone: 'warning', title: 'Card not found', detail: 'Center the ID inside the guide, reduce glare, and try again.' });
-        return;
-      }
+      const viewport = video.getBoundingClientRect();
+      await extractPortraitCard(sourceCanvas, cardCanvas, {
+        viewportWidth: viewport.width,
+        viewportHeight: viewport.height,
+        guideHeightRatio: viewport.width < 640 ? 0.58 : 0.72,
+      });
       setProgress(0.2);
       const result = await recognizeName(cardCanvas, (value) => setProgress(0.2 + value * 0.8));
       if (!result.name) {
-        setNotice({ tone: 'warning', title: 'Name could not be read', detail: 'Try again in brighter light, or use manual check-in.' });
+        setNotice({ tone: 'warning', title: 'Name could not be read', detail: 'Hold the vertical ID steady, reduce glare, or type the name.' });
+        setShowCameraManual(true);
       } else if (result.confidence >= 82) {
         await saveCheckIn(result.name, result.confidence, 'ocr');
       } else {
@@ -201,8 +209,12 @@ export default function ScarletCheckIn() {
     } finally {
       setScanning(false);
       setProgress(0);
-      const context = sourceCanvas.getContext('2d');
-      context?.clearRect(0, 0, sourceCanvas.width, sourceCanvas.height);
+      sourceCanvas.getContext('2d')?.clearRect(0, 0, sourceCanvas.width, sourceCanvas.height);
+      cardCanvas.getContext('2d')?.clearRect(0, 0, cardCanvas.width, cardCanvas.height);
+      sourceCanvas.width = 1;
+      sourceCanvas.height = 1;
+      cardCanvas.width = 1;
+      cardCanvas.height = 1;
     }
   }
 
@@ -331,7 +343,7 @@ export default function ScarletCheckIn() {
             </div>
           </section>
 
-          {notice && (
+          {notice && !cameraOn && (
             <div role="status" className={`mb-5 flex items-start gap-3 rounded-2xl border p-4 ${notice.tone === 'success' ? 'border-emerald-200 bg-emerald-50 text-emerald-950' : notice.tone === 'warning' ? 'border-amber-200 bg-amber-50 text-amber-950' : 'border-red-200 bg-red-50 text-red-950'}`}>
               {notice.tone === 'success' ? <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" /> : notice.tone === 'warning' ? <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-amber-600" /> : <CircleOff className="mt-0.5 h-5 w-5 shrink-0 text-red-600" />}
               <div className="min-w-0"><p className="font-bold">{notice.title}</p>{notice.detail && <p className="mt-0.5 text-sm opacity-70">{notice.detail}</p>}</div>
@@ -341,8 +353,8 @@ export default function ScarletCheckIn() {
 
           {activeTab === 'scan' && (
             <div className="grid gap-5 xl:grid-cols-[minmax(0,1.55fr)_minmax(320px,.75fr)]">
-              <section className="overflow-hidden rounded-[28px] bg-[#171717] shadow-xl shadow-black/10">
-                <div className="relative aspect-[4/3] min-h-[390px] bg-[radial-gradient(circle_at_50%_30%,#444,#161616_65%)] sm:aspect-video">
+              <section className={`overflow-hidden bg-[#171717] shadow-xl shadow-black/10 ${cameraOn ? 'max-sm:fixed max-sm:inset-0 max-sm:z-[80] max-sm:rounded-none' : 'rounded-[28px]'}`}>
+                <div className={`relative bg-[radial-gradient(circle_at_50%_30%,#444,#161616_65%)] ${cameraOn ? 'h-[100dvh] min-h-0 sm:aspect-video sm:h-auto sm:min-h-[390px]' : 'aspect-[4/3] min-h-[390px] sm:aspect-video'}`}>
                   <video ref={videoRef} playsInline muted className={`h-full w-full object-cover ${cameraOn ? 'block' : 'hidden'}`} />
                   {!cameraOn && (
                     <div className="absolute inset-0 grid place-items-center p-8 text-center text-white">
@@ -356,13 +368,38 @@ export default function ScarletCheckIn() {
                   )}
                   {cameraOn && (
                     <>
-                      <div className="pointer-events-none absolute inset-[12%] rounded-[26px] border-2 border-white/80 shadow-[0_0_0_999px_rgba(0,0,0,.35)]">
-                        <span className="absolute left-1/2 top-3 -translate-x-1/2 whitespace-nowrap rounded-full bg-black/55 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur">Align Rutgers ID inside frame</span>
+                      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[58%] aspect-[0.63] -translate-x-1/2 -translate-y-1/2 rounded-[24px] border-2 border-white/90 shadow-[0_0_0_999px_rgba(0,0,0,.42)] sm:h-[72%] sm:rounded-[26px]">
+                        <span className="absolute left-1/2 top-3 -translate-x-1/2 whitespace-nowrap rounded-full bg-black/60 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur">Hold ID vertically</span>
+                        <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap text-[11px] font-medium text-white/75">Tilt slightly if there is glare</span>
                       </div>
-                      <div className="absolute bottom-5 left-1/2 flex -translate-x-1/2 items-center gap-2">
-                        <button onClick={scanCard} disabled={scanning} className="flex min-w-40 items-center justify-center gap-2 rounded-2xl bg-[#cc0033] px-6 py-3.5 text-sm font-bold text-white shadow-lg transition hover:bg-[#b0002c] disabled:opacity-70">
+                      {notice && (
+                        <div role="status" className={`absolute left-3 right-3 top-[max(1rem,env(safe-area-inset-top))] z-20 flex items-start gap-2 rounded-2xl p-3 text-sm shadow-xl backdrop-blur sm:left-5 sm:right-5 ${notice.tone === 'success' ? 'bg-emerald-950/90 text-white' : notice.tone === 'warning' ? 'bg-amber-50/95 text-amber-950' : 'bg-red-950/90 text-white'}`}>
+                          {notice.tone === 'success' ? <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-emerald-300" /> : <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0" />}
+                          <div><p className="font-bold">{notice.title}</p>{notice.detail && <p className="mt-0.5 text-xs opacity-75">{notice.detail}</p>}</div>
+                          <button onClick={() => setNotice(null)} className="ml-auto p-1 opacity-70" aria-label="Dismiss"><X className="h-4 w-4" /></button>
+                        </div>
+                      )}
+                      {(showCameraManual || review) && (
+                        <div className="absolute bottom-[calc(5.75rem+env(safe-area-inset-bottom))] left-3 right-3 z-20 rounded-3xl bg-white p-4 text-[#171717] shadow-2xl sm:hidden">
+                          {review ? (
+                            <>
+                              <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#cc0033]">Check the detected name</p>
+                              <input value={review.name} onChange={(event) => setReview({ ...review, name: event.target.value })} autoFocus className="mt-3 w-full rounded-xl border border-black/10 bg-[#f7f7f4] px-4 py-3 text-base font-bold outline-none focus:border-[#cc0033]" aria-label="Review detected name" />
+                              <div className="mt-3 flex gap-2"><button onClick={() => saveCheckIn(review.name, review.confidence, 'ocr')} className="flex-1 rounded-xl bg-[#cc0033] px-4 py-3 text-sm font-bold text-white">Confirm</button><button onClick={() => setReview(null)} className="rounded-xl border border-black/10 px-4 py-3 text-sm font-bold">Retake</button></div>
+                            </>
+                          ) : (
+                            <form onSubmit={handleManualSubmit}>
+                              <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#cc0033]">Quick manual check-in</p>
+                              <div className="mt-3 flex gap-2"><input value={manualName} onChange={(event) => setManualName(event.target.value)} autoFocus placeholder="Student full name" autoComplete="off" className="min-w-0 flex-1 rounded-xl border border-black/10 bg-[#f7f7f4] px-4 py-3 text-base outline-none focus:border-[#cc0033]" /><button disabled={!manualName.trim()} className="rounded-xl bg-[#171717] px-4 text-sm font-bold text-white disabled:opacity-35">Check in</button></div>
+                            </form>
+                          )}
+                        </div>
+                      )}
+                      <div className="absolute bottom-[max(1rem,env(safe-area-inset-bottom))] left-1/2 z-20 flex -translate-x-1/2 items-center gap-2">
+                        <button onClick={scanCard} disabled={scanning} className="flex min-w-36 items-center justify-center gap-2 rounded-2xl bg-[#cc0033] px-5 py-3.5 text-sm font-bold text-white shadow-lg transition hover:bg-[#b0002c] disabled:opacity-70 sm:min-w-40 sm:px-6">
                           {scanning ? <LoaderCircle className="h-5 w-5 animate-spin" /> : <ScanLine className="h-5 w-5" />}{scanning ? 'Reading locally…' : 'Scan ID'}
                         </button>
+                        <button onClick={() => { setShowCameraManual((value) => !value); setReview(null); }} className="rounded-2xl bg-white/90 p-3.5 text-[#171717] shadow-lg backdrop-blur hover:bg-white sm:hidden" aria-label="Type a name"><UserRound className="h-5 w-5" /></button>
                         <button onClick={stopCamera} className="rounded-2xl bg-black/60 p-3.5 text-white backdrop-blur hover:bg-black/75" aria-label="Turn camera off"><X className="h-5 w-5" /></button>
                       </div>
                     </>
@@ -371,7 +408,7 @@ export default function ScarletCheckIn() {
                 </div>
                 <canvas ref={sourceCanvasRef} className="hidden" aria-hidden="true" />
                 <canvas ref={cardCanvasRef} className="hidden" aria-hidden="true" />
-                <div className="flex flex-wrap items-center justify-between gap-2 px-5 py-3 text-xs text-white/55">
+                <div className={`flex flex-wrap items-center justify-between gap-2 px-5 py-3 text-xs text-white/55 ${cameraOn ? 'max-sm:hidden' : ''}`}>
                   <span className="flex items-center gap-1.5"><ShieldCheck className="h-3.5 w-3.5 text-emerald-400" />Processed privately on this device</span>
                   <span>OpenCV + local OCR</span>
                 </div>

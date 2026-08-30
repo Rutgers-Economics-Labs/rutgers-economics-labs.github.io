@@ -1,4 +1,4 @@
-const CACHE_NAME = 'scarlet-check-in-v1';
+const CACHE_NAME = 'scarlet-check-in-v2';
 const APP_SHELL = [
   '/check-in',
   '/check-in-manifest.webmanifest',
@@ -37,18 +37,15 @@ self.addEventListener('fetch', (event) => {
   const url = new URL(event.request.url);
   if (url.origin !== self.location.origin) return;
 
-  event.respondWith(
-    caches.match(event.request).then((cached) => {
-      const network = fetch(event.request)
-        .then((response) => {
-          if (response.ok) {
-            const copy = response.clone();
-            caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
-          }
-          return response;
-        })
-        .catch(() => cached || (event.request.mode === 'navigate' ? caches.match('/check-in') : undefined));
-      return cached || network;
-    })
-  );
+  const networkAndCache = () => fetch(event.request).then((response) => {
+    if (response.ok) caches.open(CACHE_NAME).then((cache) => cache.put(event.request, response.clone()));
+    return response;
+  });
+
+  if (event.request.mode === 'navigate') {
+    event.respondWith(networkAndCache().catch(() => caches.match(event.request).then((cached) => cached || caches.match('/check-in'))));
+    return;
+  }
+
+  event.respondWith(caches.match(event.request).then((cached) => cached || networkAndCache()));
 });

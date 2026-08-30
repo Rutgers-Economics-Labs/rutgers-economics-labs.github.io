@@ -12,6 +12,7 @@ declare global {
 
 let cvPromise: Promise<Cv> | null = null;
 let workerPromise: Promise<Awaited<ReturnType<typeof import('tesseract.js')['createWorker']>>> | null = null;
+let workerProgress: ((progress: number) => void) | undefined;
 
 async function getCv(): Promise<Cv> {
   if (!cvPromise) {
@@ -36,6 +37,7 @@ async function getCv(): Promise<Cv> {
 }
 
 async function getWorker(onProgress?: (progress: number) => void) {
+  workerProgress = onProgress;
   if (!workerPromise) {
     workerPromise = import('tesseract.js').then(({ createWorker }) =>
       createWorker('eng', 1, {
@@ -43,12 +45,65 @@ async function getWorker(onProgress?: (progress: number) => void) {
         corePath: '/check-in-assets/core',
         langPath: '/check-in-assets/lang',
         logger: (message) => {
-          if (message.status === 'recognizing text') onProgress?.(message.progress || 0);
+          if (message.status === 'recognizing text') workerProgress?.(message.progress || 0);
         },
       }),
     );
   }
   return workerPromise;
+}
+
+type PortraitGuide = {
+  viewportWidth: number;
+  viewportHeight: number;
+  guideHeightRatio: number;
+};
+
+export type CardExtraction = {
+  detectedEdges: boolean;
+  usedGuideFallback: boolean;
+};
+
+function cropVisiblePortraitGuide(source: HTMLCanvasElement, output: HTMLCanvasElement, guide: PortraitGuide) {
+  const sourceAspect = source.width / source.height;
+  const viewportAspect = guide.viewportWidth / guide.viewportHeight;
+  let visibleX = 0;
+  let visibleY = 0;
+  let visibleWidth = source.width;
+  let visibleHeight = source.height;
+
+  // Match the part of the source video that CSS object-cover displays.
+  if (sourceAspect > viewportAspect) {
+    visibleWidth = source.height * viewportAspect;
+    visibleX = (source.width - visibleWidth) / 2;
+  } else if (sourceAspect < viewportAspect) {
+    visibleHeight = source.width / viewportAspect;
+    visibleY = (source.height - visibleHeight) / 2;
+  }
+
+  const cardAspect = 0.63;
+  const padding = 0.12;
+  const guideHeight = visibleHeight * guide.guideHeightRatio;
+  const guideWidth = guideHeight * cardAspect;
+  const cropWidth = Math.min(visibleWidth, guideWidth * (1 + padding * 2));
+  const cropHeight = Math.min(visibleHeight, guideHeight * (1 + padding * 2));
+  const cropX = visibleX + (visibleWidth - cropWidth) / 2;
+  const cropY = visibleY + (visibleHeight - cropHeight) / 2;
+  const scale = Math.min(1, 1000 / cropHeight);
+
+  output.width = Math.max(1, Math.round(cropWidth * scale));
+  output.height = Math.max(1, Math.round(cropHeight * scale));
+  output.getContext('2d', { willReadFrequently: true })?.drawImage(
+    source,
+    cropX,
+    cropY,
+    cropWidth,
+    cropHeight,
+    0,
+    0,
+    output.width,
+    output.height,
+  );
 }
 
 type Point = { x: number; y: number };
@@ -141,6 +196,20 @@ export async function detectAndFlattenCard(source: HTMLCanvasElement, output: HT
   }
 }
 
+export async function extractPortraitCard(source: HTMLCanvasElement, output: HTMLCanvasElement, guide: PortraitGuide): Promise<CardExtraction> {
+  const guidedCrop = document.createElement('canvas');
+  cropVisiblePortraitGuide(source, guidedCrop, guide);
+  const detectedEdges = await detectAndFlattenCard(guidedCrop, output);
+  if (detectedEdges) return { detectedEdges: true, usedGuideFallback: false };
+
+  // Glare and clear card sleeves often hide edges. The framed crop is still a
+  // useful OCR input, so do not fail the scan just because no contour was found.
+  output.width = guidedCrop.width;
+  output.height = guidedCrop.height;
+  output.getContext('2d', { willReadFrequently: true })?.drawImage(guidedCrop, 0, 0);
+  return { detectedEdges: false, usedGuideFallback: true };
+}
+
 const BLOCKED_WORDS = new Set([
   'rutgers', 'university', 'student', 'identification', 'new', 'brunswick', 'camden', 'newark',
   'valid', 'until', 'issued', 'campus', 'scarlet', 'knights', 'rucard', 'library', 'member',
@@ -165,8 +234,39 @@ export function extractLikelyName(rawText: string, confidence: number): OcrResul
   return { name: titleCase, confidence: name ? Math.round(confidence) : 0, rawText };
 }
 
+function prepareOcrCanvas(source: HTMLCanvasElement, degrees: number) {
+  const turns = ((degrees % 360) + 360) % 360;
+  const sideways = turns === 90 || turns === 270;
+  const output = document.createElement('canvas');
+  output.width = sideways ? source.height : source.width;
+  output.height = sideways ? source.width : source.height;
+  const context = output.getContext('2d', { willReadFrequently: true });
+  if (!context) return output;
+  context.save();
+  context.translate(output.width / 2, output.height / 2);
+  context.rotate((turns * Math.PI) / 180);
+  context.filter = 'grayscale(1) contrast(1.45)';
+  context.drawImage(source, -source.width / 2, -source.height / 2);
+  context.restore();
+  return output;
+}
+
 export async function recognizeName(cardCanvas: HTMLCanvasElement, onProgress?: (progress: number) => void) {
-  const worker = await getWorker(onProgress);
-  const { data } = await worker.recognize(cardCanvas, undefined, { text: true });
-  return extractLikelyName(data.text, data.confidence);
+  const rotations = cardCanvas.height >= cardCanvas.width ? [90, 270, 0, 180] : [0, 180, 90, 270];
+  const worker = await getWorker();
+  let best: OcrResult = { name: '', confidence: 0, rawText: '' };
+
+  for (let index = 0; index < rotations.length; index += 1) {
+    workerProgress = (value) => onProgress?.((index + value) / rotations.length);
+    const prepared = prepareOcrCanvas(cardCanvas, rotations[index]);
+    const { data } = await worker.recognize(prepared, undefined, { text: true });
+    const result = extractLikelyName(data.text, data.confidence);
+    const score = (candidate: OcrResult) => (candidate.name ? 100 : 0) + candidate.confidence + Math.min(candidate.name.length, 30);
+    if (score(result) > score(best)) best = result;
+    if (result.name && result.confidence >= 88) break;
+  }
+
+  workerProgress = undefined;
+  onProgress?.(1);
+  return best;
 }
