@@ -10,6 +10,7 @@ const navLinks = [
   { to: '/projects', label: 'Projects' },
   { to: '/resources', label: 'Resources' },
   { to: '/people', label: 'People' },
+  { to: '/club-fair', label: 'Club Fair' },
   { to: '/apply', label: 'Apply' },
 ];
 
@@ -44,7 +45,7 @@ const Header: React.FC = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-2">
+          <div className="hidden lg:flex space-x-2">
             {navLinks.map(link => (
               <Link
                 key={link.to}
@@ -78,8 +79,11 @@ const Header: React.FC = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-white p-2 rounded-lg hover:bg-white/20 transition-all duration-300 group"
+            className="lg:hidden text-white p-2 rounded-lg hover:bg-white/20 transition-all duration-300 group"
             onClick={toggleMobileMenu}
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-navigation"
+            aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
           >
             <div className="relative w-6 h-6">
               <span className={`absolute top-0 left-0 w-full h-0.5 bg-white transform transition-all duration-300 ${
@@ -97,7 +101,7 @@ const Header: React.FC = () => {
       </div>
 
       {/* Mobile Menu */}
-      <div className={`md:hidden transition-all duration-300 ease-in-out ${
+      <div id="mobile-navigation" className={`lg:hidden transition-all duration-300 ease-in-out ${
         isMobileMenuOpen 
           ? 'max-h-96 opacity-100' 
           : 'max-h-0 opacity-0 overflow-hidden'
@@ -143,4 +147,4 @@ const Header: React.FC = () => {
   );
 };
 
-export default Header; 
+export default Header;

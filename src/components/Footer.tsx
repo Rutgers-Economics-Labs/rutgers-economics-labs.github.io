@@ -51,6 +51,7 @@ const Footer = () => (
               { label: 'Research Projects', href: '/projects' },
               { label: 'About Us', href: '/about' },
               { label: 'Join Our Team', href: '/apply' },
+              { label: 'Club Fair Signup', href: '/club-fair' },
               { label: 'Resources', href: '/resources' },
               { label: 'Meet the Team', href: '/people' },
               { label: 'Unsubscribe', href: '/unsubscribe' }
@@ -136,4 +137,4 @@ const Footer = () => (
   </footer>
 );
 
-export default Footer; 
+export default Footer;

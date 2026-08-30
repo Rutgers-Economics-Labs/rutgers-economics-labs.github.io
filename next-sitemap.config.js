@@ -36,7 +36,7 @@ module.exports = {
     }
     
     // Apply and resources pages
-    if (['/apply', '/resources'].includes(path)) {
+    if (['/apply', '/club-fair', '/resources'].includes(path)) {
       priority = 0.8;
       changefreq = 'monthly';
     }
@@ -48,4 +48,4 @@ module.exports = {
       lastmod: new Date().toISOString(),
     };
   },
-}; 
+};
