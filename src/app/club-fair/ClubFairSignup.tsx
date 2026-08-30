@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   ArrowRight,
   AtSign,
@@ -174,8 +175,15 @@ export default function ClubFairSignup() {
 
       <section className="relative mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20 lg:px-8">
         <div className="mb-10 text-center">
-          <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-red-600 text-2xl font-black text-white shadow-lg shadow-red-600/20">
-            REL
+          <div className="mx-auto mb-5 h-20 w-20 overflow-hidden rounded-2xl border border-black/5 bg-[#e5e5e7] shadow-lg shadow-red-600/15">
+            <Image
+              src="/images/REL Logo.JPEG"
+              alt="Rutgers Economics Labs logo"
+              width={80}
+              height={80}
+              priority
+              className="h-full w-full object-cover"
+            />
           </div>
           <p className="mb-3 text-sm font-semibold uppercase tracking-[0.24em] text-red-600">
             Rutgers Economics Labs
