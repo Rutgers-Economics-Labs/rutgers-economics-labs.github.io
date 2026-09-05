@@ -1,0 +1,19 @@
+# Rutgers Economics Labs
+
+> Rutgers Economics Labs (REL) is a student-driven technical research group at Rutgers University providing pro bono economic analysis for government agencies and public policy organizations.
+
+## Explore REL
+
+- [About REL](https://www.rutgerseconomics.org/about): Research approach and student participation.
+- [Work with REL](https://www.rutgerseconomics.org/work-with-rel): Project fit, partner responsibilities, possible outputs, and contact information.
+- [Student experience](https://www.rutgerseconomics.org/student-experience): Research workflow and examples linked to public GitHub repositories.
+- [Projects](https://www.rutgerseconomics.org/projects): Project descriptions and publication availability.
+- [People](https://www.rutgerseconomics.org/people): Researchers, leadership, and alumni.
+- [Apply](https://www.rutgerseconomics.org/apply): Current application information.
+- [Learning resources](https://www.rutgerseconomics.org/resources): Research and data-analysis resources.
+
+## Context
+
+Project completion does not imply that a paper or dataset is public. Member and alumni workplaces do not imply sponsorship or partnership with REL. Public repository examples are not guaranteed student assignments. See the linked pages for current details and limitations.
+
+Contact: rel@rutgerseconomics.org
