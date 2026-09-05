@@ -1,0 +1,19 @@
+{
+  "name": "Scarlet Check-In",
+  "short_name": "Check-In",
+  "description": "Private, offline-first event check-in for Rutgers Economics Labs.",
+  "start_url": "/check-in",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f7f7f4",
+  "theme_color": "#cc0033",
+  "icons": [
+    {
+      "src": "/images/REL Logo.JPEG",
+      "sizes": "500x500",
+      "type": "image/jpeg",
+      "purpose": "any"
+    }
+  ]
+}
