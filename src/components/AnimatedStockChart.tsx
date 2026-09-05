@@ -1,4 +1,9 @@
 import { useEffect, useRef } from "react";
+import nj from "@/data/nj-counties.json";
+
+// Local equirectangular projection corrects longitude scale at NJ's latitude.
+const projectNJ = ([lon, lat]: number[]) => [(lon + 75.6) * .766, 41.4 - lat];
+const countyPaths = nj.counties.map(county => county.rings.map(ring => ring.map(projectNJ)));
 
 // Decorative, deterministic sample data; not live market data.
 const trend = (x: number) => .76 - .48 * x + Math.sin(x * 16) * .11 + Math.sin(x * 53) * .025;
@@ -15,6 +20,7 @@ export default function AnimatedStockChart() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
     const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    // Stock line → correlation → bars → donut → New Jersey.
     let width = 0, height = 0, elapsed = 0, previous = 0, frame = 0;
     let visible = true;
     const smooth = (x: number) => { const t = Math.max(0, Math.min(1, x)); return t * t * (3 - 2 * t); };
@@ -23,16 +29,16 @@ export default function AnimatedStockChart() {
       if (!ctx) return;
       ctx.clearRect(0, 0, width, height);
       const seconds = motion.matches ? 9 : elapsed / 1000;
-      const scene = Math.floor(seconds / 10) % 4;
+      const scene = Math.floor(seconds / 10) % 5;
       const blend = smooth((seconds % 10 - 8) / 2);
-      const weights = [0, 0, 0, 0];
+      const weights = [0, 0, 0, 0, 0];
       weights[scene] = 1 - blend;
-      weights[(scene + 1) % 4] = blend;
-      if (motion.matches) weights.splice(0, 4, 1, 0, 0, 0);
-      const [trendAlpha, correlation, bars, donut] = weights;
+      weights[(scene + 1) % 5] = blend;
+      if (motion.matches) weights.splice(0, 5, 1, 0, 0, 0, 0);
+      const [trendAlpha, correlation, bars, donut, map] = weights;
       // Start the next trace during its fade-in, then append points without
       // moving or resampling any completed segment.
-      const trendTime = (seconds + 2) % 40;
+      const trendTime = (seconds + 2) % 50;
       const progress = motion.matches ? .82 : .06 + .82 * Math.min(trendTime / 12, 1);
       const samplePosition = progress * 100;
       const completed = Math.floor(samplePosition);
@@ -91,7 +97,7 @@ export default function AnimatedStockChart() {
       ctx.beginPath(); ctx.arc(tipX, tipY, 3, 0, Math.PI * 2); ctx.fill();
 
       // Correlation begins fading in at second 8: observations first, fit second.
-      const correlationTime = (seconds - 8 + 40) % 40;
+      const correlationTime = (seconds - 8 + 50) % 50;
       const fitProgress = smooth((correlationTime - 3) / 2.5);
       if (fitProgress > 0) {
         line(.32 * correlation, "#f5bd96", [[0, y(.85)], [width * fitProgress, y(.85 - .7 * fitProgress)]]);
@@ -137,6 +143,34 @@ export default function AnimatedStockChart() {
           ctx.stroke();
           angle += arc;
         });
+      }
+      if (map > 0) {
+        const scale = Math.min(height * .82 / 2.5, width * .8 / 1.6);
+        const offsetX = width / 2 - .6653 * scale;
+        const offsetY = height / 2 - 1.2556 * scale;
+        ctx.save();
+        ctx.translate(offsetX, offsetY);
+        ctx.scale(scale, scale);
+        countyPaths.forEach((rings, index) => {
+          const colorPhase = (seconds * .3 + index * .67) % 4;
+          const palette = [[239,68,68], [232,188,100], [94,168,161], [151,122,184]];
+          const from = palette[Math.floor(colorPhase)];
+          const to = palette[(Math.floor(colorPhase) + 1) % palette.length];
+          const mix = smooth(colorPhase % 1);
+          ctx.beginPath();
+          rings.forEach(ring => {
+            ring.forEach(([x, y], i) => i ? ctx.lineTo(x, y) : ctx.moveTo(x, y));
+            ctx.closePath();
+          });
+          ctx.globalAlpha = map * .26;
+          ctx.fillStyle = `rgb(${from.map((channel, i) => Math.round(channel + (to[i] - channel) * mix)).join(",")})`;
+          ctx.fill("evenodd");
+          ctx.globalAlpha = map * .5;
+          ctx.strokeStyle = "#fca5a5";
+          ctx.lineWidth = 1 / scale;
+          ctx.stroke();
+        });
+        ctx.restore();
       }
       ctx.globalAlpha = 1;
     }

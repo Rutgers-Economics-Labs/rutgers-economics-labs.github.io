@@ -1,4 +1,6 @@
 [
+  { "organization": "U.S. Bureau of Labor Statistics", "logo": "/images/employers/bureau-of-labor-statistics.svg" },
+  { "organization": "Wells Fargo", "logo": "/images/employers/wells-fargo.png" },
   { "organization": "Federal Reserve Bank of New York", "logo": "/images/employers/federal-reserve-bank-of-new-york.png" },
   { "organization": "U.S. Department of Housing and Urban Development", "logo": "/images/employers/hud.svg" },
   { "organization": "Amazon", "logo": "/images/employers/amazon.svg" },

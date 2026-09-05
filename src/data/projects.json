@@ -6,8 +6,8 @@
     "logoAlt": "REL Logo",
     "tags": [
       {
-        "label": "In Progress",
-        "color": "yellow"
+        "label": "Completed",
+        "color": "green"
       },
       {
         "label": "Spring 2026",
@@ -18,7 +18,7 @@
         "color": "blue"
       }
     ],
-    "paperStatus": "in_progress",
+    "paperStatus": "completed",
     "isPublic": false,
     "lead": "Ani Tiwary"
   },
@@ -29,8 +29,8 @@
     "logoAlt": "NJDEP Logo",
     "tags": [
       {
-        "label": "In Progress",
-        "color": "yellow"
+        "label": "Completed",
+        "color": "green"
       },
       {
         "label": "Spring 2026",
@@ -41,7 +41,7 @@
         "color": "gray"
       }
     ],
-    "paperStatus": "in_progress",
+    "paperStatus": "completed",
     "isPublic": false,
     "lead": "Aryan and Rahul"
   },
@@ -52,8 +52,8 @@
     "logoAlt": "NJBPU Logo",
     "tags": [
       {
-        "label": "In Progress",
-        "color": "yellow"
+        "label": "Completed",
+        "color": "green"
       },
       {
         "label": "Spring 2026",
@@ -64,7 +64,7 @@
         "color": "gray"
       }
     ],
-    "paperStatus": "in_progress",
+    "paperStatus": "completed",
     "isPublic": false,
     "lead": "Gokul"
   },
@@ -75,8 +75,8 @@
     "logoAlt": "HUD Logo",
     "tags": [
       {
-        "label": "In Progress",
-        "color": "yellow"
+        "label": "Completed",
+        "color": "green"
       },
       {
         "label": "Spring 2026",
@@ -87,7 +87,7 @@
         "color": "gray"
       }
     ],
-    "paperStatus": "in_progress",
+    "paperStatus": "completed",
     "isPublic": false,
     "lead": "Alex"
   },
