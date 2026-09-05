@@ -9,7 +9,7 @@
     "lint": "next lint",
     "deploy": "next build && touch ./out/.nojekyll && cp CNAME ./out/ && gh-pages -d out --nojekyll",
     "sitemap": "next-sitemap",
-    "postbuild": "next-sitemap"
+    "postbuild": "next-sitemap && node scripts/check-seo.mjs"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.7.2",

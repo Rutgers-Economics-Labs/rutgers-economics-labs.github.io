@@ -50,6 +50,8 @@ const Footer = () => (
             {[
               { label: 'Research Projects', href: '/projects' },
               { label: 'About Us', href: '/about' },
+              { label: 'Work with REL', href: '/work-with-rel' },
+              { label: 'Student Experience', href: '/student-experience' },
               { label: 'Join Our Team', href: '/apply' },
               { label: 'Club Fair Signup', href: '/club-fair' },
               { label: 'Resources', href: '/resources' },

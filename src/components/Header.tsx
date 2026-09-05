@@ -10,7 +10,6 @@ const navLinks = [
   { to: '/projects', label: 'Projects' },
   { to: '/resources', label: 'Resources' },
   { to: '/people', label: 'People' },
-  { to: '/club-fair', label: 'Club Fair' },
   { to: '/apply', label: 'Apply' },
 ];
 
@@ -38,9 +37,9 @@ const Header: React.FC = () => {
                 />
                 <div className="absolute inset-0 rounded-full bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
-              <h1 className="text-white text-xl font-bold transition-all duration-300 group-hover:text-red-100 group-hover:scale-105">
+              <span className="text-white text-xl font-bold transition-all duration-300 group-hover:text-red-100 group-hover:scale-105">
                 Rutgers Economics Labs
-              </h1>
+              </span>
             </Link>
           </div>
 

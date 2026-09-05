@@ -81,7 +81,7 @@ export default function UnsubscribePage() {
     <div className="py-20 bg-white">
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h3 className="text-4xl font-bold text-gray-900 mb-8">Unsubscribe</h3>
+          <h1 className="text-4xl font-bold text-gray-900 mb-8">Unsubscribe</h1>
           <p className="text-xl text-gray-600 mb-4">
             We're sorry to see you go!
           </p>

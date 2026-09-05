@@ -1,17 +1,15 @@
+import { pageMetadata } from '@/lib/metadata';
 import { Database, FileSpreadsheet } from 'lucide-react';
 import { BookOpen, Code } from 'lucide-react';
 
-export const metadata = {
-  title: 'Resources - Rutgers Economics Labs',
-  description: 'Learning resources for economic analysis, data science, and research methodologies.',
-};
+export const metadata = pageMetadata("Learning resources", "Explore resources for economic analysis, Python, R, public data, and research methods.", "/resources");
 
 export default function ResourcesPage() {
   return (
     <div className="py-20 bg-[var(--bg-secondary)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h3 className="text-4xl font-bold text-[var(--text-primary)] mb-8 ">Learning Resources</h3>
+          <h1 className="text-4xl font-bold text-[var(--text-primary)] mb-8 ">Learning Resources</h1>
           <p className="text-xl text-[var(--text-secondary)] max-w-4xl mx-auto ">
             Explore our curated collection of resources to learn more about economic analysis, data science, and research methodologies.
           </p>

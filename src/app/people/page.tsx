@@ -1,10 +1,8 @@
+import { pageMetadata } from '@/lib/metadata';
 import Image from 'next/image';
 import team from "@/data/team.json"
 
-export const metadata = {
-  title: 'People - Rutgers Economics Labs',
-  description: 'Meet the team behind Rutgers Economics Labs.',
-};
+export const metadata = pageMetadata("Our team", "Meet Rutgers Economics Labs student researchers, team leads, executive board, and alumni.", "/people");
 
 const orgLogos: Record<string, string> = {
   NJEDA: '/images/logo/njeda.jpg',
@@ -67,7 +65,7 @@ export default async function PeoplePage() {
     <div className="py-20 bg-[var(--bg-secondary)] min-h-[60vh]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h3 className="text-4xl font-bold text-[var(--text-primary)] mb-8">Our Team</h3>
+          <h1 className="text-4xl font-bold text-[var(--text-primary)] mb-8">Our Team</h1>
           <p className="text-xl text-[var(--text-secondary)] max-w-4xl mx-auto">
             Meet the dedicated individuals who make Rutgers Economics Labs possible.
           </p>

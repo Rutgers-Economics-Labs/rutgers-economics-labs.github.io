@@ -1,10 +1,8 @@
+import { pageMetadata } from '@/lib/metadata';
 import projects from '../../data/projects.json';
 import Image from 'next/image';
 
-export const metadata = {
-  title: 'Projects - Rutgers Economics Labs',
-  description: 'Projects by Rutgers Economics Labs.',
-};
+export const metadata = pageMetadata("Research projects", "Explore REL research in climate risk, housing, labor projections, energy markets, and public policy.", "/projects");
 
 export default function ProjectsPage() {
 
@@ -12,7 +10,7 @@ export default function ProjectsPage() {
     <div className="py-20 bg-[var(--bg-primary)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h3 className="text-4xl font-bold text-[var(--text-primary)] mb-8">Projects</h3>
+          <h1 className="text-4xl font-bold text-[var(--text-primary)] mb-8">Projects</h1>
         </div>
         <div className="space-y-8">
           {projects.map((project, idx) => (

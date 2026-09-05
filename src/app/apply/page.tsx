@@ -150,7 +150,8 @@ export default function ApplyPage() {
     <div className="py-20 bg-[var(--bg-secondary)]">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h3 className="text-4xl font-bold text-[var(--text-primary)] mb-8">Apply Now!</h3>
+          <h1 className="text-4xl font-bold text-[var(--text-primary)] mb-8">Apply to REL</h1>
+          <a href="/student-experience" className="research-text-link">Explore the student research experience →</a>
 
           {applicationsClosed ? (
             <>

@@ -1,31 +1,7 @@
-import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/metadata';
 import ClubFairSignup from './ClubFairSignup';
 
-export const metadata: Metadata = {
-  title: 'Club Fair | Rutgers Economics Labs',
-  description:
-    'Meet Rutgers Economics Labs, join the REL mailing list, and explore student-led economic research at Rutgers University.',
-  alternates: {
-    canonical: '/club-fair',
-  },
-  openGraph: {
-    title: 'Meet Rutgers Economics Labs',
-    description:
-      'Join the REL mailing list and find research projects, applications, and ways to connect.',
-    url: 'https://www.rutgerseconomics.org/club-fair',
-    siteName: 'Rutgers Economics Labs',
-    images: [
-      {
-        url: '/images/og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Rutgers Economics Labs',
-      },
-    ],
-    locale: 'en_US',
-    type: 'website',
-  },
-};
+export const metadata = pageMetadata("Club Fair", "Meet Rutgers Economics Labs and join the mailing list for research opportunities.", "/club-fair");
 
 export default function ClubFairPage() {
   return <ClubFairSignup />;

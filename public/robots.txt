@@ -6,7 +6,7 @@ Disallow: /admin/
 Disallow: /check-in
 
 # Host
-Host: https://rutgerseconomics.org/
+Host: https://www.rutgerseconomics.org
 
 # Sitemaps
-Sitemap: https://rutgerseconomics.org/sitemap.xml
+Sitemap: https://www.rutgerseconomics.org/sitemap.xml
