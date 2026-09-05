@@ -1,116 +1,181 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 
-const SVG_WIDTH = 1000;
-const SVG_HEIGHT = 400;
-const MAX_INDEX = 125;
-const STEP = 8;
+// Decorative, deterministic sample data; not live market data.
+const trend = (x: number) => .76 - .48 * x + Math.sin(x * 16) * .11 + Math.sin(x * 53) * .025;
+const stockSamples = Array.from({ length: 101 }, (_, i) =>
+  trend(i / 100) + Math.sin(i * 7.31) * .018
+);
 
-function generateNextStockPoint(previousPrice: number, index: number) {
-  const trendComponent = Math.sin(index * 0.05) * 25;
-  const volatilityComponent = (Math.random() - 0.5) * 15;
-  const meanReversion = (200 - previousPrice) * 0.02;
-  let newPrice = previousPrice + trendComponent * 0.2 + volatilityComponent + meanReversion;
-  newPrice = Math.max(80, Math.min(320, newPrice));
-  return newPrice;
-}
-
-function generatePredictionFromCurrent(currentPrice: number, startX: number, currentIndex: number) {
-  const points = [];
-  let price = currentPrice;
-  for (let i = 1; i <= 30; i++) {
-    const x = startX + i * STEP;
-    const trend = Math.sin((currentIndex + i) * 0.05) * 20;
-    const uncertainty = (Math.random() - 0.5) * 8;
-    price += trend * 0.15 + uncertainty;
-    price = Math.max(80, Math.min(320, price));
-    points.push({ x, y: price });
-    if (x > SVG_WIDTH) break;
-  }
-  return points;
-}
-
-function pointsToPath(points: { x: number; y: number }[]) {
-  if (points.length === 0) return '';
-  let path = `M${points[0].x},${points[0].y}`;
-  for (let i = 1; i < points.length; i++) {
-    path += ` L${points[i].x},${points[i].y}`;
-  }
-  return path;
-}
-
-const AnimatedStockChart: React.FC = () => {
-  const stockPathRef = useRef<SVGPathElement>(null);
-  const predictionPathRef = useRef<SVGPathElement>(null);
-  const currentPointRef = useRef<SVGCircleElement>(null);
-  const animationRef = useRef<number | null>(null);
+export default function AnimatedStockChart() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    let stockData: { x: number; y: number }[] = [];
-    let currentIndex = 0;
-    let animationRunning = false;
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let width = 0, height = 0, elapsed = 0, previous = 0, frame = 0;
+    let visible = true;
+    const smooth = (x: number) => { const t = Math.max(0, Math.min(1, x)); return t * t * (3 - 2 * t); };
 
-    function animateChart() {
-      if (animationRunning) return;
-      animationRunning = true;
-      if (
-        currentIndex >= MAX_INDEX ||
-        (stockData.length > 0 && stockData[stockData.length - 1].x >= SVG_WIDTH)
-      ) {
-        stockData = [];
-        currentIndex = 0;
-        const initialPrice = 150 + (Math.random() - 0.5) * 100;
-        stockData.push({ x: 0, y: initialPrice });
+    function draw() {
+      if (!ctx) return;
+      ctx.clearRect(0, 0, width, height);
+      const seconds = motion.matches ? 9 : elapsed / 1000;
+      const scene = Math.floor(seconds / 10) % 4;
+      const blend = smooth((seconds % 10 - 8) / 2);
+      const weights = [0, 0, 0, 0];
+      weights[scene] = 1 - blend;
+      weights[(scene + 1) % 4] = blend;
+      if (motion.matches) weights.splice(0, 4, 1, 0, 0, 0);
+      const [trendAlpha, correlation, bars, donut] = weights;
+      // Start the next trace during its fade-in, then append points without
+      // moving or resampling any completed segment.
+      const trendTime = (seconds + 2) % 40;
+      const progress = motion.matches ? .82 : .06 + .82 * Math.min(trendTime / 12, 1);
+      const samplePosition = progress * 100;
+      const completed = Math.floor(samplePosition);
+      const fraction = samplePosition - completed;
+      const endY = stockSamples[completed] +
+        (stockSamples[Math.min(completed + 1, 100)] - stockSamples[completed]) * fraction;
+      const y = (value: number) => height * (.1 + value * .8);
+      const line = (alpha: number, color: string, points: number[][], dash: number[] = []) => {
+        ctx.globalAlpha = alpha;
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 1.8;
+        ctx.setLineDash(dash);
+        ctx.beginPath();
+        points.forEach(([px, py], i) => i ? ctx.lineTo(px, py) : ctx.moveTo(px, py));
+        ctx.stroke();
+        ctx.setLineDash([]);
+      };
+
+      // A fine grid anchors both views without competing with the copy.
+      for (let row = 1; row < 6; row++) {
+        line(.035, "#ffffff", [[0, height * row / 6], [width, height * row / 6]]);
       }
-      function updateFrame() {
-        if (!animationRunning) return;
-        if (currentIndex < MAX_INDEX) {
-          const x = currentIndex * STEP;
-          const lastPrice = stockData.length > 0 ? stockData[stockData.length - 1].y : 200;
-          const newPrice = generateNextStockPoint(lastPrice, currentIndex);
-          stockData.push({ x, y: newPrice });
-          currentIndex++;
-          // Update stock path
-          if (stockPathRef.current) {
-            stockPathRef.current.setAttribute('d', pointsToPath(stockData));
-          }
-          // Update current point
-          const currentStockPoint = stockData[stockData.length - 1];
-          if (currentPointRef.current) {
-            currentPointRef.current.setAttribute('cx', String(currentStockPoint.x));
-            currentPointRef.current.setAttribute('cy', String(currentStockPoint.y));
-          }
-          // Update prediction
-          const predictionData = generatePredictionFromCurrent(currentStockPoint.y, currentStockPoint.x, currentIndex);
-          if (predictionPathRef.current) {
-            predictionPathRef.current.setAttribute('d', pointsToPath(predictionData));
-          }
-        }
-        if (currentIndex < MAX_INDEX) {
-          animationRef.current = window.setTimeout(() => requestAnimationFrame(updateFrame), 100);
-        } else {
-          setTimeout(() => {
-            animationRunning = false;
-            animateChart();
-          }, 200);
+
+      const points = stockSamples.slice(0, completed + 1).map((value, i) =>
+        [i / 100 * width, y(value)]
+      );
+      points.push([progress * width, y(endY)]);
+      line(.55 * trendAlpha, "#ef4444", points);
+      // Reforecast from the fixed tip: changing slope and small angular
+      // revisions affect only the projection, never the observed history.
+      const forecastSteps = 24;
+      const forecastSlope = Math.sin(seconds * 1.15) * .55;
+      const future = Array.from({ length: forecastSteps + 1 }, (_, i) => {
+        const t = i / forecastSteps;
+        const x = progress + t * .25;
+        const revision = (
+          Math.sin(i * 1.7 + seconds * 1.8) * .018 +
+          Math.sin(i * .55 - seconds * 1.3) * .03
+        ) * t;
+        return [x * width, y(endY + t * .25 * forecastSlope + revision)];
+      });
+      const fanWidth = height * (.055 + .015 * Math.sin(seconds * .8));
+      ctx.globalAlpha = .07 * trendAlpha;
+      ctx.fillStyle = "#fca5a5";
+      ctx.beginPath();
+      future.forEach(([px, py], i) => ctx.lineTo(px, py - i / forecastSteps * fanWidth));
+      [...future].reverse().forEach(([px, py], i) => ctx.lineTo(px, py + (forecastSteps - i) / forecastSteps * fanWidth));
+      ctx.closePath();
+      ctx.fill();
+      line(.4 * trendAlpha, "#e8bc64", future, [5, 8]);
+      const [tipX, tipY] = points[points.length - 1];
+      ctx.globalAlpha = .12 * trendAlpha;
+      ctx.fillStyle = "#f87171";
+      ctx.beginPath(); ctx.arc(tipX, tipY, 10, 0, Math.PI * 2); ctx.fill();
+      ctx.globalAlpha = .7 * trendAlpha;
+      ctx.beginPath(); ctx.arc(tipX, tipY, 3, 0, Math.PI * 2); ctx.fill();
+
+      // Correlation begins fading in at second 8: observations first, fit second.
+      const correlationTime = (seconds - 8 + 40) % 40;
+      const fitProgress = smooth((correlationTime - 3) / 2.5);
+      if (fitProgress > 0) {
+        line(.32 * correlation, "#f5bd96", [[0, y(.85)], [width * fitProgress, y(.85 - .7 * fitProgress)]]);
+      }
+      const count = width < 600 ? 38 : 72;
+      for (let i = 0; i < count; i++) {
+        const x = ((i * 137.508) % 1000) / 1000;
+        const scatter = Math.sin(i * 8.3) * .13;
+        const drift = Math.sin(seconds * .65 + i) * .035;
+        const appear = smooth((correlationTime - i / count * 2) / .7);
+        const py = .85 - .7 * x + scatter + drift + (1 - appear) * .035;
+        ctx.globalAlpha = correlation * appear * (.24 + (i % 3) * .07);
+        ctx.fillStyle = i % 5 ? "#f87171" : "#f5bd96";
+        ctx.beginPath(); ctx.arc(x * width, y(py), 2 + i % 3 * .5, 0, Math.PI * 2); ctx.fill();
+      }
+      // Bars rise and fall continuously, with a traveling highlight.
+      if (bars > 0) {
+        const columns = width < 600 ? 12 : 26;
+        const step = width / columns;
+        for (let i = 0; i < columns; i++) {
+          const amplitude = .17 + .22 * (1 + Math.sin(i * .65 + seconds * .6)) / 2;
+          const barHeight = height * amplitude;
+          ctx.globalAlpha = bars * (.12 + .08 * (1 + Math.sin(i - seconds)) / 2);
+          ctx.fillStyle = i % 5 ? "#ef4444" : "#f5bd96";
+          ctx.fillRect(i * step + step * .18, height * .88 - barHeight, step * .64, barHeight);
+          line(bars * .35, "#f87171", [[i * step + step * .18, height * .88 - barHeight], [i * step + step * .82, height * .88 - barHeight]]);
         }
       }
-      updateFrame();
+      // A large donut uses pixel geometry so it stays circular on phones.
+      if (donut > 0) {
+        const radius = Math.min(width * .38, height * .38);
+        const cx = width * .5, cy = height * .5;
+        const values = [0, 1, 2, 3, 4].map(i => 1.3 + Math.sin(seconds * .38 + i * 1.4) * .35);
+        const total = values.reduce((sum, value) => sum + value, 0);
+        let angle = seconds * .045;
+        values.forEach((value, i) => {
+          const arc = value / total * Math.PI * 2;
+          ctx.globalAlpha = donut * .22;
+          ctx.strokeStyle = ["#ef4444", "#f5bd96", "#b91c1c", "#f87171", "#a8a29e"][i];
+          ctx.lineWidth = radius * .2;
+          ctx.beginPath();
+          ctx.arc(cx, cy, radius, angle + .025, angle + arc - .025);
+          ctx.stroke();
+          angle += arc;
+        });
+      }
+      ctx.globalAlpha = 1;
     }
-    // Start animation after mount
-    const timeout = setTimeout(animateChart, 1000);
+
+    function tick(now: number) {
+      elapsed += previous ? Math.min(now - previous, 100) : 0;
+      previous = now;
+      draw();
+      frame = requestAnimationFrame(tick);
+    }
+    function sync() {
+      cancelAnimationFrame(frame);
+      previous = 0;
+      draw();
+      if (!motion.matches && visible && !document.hidden) frame = requestAnimationFrame(tick);
+    }
+    const resize = new ResizeObserver(([entry]) => {
+      width = entry.contentRect.width;
+      height = entry.contentRect.height;
+      const ratio = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = Math.round(width * ratio);
+      canvas.height = Math.round(height * ratio);
+      ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+      draw();
+    });
+    const intersection = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; sync(); });
+    resize.observe(canvas);
+    intersection.observe(canvas);
+    motion.addEventListener("change", sync);
+    document.addEventListener("visibilitychange", sync);
+    sync();
     return () => {
-      clearTimeout(timeout);
-      if (animationRef.current) clearTimeout(animationRef.current);
+      cancelAnimationFrame(frame);
+      resize.disconnect();
+      intersection.disconnect();
+      motion.removeEventListener("change", sync);
+      document.removeEventListener("visibilitychange", sync);
     };
   }, []);
 
-  return (
-    <svg className="stock-chart" viewBox="0 0 1000 400" preserveAspectRatio="none" style={{ width: '100%', height: '100%', position: 'absolute', top: 0, left: 0, opacity: 0.4, zIndex: 2, pointerEvents: 'none' }}>
-      <path ref={stockPathRef} className="chart-line" d="M0,200" fill="none" stroke="#DC2626" strokeWidth={3} opacity={0.9} />
-      <path ref={predictionPathRef} className="prediction-line" d="M0,200" fill="none" stroke="#FFFF00" strokeWidth={2} strokeDasharray="8,4" opacity={0.8} />
-      <circle ref={currentPointRef} className="current-point" cx={0} cy={200} r={8} fill="#DC2626" stroke="#FF4444" strokeWidth={2} opacity={1} />
-    </svg>
-  );
-};
-
-export default AnimatedStockChart; 
+  return <div className="hero-chart-background" aria-hidden="true" style={{ position: "absolute", inset: 0, pointerEvents: "none" }}><canvas ref={canvasRef} style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }} /><div className="hero-chart-shade" /></div>;
+}

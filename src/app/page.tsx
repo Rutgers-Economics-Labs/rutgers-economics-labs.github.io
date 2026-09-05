@@ -3,9 +3,10 @@ import Link from "next/link";
 import Script from "next/script";
 import Image from "next/image";
 import AnimatedStockChart from "../components/AnimatedStockChart";
-import ParticleNetwork from "../components/ParticleNetwork";
+import MemberOutcomes from "../components/MemberOutcomes";
 import projects from "../data/projects.json";
 import team from "../data/team.json";
+import { useEffect } from "react";
 
 // Partner logos from projects - deduplicated
 const partners = [
@@ -49,24 +50,38 @@ const activeTeams = projects.filter(p => p.paperStatus === "in_progress").length
 const studentAnalysts = team.executiveBoard.length + team.teamLeads.length + team.boardMembers.length + team.members.length;
 
 export default function Home() {
+  useEffect(() => {
+    const elements = document.querySelectorAll<HTMLElement>("[data-reveal]");
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-revealed");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    elements.forEach(element => {
+      element.classList.add("reveal-ready");
+      observer.observe(element);
+    });
+    return () => observer.disconnect();
+  }, []);
   return (
     <>
       <div>
         {/* Hero Section */}
-        <div className="animated-bg min-h-screen flex items-center relative overflow-hidden">
-          <ParticleNetwork />
-          <AnimatedStockChart />
+        <div className="animated-bg rel-hero relative overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center">
-              <h2 className="text-5xl md:text-7xl font-bold text-white mb-6">
+              <h2 className="hero-enter text-4xl sm:text-5xl md:text-7xl font-bold text-white mb-6">
                 Rutgers Economics Labs
               </h2>
-              <p className="text-xl md:text-2xl text-white/90 mb-10 max-w-3xl mx-auto">
+              <p style={{ animationDelay: '120ms' }} className="hero-enter text-lg md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto">
                 A <span className="text-red-300 font-semibold">data-oriented technical research group</span> providing
                 pro bono economic analysis for government agencies and policy organizations
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/about" className="pulse-red bg-white text-red-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-red-50 transition-all duration-300 transform hover:scale-105 inline-block shadow-lg">
+              <div style={{ animationDelay: '240ms' }} className="hero-enter flex flex-col sm:flex-row gap-4 justify-center">
+                <Link href="/about" className="bg-white text-red-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-red-50 transition-all duration-300 transform hover:scale-105 inline-block shadow-lg">
                   Learn More
                 </Link>
                 <Link href="/apply" className="bg-transparent text-white px-8 py-4 rounded-full text-lg font-semibold border-2 border-white/50 hover:bg-white/10 hover:border-white transition-all duration-300 transform hover:scale-105 inline-block">
@@ -75,6 +90,7 @@ export default function Home() {
               </div>
             </div>
           </div>
+          <AnimatedStockChart />
         </div>
 
         {/* Partners Logo Section */}
@@ -104,6 +120,8 @@ export default function Home() {
           </div>
         </div>
 
+        <MemberOutcomes />
+
         {/* Mission Section - Enhanced */}
         <div className="py-24 bg-[var(--bg-primary)]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -122,6 +140,8 @@ export default function Home() {
               {capabilities.map((cap, idx) => (
                 <div
                   key={idx}
+                  data-reveal
+                  style={{ transitionDelay: `${idx * 80}ms` }}
                   className="group p-8 bg-[var(--card-bg)] rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-[var(--card-border)] text-center"
                 >
                   <div className="w-14 h-14 bg-red-600/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-red-600/20 transition-colors duration-300 mx-auto">

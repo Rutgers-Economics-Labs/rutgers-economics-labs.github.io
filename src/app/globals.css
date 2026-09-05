@@ -198,3 +198,38 @@
 .animate-scroll:hover {
     animation-play-state: paused;
 }
+
+.rel-hero {
+    min-height: calc(100svh - 80px);
+    display: flex;
+    align-items: center;
+    padding: 5rem 0;
+    isolation: isolate;
+    background: linear-gradient(135deg, #19191b, #262324);
+}
+.hero-enter { animation: hero-enter .7s ease-out both; }
+@keyframes hero-enter {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+[data-reveal].reveal-ready { opacity: 0; translate: 0 12px; transition: opacity .6s ease, translate .6s ease; }
+[data-reveal].is-revealed { opacity: 1; translate: 0 0; }
+.hero-chart-background { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.hero-chart-background canvas { display: block; width: 100%; height: 100%; }
+.hero-chart-shade {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at center, rgba(25,25,27,.8) 0%, rgba(25,25,27,.5) 35%, transparent 75%);
+}
+@media (max-width: 640px) {
+    .rel-hero { min-height: calc(100svh - 64px); padding: 4rem 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+    .hero-enter, .fade-in, [data-reveal].reveal-ready { opacity: 1; transform: none; translate: none; }
+    .animate-scroll { flex-wrap: wrap; justify-content: center; transform: none; gap: 2rem; }
+    .animate-scroll > :nth-child(n + 9) { display: none; }
+}
