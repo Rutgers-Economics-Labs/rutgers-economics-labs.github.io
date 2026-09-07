@@ -93,7 +93,34 @@ export default function Home() {
           <AnimatedStockChart />
         </div>
 
-        <section className="research-width py-8 flex flex-wrap justify-center gap-6" aria-label="Explore REL"><Link className="research-text-link" href="/work-with-rel">Work with REL →</Link><Link className="research-text-link" href="/student-experience">Explore the student experience →</Link></section>
+        {/* Two paths into REL */}
+        <div className="py-20 bg-[var(--bg-primary)]">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h3 className="text-3xl sm:text-4xl font-bold text-[var(--text-primary)] mb-4">Two ways to get involved</h3>
+              <p className="text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">Whether you're bringing a research question or looking to do the research, here's where to start.</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <Link href="/work-with-rel" className="group p-8 bg-[var(--card-bg)] rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-[var(--card-border)]">
+                <div className="w-14 h-14 bg-red-600/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-red-600/20 transition-colors duration-300">
+                  <i className="fas fa-handshake text-2xl text-red-600"></i>
+                </div>
+                <h4 className="text-xl font-bold text-[var(--text-primary)] mb-3">Work with REL</h4>
+                <p className="text-[var(--text-secondary)] leading-relaxed mb-4">For agencies, faculty, and policy organizations: bring a real question to a student research team for pro bono economic analysis.</p>
+                <span className="text-red-600 font-medium group-hover:text-red-700 inline-flex items-center gap-1">Partner with us <span aria-hidden="true">→</span></span>
+              </Link>
+              <Link href="/student-experience" className="group p-8 bg-[var(--card-bg)] rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-[var(--card-border)]">
+                <div className="w-14 h-14 bg-red-600/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-red-600/20 transition-colors duration-300">
+                  <i className="fas fa-graduation-cap text-2xl text-red-600"></i>
+                </div>
+                <h4 className="text-xl font-bold text-[var(--text-primary)] mb-3">The student experience</h4>
+                <p className="text-[var(--text-secondary)] leading-relaxed mb-4">See how members turn public data into rigorous, communicated research—from first workshop to final brief.</p>
+                <span className="text-red-600 font-medium group-hover:text-red-700 inline-flex items-center gap-1">Explore the experience <span aria-hidden="true">→</span></span>
+              </Link>
+            </div>
+          </div>
+        </div>
+
         {/* Partners Logo Section */}
         <div className="py-16 bg-[var(--bg-secondary)] border-b border-[var(--border-color)]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -1,6 +1,7 @@
 import './globals.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import PostHogInit from '../components/PostHogInit';
 import type { ReactNode } from 'react';
 
 // import font awesome
@@ -35,6 +36,7 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-[var(--bg-primary)] text-[var(--text-primary)] transition-colors duration-300">
+        <PostHogInit />
         <Header />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
           '@context': 'https://schema.org', '@graph': [
