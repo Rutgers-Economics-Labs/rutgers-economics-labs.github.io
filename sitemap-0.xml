@@ -3,10 +3,10 @@
 <url><loc>https://www.rutgerseconomics.org/club-fair</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 <url><loc>https://www.rutgerseconomics.org</loc><changefreq>daily</changefreq><priority>1</priority></url>
 <url><loc>https://www.rutgerseconomics.org/people</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-<url><loc>https://www.rutgerseconomics.org/projects</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
 <url><loc>https://www.rutgerseconomics.org/resources</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 <url><loc>https://www.rutgerseconomics.org/student-experience</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+<url><loc>https://www.rutgerseconomics.org/projects</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
 <url><loc>https://www.rutgerseconomics.org/work-with-rel</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-<url><loc>https://www.rutgerseconomics.org/apply</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 <url><loc>https://www.rutgerseconomics.org/about</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+<url><loc>https://www.rutgerseconomics.org/apply</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>
