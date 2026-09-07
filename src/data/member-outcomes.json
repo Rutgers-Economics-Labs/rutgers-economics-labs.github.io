@@ -7,6 +7,9 @@
   { "organization": "Goldman Sachs", "logo": "/images/employers/goldman-sachs.svg" },
   { "organization": "New York Life", "logo": "/images/employers/new-york-life.svg" },
   { "organization": "TD Bank", "logo": "/images/employers/td-bank.svg" },
+  { "organization": "Lockheed Martin", "logo": "/images/employers/lockheed-martin.svg" },
+  { "organization": "Pfizer", "logo": "/images/employers/pfizer.svg" },
+  { "organization": "Federal Reserve Bank of Philadelphia", "logo": "/images/employers/federal-reserve-bank-of-philadelphia.png" },
   { "organization": "General Dynamics", "logo": "/images/employers/general-dynamics.svg" },
   { "organization": "Lawrence Livermore National Laboratory", "logo": "/images/employers/lawrence-livermore-national-laboratory.svg" },
   { "organization": "AT&T", "logo": "/images/employers/att.svg" },
@@ -22,7 +25,5 @@
   { "organization": "Accelirate", "logo": "/images/employers/accelirate.svg" },
   { "organization": "Merck", "logo": "/images/employers/merck.svg" },
   { "organization": "Fiserv", "logo": "/images/employers/fiserv.svg" },
-  { "organization": "PSEG", "logo": "/images/employers/pseg.svg" },
-  { "organization": "Lockheed Martin", "logo": "/images/employers/lockheed-martin.svg" },
-  { "organization": "Pfizer", "logo": "/images/employers/pfizer.svg" }
+  { "organization": "PSEG", "logo": "/images/employers/pseg.svg" }
 ]

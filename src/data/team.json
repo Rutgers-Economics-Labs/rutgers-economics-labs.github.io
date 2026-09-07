@@ -100,48 +100,6 @@
     "boardMembers": [],
     "members": [
         {
-            "name": "Subhronil Mukherjee",
-            "position": "Data Analyst",
-            "image": "images/people/subhronil-mukherjee.jpg",
-            "description": "Data analysis and visualization specialist.",
-            "team": [
-                "NJEDA",
-                "USDA"
-            ],
-            "linkedin": "https://www.linkedin.com/in/subhronil-mukherjee-312ab9231/"
-        },
-        {
-            "name": "Eric Wenz",
-            "position": "Statistical Analyst",
-            "image": "images/people/eric-wenz.jpg",
-            "description": "Statistical modeling expert.",
-            "team": [
-                "NJDCA"
-            ],
-            "linkedin": "https://www.linkedin.com/in/ericwenz"
-        },
-        {
-            "name": "Khushi Bora",
-            "position": "Statistical Analyst",
-            "image": "images/people/khushi-bora.jpg",
-            "description": "Statistical modeling expert.",
-            "team": [
-                "NJDCA"
-            ],
-            "linkedin": "https://www.linkedin.com/in/khushibora23"
-        },
-        {
-            "name": "Lukian Wernyj",
-            "position": "Statistical Analyst",
-            "image": "images/people/lukian.jpg",
-            "description": "Statistical modeling expert.",
-            "team": [
-                "NJEDA",
-                "NJDCA"
-            ],
-            "linkedin": "https://www.linkedin.com/in/lukianwernyj"
-        },
-        {
             "name": "Priya Rana",
             "position": "Data Analyst",
             "image": "images/people/priya.jpeg",
@@ -151,17 +109,6 @@
                 "NJDEP"
             ],
             "linkedin": "https://www.linkedin.com/in/prana24/"
-        },
-        {
-            "name": "Naomi George",
-            "position": "Data Analyst",
-            "image": "images/people/naomi.jpeg",
-            "description": "Data analysis and research specialist.",
-            "team": [
-                "NJDOL",
-                "NJBPU"
-            ],
-            "linkedin": "https://www.linkedin.com/in/naomi-george-312b07281/"
         },
         {
             "name": "Michelle Rozenfeld",
@@ -355,6 +302,59 @@
                 "NJDCA"
             ],
             "linkedin": "https://www.linkedin.com/in/reese-feldman"
+        },
+        {
+            "name": "Subhronil Mukherjee",
+            "position": "Former Data Analyst",
+            "image": "images/people/subhronil-mukherjee.jpg",
+            "description": "",
+            "team": [
+                "NJEDA",
+                "USDA"
+            ],
+            "linkedin": "https://www.linkedin.com/in/subhronil-mukherjee-312ab9231/"
+        },
+        {
+            "name": "Eric Wenz",
+            "position": "Former Statistical Analyst",
+            "image": "images/people/eric-wenz.jpg",
+            "description": "",
+            "team": [
+                "NJDCA"
+            ],
+            "linkedin": "https://www.linkedin.com/in/ericwenz"
+        },
+        {
+            "name": "Khushi Bora",
+            "position": "Former Statistical Analyst",
+            "image": "images/people/khushi-bora.jpg",
+            "description": "",
+            "team": [
+                "NJDCA"
+            ],
+            "linkedin": "https://www.linkedin.com/in/khushibora23"
+        },
+        {
+            "name": "Lukian Wernyj",
+            "position": "Former Statistical Analyst",
+            "image": "images/people/lukian.jpg",
+            "description": "",
+            "team": [
+                "NJEDA",
+                "NJDCA"
+            ],
+            "linkedin": "https://www.linkedin.com/in/lukianwernyj"
+        },
+        {
+            "name": "Naomi George",
+            "position": "Former Data Analyst",
+            "image": "images/people/naomi.jpeg",
+            "description": "",
+            "team": [
+                "NJDOL",
+                "NJBPU"
+            ],
+            "linkedin": "https://www.linkedin.com/in/naomi-george-312b07281/"
         }
     ]
 }
