@@ -8,6 +8,7 @@ const navLinks = [
   { to: '/', label: 'Home' },
   { to: '/about', label: 'About' },
   { to: '/projects', label: 'Projects' },
+  { to: '/student-experience', label: 'Student Experience' },
   { to: '/resources', label: 'Resources' },
   { to: '/people', label: 'People' },
   { to: '/apply', label: 'Apply' },
@@ -44,12 +45,12 @@ const Header: React.FC = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex space-x-2">
+          <div className="hidden lg:flex space-x-1 xl:space-x-2">
             {navLinks.map(link => (
               <Link
                 key={link.to}
                 href={link.to}
-                className={`relative px-4 py-2 text-white font-medium transition-all duration-300 rounded-lg group overflow-hidden ${
+                className={`relative px-3 py-2 text-sm xl:px-4 xl:text-base text-white font-medium transition-all duration-300 rounded-lg group overflow-hidden ${
                   pathname === link.to 
                     ? 'bg-white/20 text-white shadow-lg' 
                     : 'hover:bg-white/10'

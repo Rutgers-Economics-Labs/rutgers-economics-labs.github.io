@@ -105,7 +105,7 @@ export default function Home() {
                 {[...partners, ...partners].map((partner, idx) => (
                   <div
                     key={idx}
-                    className="flex-shrink-0 grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-300"
+                    className="flex-shrink-0 opacity-90 hover:opacity-100 transition-all duration-300"
                   >
                     <Image
                       src={partner.logo}

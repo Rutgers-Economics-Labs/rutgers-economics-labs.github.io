@@ -49,6 +49,15 @@
     --card-border: #f3f4f6;
 }
 
+.member-outcome-image {
+    filter: grayscale(.35) saturate(.9);
+}
+
+.member-outcome-logo:hover .member-outcome-image,
+.member-outcome-logo:focus-visible .member-outcome-image {
+    filter: none;
+}
+
 @media (prefers-color-scheme: dark) {
     :root {
         --bg-primary: #0f0f0f;
@@ -60,6 +69,41 @@
         --border-color: #374151;
         --card-bg: #1f1f1f;
         --card-border: #2d2d2d;
+    }
+
+    .member-outcome-logo {
+        background: #ffffff;
+        border-color: #e5e7eb;
+    }
+
+    .member-outcome-image {
+        filter: none;
+    }
+}
+
+@media (max-width: 639px) {
+    .member-outcomes-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.25rem 1rem;
+    }
+
+    .member-outcome-logo {
+        min-height: 4.5rem;
+        padding: .35rem;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+    }
+
+    .member-outcome-logo:hover,
+    .member-outcome-logo:focus-visible {
+        transform: none;
+        box-shadow: none;
+    }
+
+    .member-outcome-image {
+        max-height: 3.25rem;
+        filter: none;
     }
 }
 

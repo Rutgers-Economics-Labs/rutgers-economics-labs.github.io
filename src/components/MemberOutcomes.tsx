@@ -15,7 +15,7 @@ export default function MemberOutcomes() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+        <div className="member-outcomes-grid grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
           {memberOutcomes.map((outcome, index) => (
             <figure
               data-reveal
@@ -24,7 +24,7 @@ export default function MemberOutcomes() {
               tabIndex={0}
               aria-label={outcome.organization}
               title={outcome.organization}
-              className="group relative flex min-h-32 items-center justify-center rounded-2xl border border-[var(--border-color)] bg-[var(--bg-secondary)] p-5 transition-all duration-200 hover:-translate-y-1 hover:border-red-500/40 hover:shadow-lg focus-visible:-translate-y-1 focus-visible:border-red-500/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60"
+              className="member-outcome-logo group relative flex min-h-32 items-center justify-center rounded-2xl border border-[var(--border-color)] bg-[var(--bg-secondary)] p-5 transition-all duration-200 hover:-translate-y-1 hover:border-red-500/40 hover:shadow-lg focus-visible:-translate-y-1 focus-visible:border-red-500/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60"
             >
               <Image
                 src={outcome.logo}
@@ -32,7 +32,7 @@ export default function MemberOutcomes() {
                 title={outcome.organization}
                 width={180}
                 height={80}
-                className="max-h-16 w-auto max-w-full object-contain grayscale transition duration-200 group-hover:grayscale-0 group-focus-visible:grayscale-0"
+                className="member-outcome-image max-h-16 w-auto max-w-full object-contain transition duration-200"
               />
             </figure>
           ))}

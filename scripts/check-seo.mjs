@@ -43,5 +43,6 @@ assert.ok(!sitemap.includes('https://rutgerseconomics.org'));
 const image = await sharp('public/images/og-image.jpg').metadata();
 assert.equal(image.width, 500); assert.equal(image.height, 500);
 const header = readFileSync('src/components/Header.tsx', 'utf8');
-for (const route of ['/club-fair', '/work-with-rel', '/student-experience']) assert.ok(!header.includes(route), `Top navigation excludes ${route}`);
+for (const route of ['/club-fair', '/work-with-rel']) assert.ok(!header.includes(route), `Top navigation excludes ${route}`);
+assert.ok(header.includes("{ to: '/student-experience', label: 'Student Experience' }"), 'Top navigation includes Student Experience');
 console.log(`SEO checks passed: ${routes.length} public routes, canonicals, social cards, headings, internal links, JSON-LD, sitemap, and utility noindex.`);

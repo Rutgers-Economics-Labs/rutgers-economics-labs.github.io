@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import ResearchPage from '@/components/ResearchPage';
+import MemberOutcomes from '@/components/MemberOutcomes';
 import { pageMetadata } from '@/lib/metadata';
 import { ArrowUpRight } from 'lucide-react';
 
@@ -22,7 +23,7 @@ export default function StudentExperiencePage() {
       <li><h3>Communicate and hand off</h3><p>Explain methods and limitations, respond to feedback, and leave organized code and documentation that someone else can follow.</p></li>
     </ol></section>
     <section><p className="research-eyebrow">Explore the work</p><h2>Examples from our public repositories.</h2><p>These examples show the kinds of skills represented in REL’s work. They are not a fixed curriculum or a promise of assignment to a specific project.</p><div className="research-grid research-examples">{examples.map(example => <article className="research-card" key={example.url}><p className="research-eyebrow">{example.label}</p><h3>{example.name}</h3><p>{example.text}</p><p className="research-practice">{example.skill}</p><a className="research-text-link" href={example.url} target="_blank" rel="noopener noreferrer">Explore the repository <ArrowUpRight aria-hidden="true" className="w-4 h-4" /></a></article>)}</div><p className="research-caption">Public repository documentation reviewed September 5, 2026. Repositories evolve; private partner materials and personal contact records are not reproduced here.</p></section>
-    <section className="research-split"><div><h2>Build judgment as well as technical skills.</h2><p>A working script is not the same as a defensible result. The NJDEP project’s discussion of pre-trends, a synthetic benchmark, and incomplete controls illustrates an important research habit: make limitations part of the explanation.</p><p>AI-assisted tools can help with research workflows, but a plausible output still needs source checks, methodological reasoning, and human review.</p></div><div className="research-note"><h3>What you can learn to show</h3><ul><li>A clear question and a documented research approach.</li><li>Analysis code with traceable inputs and assumptions.</li><li>Charts that explain rather than exaggerate.</li><li>A written account of findings and limitations.</li><li>A contribution you can explain to a teammate or interviewer.</li></ul><p>Only share work publicly when data permissions and partner agreements allow it.</p></div></section>
+    <MemberOutcomes />
     <section className="research-closing"><h2>Find the question you want to work on.</h2><p>Explore past projects, meet the team, and check current recruiting information.</p><Link className="research-button" href="/projects">Explore REL projects <ArrowUpRight aria-hidden="true" className="w-4 h-4" /></Link><Link className="research-text-link" href="/people">Meet the team <ArrowUpRight aria-hidden="true" className="w-4 h-4" /></Link><Link className="research-text-link" href="/resources">Learning resources <ArrowUpRight aria-hidden="true" className="w-4 h-4" /></Link></section>
   </ResearchPage>;
 }

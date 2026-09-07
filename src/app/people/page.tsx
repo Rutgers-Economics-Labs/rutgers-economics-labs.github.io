@@ -44,9 +44,8 @@ function TeamMemberCard({ member, section }: { member: any; section: string }) {
       ))}
     </div>
   ) : null;
-  return (
-    <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className={`block w-full ${cardClass}`} key={member.name}>
-      <div className={`card-hover bg-[var(--card-bg)] border border-[var(--card-border)] p-4 rounded-xl shadow-lg text-center cursor-pointer transform transition-transform duration-300 hover:scale-105 ${isAlumni ? 'opacity-75' : ''}`}>
+  const card = (
+      <div className={`card-hover bg-[var(--card-bg)] border border-[var(--card-border)] p-4 rounded-xl shadow-lg text-center transform transition-transform duration-300 ${member.linkedin ? 'cursor-pointer hover:scale-105' : ''} ${isAlumni ? 'opacity-75' : ''}`}>
         <div className="aspect-w-1 aspect-h-1 mb-4">
           <Image src={`/${member.image}`} alt={member.name} width={128} height={128} className={`${imageClass} rounded-lg object-cover`} />
         </div>
@@ -55,6 +54,15 @@ function TeamMemberCard({ member, section }: { member: any; section: string }) {
         {!isMember && !isAlumni && <p className={`text-[var(--text-secondary)] ${textClass} mb-2`}>{member.description}</p>}
         {orgLogosSection}
       </div>
+  );
+
+  if (!member.linkedin) {
+    return <div className={`block w-full ${cardClass}`}>{card}</div>;
+  }
+
+  return (
+    <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className={`block w-full ${cardClass}`} key={member.name}>
+      {card}
     </a>
   );
 }
