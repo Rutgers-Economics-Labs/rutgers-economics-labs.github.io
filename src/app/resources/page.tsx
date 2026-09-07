@@ -1,6 +1,6 @@
 import { pageMetadata } from '@/lib/metadata';
 import { Database, FileSpreadsheet } from 'lucide-react';
-import { BookOpen, Code } from 'lucide-react';
+import { BookOpen, Code, ArrowUpRight } from 'lucide-react';
 
 export const metadata = pageMetadata("Learning resources", "Explore resources for economic analysis, Python, R, public data, and research methods.", "/resources");
 
@@ -21,22 +21,22 @@ export default function ResourcesPage() {
             <div className="card-hover bg-[var(--card-bg)] border border-[var(--card-border)] p-6 rounded-xl shadow-lg flex flex-col items-center text-center">
               <h5 className="text-xl font-semibold text-[var(--text-primary)] mb-3">Introduction to Econometrics</h5>
               <p className="text-[var(--text-secondary)] mb-4">A comprehensive guide to understanding econometric methods and their applications.</p>
-              <a href="https://sites.google.com/site/econometricsacademy/" className="text-red-600 hover:text-red-700 font-medium">Read More →</a>
+              <a href="https://sites.google.com/site/econometricsacademy/" className="text-red-600 hover:text-red-700 font-medium inline-flex items-center gap-1">Read More <ArrowUpRight aria-hidden="true" className="w-4 h-4" /></a>
             </div>
             <div className="card-hover bg-[var(--card-bg)] border border-[var(--card-border)] p-6 rounded-xl shadow-lg flex flex-col items-center text-center">
               <h5 className="text-xl font-semibold text-[var(--text-primary)] mb-3">Data Analysis in Python</h5>
               <p className="text-[var(--text-secondary)] mb-4">Learn how to use Python for economic data analysis and visualization.</p>
-              <a href="https://bashtage.github.io/kevinsheppard.com/files/teaching/python/notes/python_introduction_2020.pdf" className="text-red-600 hover:text-red-700 font-medium">Read More →</a>
+              <a href="https://bashtage.github.io/kevinsheppard.com/files/teaching/python/notes/python_introduction_2020.pdf" className="text-red-600 hover:text-red-700 font-medium inline-flex items-center gap-1">Read More <ArrowUpRight aria-hidden="true" className="w-4 h-4" /></a>
             </div>
             <div className="card-hover bg-[var(--card-bg)] border border-[var(--card-border)] p-6 rounded-xl shadow-lg flex flex-col items-center text-center">
               <h5 className="text-xl font-semibold text-[var(--text-primary)] mb-3">Research Methodology</h5>
               <p className="text-[var(--text-secondary)] mb-4">Best practices for conducting economic research and writing papers.</p>
-              <a href="https://libguides.wpi.edu/researchmethod/resources" className="text-red-600 hover:text-red-700 font-medium">Read More →</a>
+              <a href="https://libguides.wpi.edu/researchmethod/resources" className="text-red-600 hover:text-red-700 font-medium inline-flex items-center gap-1">Read More <ArrowUpRight aria-hidden="true" className="w-4 h-4" /></a>
             </div>
             <div className="card-hover bg-[var(--card-bg)] border border-[var(--card-border)] p-6 rounded-xl shadow-lg flex flex-col items-center text-center">
               <h5 className="text-xl font-semibold text-[var(--text-primary)] mb-3">Getting Census Data</h5>
               <p className="text-[var(--text-secondary)] mb-4">Official U.S. Census Bureau video on how to search and download census data.</p>
-              <a href="https://www.census.gov/library/video/2025/adrm/getting-started-with-your-search-on-data-census-gov.html" className="text-red-600 hover:text-red-700 font-medium" target="_blank" rel="noopener noreferrer">Read More →</a>
+              <a href="https://www.census.gov/library/video/2025/adrm/getting-started-with-your-search-on-data-census-gov.html" className="text-red-600 hover:text-red-700 font-medium inline-flex items-center gap-1" target="_blank" rel="noopener noreferrer">Read More <ArrowUpRight aria-hidden="true" className="w-4 h-4" /></a>
             </div>
           </div>
         </div>
@@ -47,22 +47,22 @@ export default function ResourcesPage() {
             <div className="card-hover bg-[var(--card-bg)] border border-[var(--card-border)] p-6 rounded-xl shadow-lg flex flex-col items-center text-center">
               <h5 className="text-xl font-semibold text-[var(--text-primary)] mb-3">Panel Regression</h5>
               <p className="text-[var(--text-secondary)] mb-4">A YouTube tutorial on panel regression methods and applications.</p>
-              <a href="https://www.youtube.com/watch?v=TYTvLgi4mVc" className="text-red-600 hover:text-red-700 font-medium" target="_blank" rel="noopener noreferrer">Watch Video →</a>
+              <a href="https://www.youtube.com/watch?v=TYTvLgi4mVc" className="text-red-600 hover:text-red-700 font-medium inline-flex items-center gap-1" target="_blank" rel="noopener noreferrer">Watch Video <ArrowUpRight aria-hidden="true" className="w-4 h-4" /></a>
             </div>
             <div className="card-hover bg-[var(--card-bg)] border border-[var(--card-border)] p-6 rounded-xl shadow-lg flex flex-col items-center text-center">
               <h5 className="text-xl font-semibold text-[var(--text-primary)] mb-3">Mastering Econometrics</h5>
               <p className="text-[var(--text-secondary)] mb-4">A YouTube playlist for mastering econometrics concepts and techniques.</p>
-              <a href="https://www.youtube.com/watch?v=WwW8y5dZs80&list=PL-uRhZ_p-BM5ovNRg-G6hDib27OCvcyW8" className="text-red-600 hover:text-red-700 font-medium" target="_blank" rel="noopener noreferrer">Watch Playlist →</a>
+              <a href="https://www.youtube.com/watch?v=WwW8y5dZs80&list=PL-uRhZ_p-BM5ovNRg-G6hDib27OCvcyW8" className="text-red-600 hover:text-red-700 font-medium inline-flex items-center gap-1" target="_blank" rel="noopener noreferrer">Watch Playlist <ArrowUpRight aria-hidden="true" className="w-4 h-4" /></a>
             </div>
             <div className="card-hover bg-[var(--card-bg)] border border-[var(--card-border)] p-6 rounded-xl shadow-lg flex flex-col items-center text-center">
               <h5 className="text-xl font-semibold text-[var(--text-primary)] mb-3">GitHub Overview</h5>
               <p className="text-[var(--text-secondary)] mb-4">A beginner-friendly overview of GitHub and version control.</p>
-              <a href="https://youtu.be/8Dd7KRpKeaE?si=k0RepfbaMcdH-I3X" className="text-red-600 hover:text-red-700 font-medium" target="_blank" rel="noopener noreferrer">Watch Video →</a>
+              <a href="https://youtu.be/8Dd7KRpKeaE?si=k0RepfbaMcdH-I3X" className="text-red-600 hover:text-red-700 font-medium inline-flex items-center gap-1" target="_blank" rel="noopener noreferrer">Watch Video <ArrowUpRight aria-hidden="true" className="w-4 h-4" /></a>
             </div>
             <div className="card-hover bg-[var(--card-bg)] border border-[var(--card-border)] p-6 rounded-xl shadow-lg flex flex-col items-center text-center">
               <h5 className="text-xl font-semibold text-[var(--text-primary)] mb-3">Pandas Tutorial</h5>
               <p className="text-[var(--text-secondary)] mb-4">A YouTube tutorial on using pandas for data analysis in Python.</p>
-              <a href="https://youtu.be/2uvysYbKdjM?si=Q6kEaR-TALQRQS9z" className="text-red-600 hover:text-red-700 font-medium" target="_blank" rel="noopener noreferrer">Watch Video →</a>
+              <a href="https://youtu.be/2uvysYbKdjM?si=Q6kEaR-TALQRQS9z" className="text-red-600 hover:text-red-700 font-medium inline-flex items-center gap-1" target="_blank" rel="noopener noreferrer">Watch Video <ArrowUpRight aria-hidden="true" className="w-4 h-4" /></a>
             </div>
           </div>
         </div>

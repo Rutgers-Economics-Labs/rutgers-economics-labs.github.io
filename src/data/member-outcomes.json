@@ -22,5 +22,7 @@
   { "organization": "Accelirate", "logo": "/images/employers/accelirate.svg" },
   { "organization": "Merck", "logo": "/images/employers/merck.svg" },
   { "organization": "Fiserv", "logo": "/images/employers/fiserv.svg" },
-  { "organization": "PSEG", "logo": "/images/employers/pseg.svg" }
+  { "organization": "PSEG", "logo": "/images/employers/pseg.svg" },
+  { "organization": "Lockheed Martin", "logo": "/images/employers/lockheed-martin.svg" },
+  { "organization": "Pfizer", "logo": "/images/employers/pfizer.svg" }
 ]

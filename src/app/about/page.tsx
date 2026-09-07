@@ -1,4 +1,5 @@
 import { pageMetadata } from '@/lib/metadata';
+import { ArrowUpRight } from 'lucide-react';
 
 export const metadata = pageMetadata("About REL", "Learn about pro bono economic research, partner collaboration, and student learning at Rutgers Economics Labs.", "/about");
 
@@ -58,8 +59,8 @@ export default function AboutPage() {
           </div>
         </div>
         <div className="text-center mt-16">
-          <a href="/work-with-rel" className="research-text-link">Work with REL →</a>
-          <a href="/student-experience" className="research-text-link">Explore the student experience →</a>
+          <a href="/work-with-rel" className="research-text-link">Work with REL <ArrowUpRight aria-hidden="true" className="w-4 h-4" /></a>
+          <a href="/student-experience" className="research-text-link">Explore the student experience <ArrowUpRight aria-hidden="true" className="w-4 h-4" /></a>
           <a href="/apply" className="bg-red-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-red-700 transition-all duration-300 transform hover:scale-105 inline-block">
             Interested? Apply Now
           </a>

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { ArrowUpRight } from 'lucide-react';
 
 // Countdown Timer Component
 function CountdownTimer() {
@@ -151,7 +152,7 @@ export default function ApplyPage() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-[var(--text-primary)] mb-8">Apply to REL</h1>
-          <a href="/student-experience" className="research-text-link">Explore the student research experience →</a>
+          <a href="/student-experience" className="research-text-link">Explore the student research experience <ArrowUpRight aria-hidden="true" className="w-4 h-4" /></a>
 
           {applicationsClosed ? (
             <>
