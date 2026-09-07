@@ -121,8 +121,6 @@ export default function Home() {
           </div>
         </div>
 
-        <MemberOutcomes />
-
         {/* Mission Section - Enhanced */}
         <div className="py-24 bg-[var(--bg-primary)]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -189,6 +187,8 @@ export default function Home() {
             </div>
           </div>
         </div>
+
+        <MemberOutcomes />
 
         {/* CTA Section */}
         <div className="py-24 bg-[var(--bg-secondary)]">

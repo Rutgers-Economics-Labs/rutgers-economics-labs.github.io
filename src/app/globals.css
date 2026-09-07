@@ -107,6 +107,14 @@
     }
 }
 
+@media (prefers-color-scheme: dark) and (max-width: 639px) {
+    .member-outcomes-grid {
+        padding: 1.25rem .75rem;
+        border-radius: 1.25rem;
+        background: #e5e7eb;
+    }
+}
+
 * {
     font-family: 'Inter', sans-serif;
 }
