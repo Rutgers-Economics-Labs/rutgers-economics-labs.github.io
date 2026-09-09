@@ -20,8 +20,10 @@ export default function AnimatedStockChart() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
     const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    // Stock line → correlation → bars → donut → New Jersey.
-    let width = 0, height = 0, elapsed = 0, previous = 0, frame = 0;
+    // Stock line → correlation → bars → donut → New Jersey. Start on a
+    // different scene for each mount while preserving the existing sequence.
+    const sceneDuration = 10_000;
+    let width = 0, height = 0, elapsed = Math.floor(Math.random() * 5) * sceneDuration, previous = 0, frame = 0;
     let visible = true;
     const smooth = (x: number) => { const t = Math.max(0, Math.min(1, x)); return t * t * (3 - 2 * t); };
 
