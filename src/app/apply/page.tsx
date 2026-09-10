@@ -3,6 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 
+const APPLICATION_DEADLINE = new Date('2026-09-20T23:59:59-04:00').getTime();
+
 // Countdown Timer Component
 function CountdownTimer() {
   const [timeLeft, setTimeLeft] = useState({
@@ -13,7 +15,7 @@ function CountdownTimer() {
   });
 
   useEffect(() => {
-    const deadline = new Date('2026-02-06T23:59:59').getTime();
+    const deadline = APPLICATION_DEADLINE;
 
     // Calculate initial time immediately
     const calculateTimeLeft = () => {
@@ -83,11 +85,11 @@ export default function ApplyPage() {
   const googleAppsScriptUrl = 'https://script.google.com/macros/s/AKfycbzvpa0kUiO5HW-BV-vOCh8ZDeTmIHH2IN8QRYfHQAyc2TqfDluTrvZIXrJUKzVa9hzT6Q/exec';
 
   // Application form URL
-  const applicationFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSdHAChiYJsCOMYAyFnt7w7cN8_w-u0OI4M6EfN642CpciCHAA/viewform?usp=publish-editor';
+  const applicationFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSfL4py97rYTjyUsMDix9DxXach1F2pIZ2VXpums0D1WqwNxhw/viewform';
 
   // Check if applications are closed
   const isApplicationsClosed = () => {
-    const deadline = new Date('2026-02-06T23:59:59').getTime();
+    const deadline = APPLICATION_DEADLINE;
     const now = new Date().getTime();
     return now >= deadline;
   };
@@ -157,22 +159,22 @@ export default function ApplyPage() {
           {applicationsClosed ? (
             <>
               <p className="text-xl text-[var(--text-secondary)] mb-4">
-                Applications for the Spring 2026 semester are now closed.
+                Applications for the Fall 2026 semester are now closed.
               </p>
               <p className="text-lg text-[var(--text-secondary)] mb-8">
-                Thank you for your interest! Applications closed on Friday, February 6th, 2026. We will review all submissions and contact selected applicants for interviews.
+                Thank you for your interest! Applications closed on Sunday, September 20, 2026 at 11:59 PM Eastern Time. We will review all submissions and contact selected applicants for interviews.
               </p>
             </>
           ) : (
             <>
               <p className="text-xl text-[var(--text-secondary)] mb-4">
-                Ready to dive into real-world economic research and make an impact? Join Rutgers Economics Labs!
+                Fall 2026 applications are open. Join Rutgers Economics Labs and put your research skills to work on real-world questions!
               </p>
               <p className="text-lg text-[var(--text-secondary)] mb-6">
                 REL offers undergraduate students the opportunity to produce economic research papers for government agencies, think tanks, and other public policy organizations using statistical and econometric methods.
               </p>
               <p className="text-lg text-[var(--text-secondary)] mb-6">
-                Students work in teams of six over the course of the semester to write research papers for our partner organizations using tools such as Python and R. Papers include a literature review, statistical analysis, and interpretation of results.
+                Students work in small teams on literature reviews, data preparation, statistical analysis, interpretation, and clear research outputs, using tools such as Python and R where appropriate.
               </p>
               <p className="text-lg text-[var(--text-secondary)] mb-6">
                 <strong>Students from all majors are encouraged to apply</strong>, including but not limited to Economics, Data Science, Statistics, Computer Science, Public Policy, Political Science, Business Analytics, Finance, and Math. While no previous experience in economic research is required, <strong>a strong quantitative aptitude and comfort with data are essential</strong>.
@@ -181,13 +183,22 @@ export default function ApplyPage() {
           )}
         </div>
 
+        {!applicationsClosed && (
+          <section aria-labelledby="fall-projects" className="mb-10 space-y-4 text-[var(--text-secondary)]">
+            <h2 id="fall-projects" className="text-2xl font-bold text-[var(--text-primary)]">Fall 2026 opportunities</h2>
+            <p><strong>NJ Conservation Foundation:</strong> Study local conservation spending and its economic and community effects.</p>
+            <p><strong>VOA / Camden County Work Now:</strong> Evaluate program outcomes using participant, service, and workday data.</p>
+            <p><strong>Rutgers professor and lab projects:</strong> We are developing a program for small REL teams to contribute to scoped faculty research across economics, computational social science, AI, research tooling, and other fields.</p>
+            <p className="text-sm">Project scopes and faculty participation are being finalized. Placement depends on research fit, supervision, data access, and team capacity; academic credit and paid positions are not guaranteed.</p>
+          </section>
+        )}
+
         {/* Application Deadline Info */}
         {!applicationsClosed && (
           <div className="text-center mb-8">
             <p className="text-lg text-[var(--text-secondary)] mb-4">
-              Applications are now open and will close on <strong>Friday, February 6 at 11:59 PM</strong>.*
+              Applications are now open and will close on <strong>Sunday, September 20, 2026 at 11:59 PM Eastern Time</strong>.
             </p>
-            <p className="text-sm text-[var(--text-muted)] italic">* Applications will be reviewed on a rolling basis</p>
             <div className="mt-6">
               <CountdownTimer />
             </div>
