@@ -1,6 +1,5 @@
 import { pageMetadata } from '@/lib/metadata';
 import Image from 'next/image';
-import Link from 'next/link';
 import { currentProjectsFor, memberAnchor } from '@/lib/project-team';
 import team from "@/data/team.json"
 
@@ -16,12 +15,15 @@ const orgLogos: Record<string, string> = {
   NJDEP: '/images/logo/njdep.png',
   NJBPU: '/images/logo/njbpu.png',
   RAIL: '/images/REL Logo.JPEG',
+  NJCF: '/images/logo/njcf.jpg',
+  ROHA: '/images/logo/roha.jpg',
+  VOA: '/images/logo/voadv.jpg',
 };
 
 type TeamMember = (typeof team)[keyof typeof team][number];
 
 function TeamMemberCard({ member, section }: { member: TeamMember; section: string }) {
-  const currentProjects = currentProjectsFor(member.name);
+  const organizations = [...new Set([...member.team, ...currentProjectsFor(member.name).map((project) => project.abbreviation!)])];
   const isMember = section === 'members';
   const isAlumni = section === 'alumni';
   const isBoard = section === 'board';
@@ -30,9 +32,9 @@ function TeamMemberCard({ member, section }: { member: TeamMember; section: stri
   const cardClass = isBoard ? 'max-w-[200px]' : (isMember || isAlumni ? 'max-w-[160px]' : 'max-w-[200px]');
   const imageClass = isBoard ? 'w-28 h-28 mx-auto' : (isMember || isAlumni ? 'w-24 h-24 mx-auto' : 'w-28 h-28 mx-auto');
   const textClass = isBoard ? 'text-sm' : (isMember || isAlumni ? 'text-xs' : 'text-sm');
-  const orgLogosSection = member.team && member.team.length > 0 ? (
+  const orgLogosSection = organizations.length > 0 ? (
     <div className="flex flex-wrap justify-center gap-3 mt-2">
-      {member.team.filter((org, idx, self) => self.indexOf(org) === idx).map((org) => (
+      {organizations.map((org) => (
         <Image
           key={org}
           src={orgLogos[org]}
@@ -68,15 +70,6 @@ function TeamMemberCard({ member, section }: { member: TeamMember; section: stri
       {member.linkedin ? (
         <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="block">{card}</a>
       ) : card}
-      {currentProjects.length > 0 && (
-        <div className="flex flex-wrap justify-center gap-2 mt-3" aria-label={`${member.name} current projects`}>
-          {currentProjects.map((project) => (
-            <Link key={project.id} href={`/projects#${project.id}`} className="rounded-full bg-red-600/10 px-3 py-1 text-xs font-semibold text-red-600 hover:underline focus-visible:outline-2 focus-visible:outline-red-600">
-              {project.abbreviation} · Fall 2026
-            </Link>
-          ))}
-        </div>
-      )}
     </div>
   );
 }

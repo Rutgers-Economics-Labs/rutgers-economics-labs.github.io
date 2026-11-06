@@ -266,66 +266,66 @@
         {
             "name": "Julia Cook",
             "position": "Researcher",
-            "image": "",
+            "image": "images/people/julia-cook.jpg",
             "description": "",
             "team": [],
-            "linkedin": ""
+            "linkedin": "https://www.linkedin.com/in/jmc1006/"
         },
         {
             "name": "Aranyo Dutta",
             "position": "Researcher",
-            "image": "",
+            "image": "images/people/aranyo-dutta.png",
             "description": "",
             "team": [],
-            "linkedin": ""
+            "linkedin": "https://www.linkedin.com/in/aranyo-dutta-343404325/"
         },
         {
             "name": "Naval Shah",
             "position": "Researcher",
-            "image": "",
+            "image": "images/people/naval-shah.jpg",
             "description": "",
             "team": [],
-            "linkedin": ""
+            "linkedin": "https://www.linkedin.com/in/naval-shah/"
         },
         {
             "name": "Rohit Marath",
             "position": "Researcher",
-            "image": "",
+            "image": "images/people/rohit-marath.png",
             "description": "",
             "team": [],
-            "linkedin": ""
+            "linkedin": "https://www.linkedin.com/in/rohit-marath-5922a4394/"
         },
         {
             "name": "Leyla Turakhonova",
             "position": "Researcher",
-            "image": "",
+            "image": "images/people/leyla-turakhonova.png",
             "description": "",
             "team": [],
-            "linkedin": ""
+            "linkedin": "https://www.linkedin.com/in/leyla-turakhonova/"
         },
         {
             "name": "Luke Davenport",
             "position": "Researcher",
-            "image": "",
+            "image": "images/people/luke-davenport.jpg",
             "description": "",
             "team": [],
-            "linkedin": ""
+            "linkedin": "https://www.linkedin.com/in/luke-davenport-52586b2ba/"
         },
         {
             "name": "Shreyal Bhagwat",
             "position": "Researcher",
-            "image": "",
+            "image": "images/people/shreyal-bhagwat.png",
             "description": "",
             "team": [],
-            "linkedin": ""
+            "linkedin": "https://www.linkedin.com/in/shreyal-bhagwat-b81abb305/"
         },
         {
             "name": "Rutvi Karnik",
             "position": "Researcher",
-            "image": "",
+            "image": "images/people/rutvi-karnik.png",
             "description": "",
             "team": [],
-            "linkedin": ""
+            "linkedin": "https://www.linkedin.com/in/rutvi-karnik-2c5/"
         }
     ],
     "alumni": [

@@ -3,8 +3,8 @@
     "id": "njcf-open-space",
     "title": "New Jersey Conservation Foundation — County Open Space Finance",
     "description": "Examining how county open space trust funds collect and spend money for land preservation. The proposed first phase builds a source-linked county finance dataset, distinguishes spending categories and reporting gaps, and assesses whether selected preservation transactions can be reconciled with financial records.",
-    "logo": "",
-    "logoAlt": "NJCF logo",
+    "logo": "/images/logo/njcf.jpg",
+    "logoAlt": "New Jersey Conservation Foundation logo",
     "abbreviation": "NJCF",
     "current": true,
     "tags": [
@@ -60,8 +60,8 @@
     "id": "voa-work-now",
     "title": "Volunteers of America / Camden County — Work Now",
     "description": "Preparing an evaluation of Work Now, a program offering day work and connections to services for people experiencing homelessness. The proposed research will assess participation and available employment and service outcomes, beginning with a data inventory and aggregate measures where suitable.",
-    "logo": "",
-    "logoAlt": "VOA logo",
+    "logo": "/images/logo/voadv.jpg",
+    "logoAlt": "Volunteers of America Delaware Valley logo",
     "abbreviation": "VOA",
     "current": true,
     "tags": [
@@ -88,8 +88,8 @@
     "id": "roha-geospatial",
     "title": "Rutgers Oral History Archives — Geospatial Explorer",
     "description": "Developing a way to discover published oral-history interviews through their connections to New Jersey places. The team is planning evidence-linked location extraction, human review and map integration so users can explore people and life histories while tracing each connection to its source.",
-    "logo": "",
-    "logoAlt": "ROHA logo",
+    "logo": "/images/logo/roha.jpg",
+    "logoAlt": "Rutgers Oral History Archives logo",
     "abbreviation": "ROHA",
     "current": true,
     "tags": [
