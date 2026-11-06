@@ -96,6 +96,16 @@
                 "NJDEP"
             ],
             "linkedin": "https://www.linkedin.com/in/rahulrajkumar01"
+        },
+        {
+            "name": "Arnav Nethula",
+            "position": "Team Lead",
+            "image": "images/people/arnav-nethula.jpeg",
+            "description": "Leading the VOA / Camden County Work Now research working group.",
+            "team": [
+                "RAIL"
+            ],
+            "linkedin": "https://www.linkedin.com/in/arnav-nethula/"
         }
     ],
     "boardMembers": [],
@@ -152,16 +162,6 @@
                 "RAIL"
             ],
             "linkedin": "https://www.linkedin.com/in/alikhan531/"
-        },
-        {
-            "name": "Arnav Nethula",
-            "position": "Data Analyst",
-            "image": "images/people/arnav-nethula.jpeg",
-            "description": "Data analysis and research specialist.",
-            "team": [
-                "RAIL"
-            ],
-            "linkedin": "https://www.linkedin.com/in/arnav-nethula/"
         },
         {
             "name": "Gourika Dhiman",
@@ -262,6 +262,70 @@
                 "HUD"
             ],
             "linkedin": "https://www.linkedin.com/in/yash-agarwal-ba6533297/"
+        },
+        {
+            "name": "Julia Cook",
+            "position": "Researcher",
+            "image": "",
+            "description": "",
+            "team": [],
+            "linkedin": ""
+        },
+        {
+            "name": "Aranyo Dutta",
+            "position": "Researcher",
+            "image": "",
+            "description": "",
+            "team": [],
+            "linkedin": ""
+        },
+        {
+            "name": "Naval Shah",
+            "position": "Researcher",
+            "image": "",
+            "description": "",
+            "team": [],
+            "linkedin": ""
+        },
+        {
+            "name": "Rohit Marath",
+            "position": "Researcher",
+            "image": "",
+            "description": "",
+            "team": [],
+            "linkedin": ""
+        },
+        {
+            "name": "Leyla Turakhonova",
+            "position": "Researcher",
+            "image": "",
+            "description": "",
+            "team": [],
+            "linkedin": ""
+        },
+        {
+            "name": "Luke Davenport",
+            "position": "Researcher",
+            "image": "",
+            "description": "",
+            "team": [],
+            "linkedin": ""
+        },
+        {
+            "name": "Shreyal Bhagwat",
+            "position": "Researcher",
+            "image": "",
+            "description": "",
+            "team": [],
+            "linkedin": ""
+        },
+        {
+            "name": "Rutvi Karnik",
+            "position": "Researcher",
+            "image": "",
+            "description": "",
+            "team": [],
+            "linkedin": ""
         }
     ],
     "alumni": [

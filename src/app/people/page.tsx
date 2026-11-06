@@ -1,5 +1,7 @@
 import { pageMetadata } from '@/lib/metadata';
 import Image from 'next/image';
+import Link from 'next/link';
+import { currentProjectsFor, memberAnchor } from '@/lib/project-team';
 import team from "@/data/team.json"
 
 export const metadata = pageMetadata("Our team", "Meet Rutgers Economics Labs student researchers, team leads, executive board, and alumni.", "/people");
@@ -16,11 +18,10 @@ const orgLogos: Record<string, string> = {
   RAIL: '/images/REL Logo.JPEG',
 };
 
-async function getTeamData() {
-  return team;
-}
+type TeamMember = (typeof team)[keyof typeof team][number];
 
-function TeamMemberCard({ member, section }: { member: any; section: string }) {
+function TeamMemberCard({ member, section }: { member: TeamMember; section: string }) {
+  const currentProjects = currentProjectsFor(member.name);
   const isMember = section === 'members';
   const isAlumni = section === 'alumni';
   const isBoard = section === 'board';
@@ -30,8 +31,8 @@ function TeamMemberCard({ member, section }: { member: any; section: string }) {
   const imageClass = isBoard ? 'w-28 h-28 mx-auto' : (isMember || isAlumni ? 'w-24 h-24 mx-auto' : 'w-28 h-28 mx-auto');
   const textClass = isBoard ? 'text-sm' : (isMember || isAlumni ? 'text-xs' : 'text-sm');
   const orgLogosSection = member.team && member.team.length > 0 ? (
-    <div className="flex justify-center space-x-3 mt-2">
-      {member.team.filter((org: string, idx: number, self: string[]) => self.indexOf(org) === idx).map((org: string) => (
+    <div className="flex flex-wrap justify-center gap-3 mt-2">
+      {member.team.filter((org, idx, self) => self.indexOf(org) === idx).map((org) => (
         <Image
           key={org}
           src={orgLogos[org]}
@@ -47,7 +48,13 @@ function TeamMemberCard({ member, section }: { member: any; section: string }) {
   const card = (
       <div className={`card-hover bg-[var(--card-bg)] border border-[var(--card-border)] p-4 rounded-xl shadow-lg text-center transform transition-transform duration-300 ${member.linkedin ? 'cursor-pointer hover:scale-105' : ''} ${isAlumni ? 'opacity-75' : ''}`}>
         <div className="aspect-w-1 aspect-h-1 mb-4">
-          <Image src={`/${member.image}`} alt={member.name} width={128} height={128} className={`${imageClass} rounded-lg object-cover`} />
+          {member.image ? (
+            <Image src={`/${member.image}`} alt={member.name} width={128} height={128} className={`${imageClass} rounded-lg object-cover`} />
+          ) : (
+            <div aria-hidden="true" className={`${imageClass} rounded-lg bg-red-600/10 text-red-600 flex items-center justify-center text-2xl font-semibold`}>
+              {member.name.split(' ').map((part) => part[0]).slice(0, 2).join('')}
+            </div>
+          )}
         </div>
         <h5 className={`text-xl font-semibold text-[var(--text-primary)] mb-2 ${textClass}`}>{member.name}</h5>
         <p className={`text-red-600 font-medium mb-4 ${textClass}`}>{member.position}</p>
@@ -56,19 +63,25 @@ function TeamMemberCard({ member, section }: { member: any; section: string }) {
       </div>
   );
 
-  if (!member.linkedin) {
-    return <div className={`block w-full ${cardClass}`}>{card}</div>;
-  }
-
   return (
-    <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className={`block w-full ${cardClass}`} key={member.name}>
-      {card}
-    </a>
+    <div id={memberAnchor(member.name)} className={`block w-full scroll-mt-24 ${cardClass}`}>
+      {member.linkedin ? (
+        <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="block">{card}</a>
+      ) : card}
+      {currentProjects.length > 0 && (
+        <div className="flex flex-wrap justify-center gap-2 mt-3" aria-label={`${member.name} current projects`}>
+          {currentProjects.map((project) => (
+            <Link key={project.id} href={`/projects#${project.id}`} className="rounded-full bg-red-600/10 px-3 py-1 text-xs font-semibold text-red-600 hover:underline focus-visible:outline-2 focus-visible:outline-red-600">
+              {project.abbreviation} · Fall 2026
+            </Link>
+          ))}
+        </div>
+      )}
+    </div>
   );
 }
 
-export default async function PeoplePage() {
-  const team = await getTeamData();
+export default function PeoplePage() {
   return (
     <div className="py-20 bg-[var(--bg-secondary)] min-h-[60vh]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -82,7 +95,7 @@ export default async function PeoplePage() {
         <div className="mb-20 text-center">
           <h4 className="text-2xl font-bold text-[var(--text-primary)] mb-7 text-center">Executive Board</h4>
           <div className="flex flex-wrap justify-center gap-8 text-center">
-            {team.executiveBoard.map((member: any) => (
+            {team.executiveBoard.map((member: TeamMember) => (
               <TeamMemberCard key={member.name} member={member} section="executive" />
             ))}
           </div>
@@ -90,8 +103,8 @@ export default async function PeoplePage() {
         {/* Team Leads */}
         <div className="mb-20 text-center">
           <h4 className="text-2xl font-bold text-[var(--text-primary)] mb-12 text-center">Team Leads</h4>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 justify-items-center text-center">
-            {team.teamLeads.map((member: any) => (
+          <div className="flex flex-wrap justify-center gap-6 text-center">
+            {team.teamLeads.map((member: TeamMember) => (
               <TeamMemberCard key={member.name} member={member} section="leads" />
             ))}
           </div>
@@ -100,7 +113,7 @@ export default async function PeoplePage() {
         <div className="mb-20 text-center">
           <h4 className="text-2xl font-bold text-[var(--text-primary)] mb-12 text-center">Members</h4>
           <div className="flex flex-wrap justify-center gap-8 text-center">
-            {team.members.map((member: any) => (
+            {team.members.map((member: TeamMember) => (
               <TeamMemberCard key={member.name} member={member} section="members" />
             ))}
           </div>
@@ -109,7 +122,7 @@ export default async function PeoplePage() {
         <div className="text-center">
           <h4 className="text-2xl font-bold text-[var(--text-primary)] mb-12 text-center">Alumni</h4>
           <div className="flex flex-wrap justify-center gap-8 text-center">
-            {team.alumni.map((member: any) => (
+            {team.alumni.map((member: TeamMember) => (
               <TeamMemberCard key={member.name} member={member} section="alumni" />
             ))}
           </div>

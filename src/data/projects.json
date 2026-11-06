@@ -1,5 +1,117 @@
 [
   {
+    "id": "njcf-open-space",
+    "title": "New Jersey Conservation Foundation — County Open Space Finance",
+    "description": "Examining how county open space trust funds collect and spend money for land preservation. The proposed first phase builds a source-linked county finance dataset, distinguishes spending categories and reporting gaps, and assesses whether selected preservation transactions can be reconciled with financial records.",
+    "logo": "",
+    "logoAlt": "NJCF logo",
+    "abbreviation": "NJCF",
+    "current": true,
+    "tags": [
+      {
+        "label": "Fall 2026",
+        "color": "gray"
+      },
+      {
+        "label": "Scope under review",
+        "color": "yellow"
+      }
+    ],
+    "paperStatus": "in-progress",
+    "isPublic": false,
+    "members": [
+      "Yash Agarwal",
+      "Julia Cook",
+      "Aranyo Dutta",
+      "Naval Shah",
+      "Rohit Marath"
+    ],
+    "statusNote": "The initial scope is under partner review; the first phase and any expansion will be agreed with NJCF."
+  },
+  {
+    "id": "njdep-freeboard",
+    "title": "New Jersey Department of Environmental Protection — Coastal Freeboard",
+    "description": "Investigating the relationship between local elevation requirements, residential construction values and permitting in coastal New Jersey. The team is assembling ordinance histories and assessing permit-data coverage before choosing an empirical design. This work is separate from the earlier municipal-bond project.",
+    "logo": "/images/logo/njdep.png",
+    "logoAlt": "NJDEP logo",
+    "abbreviation": "NJDEP",
+    "current": true,
+    "tags": [
+      {
+        "label": "Fall 2026",
+        "color": "gray"
+      },
+      {
+        "label": "Research preparation",
+        "color": "yellow"
+      }
+    ],
+    "paperStatus": "in-progress",
+    "isPublic": false,
+    "members": [
+      "Ani Tiwary",
+      "Aadith Muthukumar",
+      "Leyla Turakhonova",
+      "Luke Davenport"
+    ],
+    "statusNote": "The scope and research design are being coordinated with NJDEP; no effect estimates are reported."
+  },
+  {
+    "id": "voa-work-now",
+    "title": "Volunteers of America / Camden County — Work Now",
+    "description": "Preparing an evaluation of Work Now, a program offering day work and connections to services for people experiencing homelessness. The proposed research will assess participation and available employment and service outcomes, beginning with a data inventory and aggregate measures where suitable.",
+    "logo": "",
+    "logoAlt": "VOA logo",
+    "abbreviation": "VOA",
+    "current": true,
+    "tags": [
+      {
+        "label": "Fall 2026",
+        "color": "gray"
+      },
+      {
+        "label": "Data arrangements pending",
+        "color": "yellow"
+      }
+    ],
+    "paperStatus": "in-progress",
+    "isPublic": false,
+    "members": [
+      "Arnav Nethula",
+      "Raya Rahman",
+      "Shreyal Bhagwat"
+    ],
+    "statusNote": "Analysis of nonpublic records awaits final approvals and agreed data-storage and access arrangements.",
+    "lead": "Arnav Nethula"
+  },
+  {
+    "id": "roha-geospatial",
+    "title": "Rutgers Oral History Archives — Geospatial Explorer",
+    "description": "Developing a way to discover published oral-history interviews through their connections to New Jersey places. The team is planning evidence-linked location extraction, human review and map integration so users can explore people and life histories while tracing each connection to its source.",
+    "logo": "",
+    "logoAlt": "ROHA logo",
+    "abbreviation": "ROHA",
+    "current": true,
+    "tags": [
+      {
+        "label": "Fall 2026",
+        "color": "gray"
+      },
+      {
+        "label": "Pilot planning",
+        "color": "yellow"
+      }
+    ],
+    "paperStatus": "in-progress",
+    "isPublic": false,
+    "members": [
+      "Gourika Dhiman",
+      "Priya Rana",
+      "Rutvi Karnik"
+    ],
+    "statusNote": "The first map priorities, review process and processing environment are being discussed with ROHA. Political typology is a separate exploratory proposal."
+  },
+  {
     "title": "Rutgers Agentic Intelligence Lab",
     "description": "An internal project run by Rutgers Economics Labs (REL) aimed at creating a general-purpose framework for economic analysis. The framework makes it easy to clean, analyze, and connect data sources in an ontology-like format, enabling researchers to build structured, reusable pipelines for complex economic datasets.",
     "logo": "/images/REL Logo.JPEG",
