@@ -26,7 +26,8 @@
       "Naval Shah",
       "Rohit Marath"
     ],
-    "statusNote": "The initial scope is under partner review; the first phase and any expansion will be agreed with NJCF."
+    "statusNote": "The initial scope is under partner review; the first phase and any expansion will be agreed with NJCF.",
+    "lead": "Yash Agarwal"
   },
   {
     "id": "njdep-freeboard",
@@ -54,7 +55,8 @@
       "Leyla Turakhonova",
       "Luke Davenport"
     ],
-    "statusNote": "The scope and research design are being coordinated with NJDEP; no effect estimates are reported."
+    "statusNote": "The scope and research design are being coordinated with NJDEP; no effect estimates are reported.",
+    "lead": "Ani Tiwary"
   },
   {
     "id": "voa-work-now",
@@ -109,7 +111,8 @@
       "Priya Rana",
       "Rutvi Karnik"
     ],
-    "statusNote": "The first map priorities, review process and processing environment are being discussed with ROHA. Political typology is a separate exploratory proposal."
+    "statusNote": "The first map priorities, review process and processing environment are being discussed with ROHA. Political typology is a separate exploratory proposal.",
+    "lead": "Priya Rana"
   },
   {
     "title": "Rutgers Agentic Intelligence Lab",

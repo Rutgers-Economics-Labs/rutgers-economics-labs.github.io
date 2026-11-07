@@ -36,36 +36,20 @@
     ],
     "teamLeads": [
         {
-            "name": "Alex Zhang",
+            "name": "Yash Agarwal",
             "position": "Team Lead",
-            "image": "images/people/alex-zhang.jpg",
-            "description": "Leading Federal HUD and NJDOL research projects.",
+            "image": "images/people/yash-agarwal.jpeg",
+            "description": "Leading the NJCF county open space finance research project.",
             "team": [
-                "NJEDA",
-                "USDA",
-                "NJDOL",
                 "HUD"
             ],
-            "linkedin": "https://www.linkedin.com/in/alexzhang0930"
-        },
-        {
-            "name": "Aryan Malik",
-            "position": "Team Lead",
-            "image": "images/people/aryan-malik.jpg",
-            "description": "Leading NJDEP and Virginia Interfaith Center for Public Policy projects.",
-            "team": [
-                "NJEDA",
-                "USDA",
-                "Virginia",
-                "NJDEP"
-            ],
-            "linkedin": "https://www.linkedin.com/in/aryan-malik-xd/"
+            "linkedin": "https://www.linkedin.com/in/yash-agarwal-ba6533297/"
         },
         {
             "name": "Ani Tiwary",
             "position": "Team Lead",
             "image": "images/people/ani.png",
-            "description": "Leading the Rutgers Agentic Intelligence Lab (RAIL), an internal REL initiative building a general-purpose framework for economic data analysis.",
+            "description": "Leading the NJDEP coastal freeboard and residential construction research project.",
             "team": [
                 "RAIL",
                 "NJDOL",
@@ -74,53 +58,29 @@
             "linkedin": "https://www.linkedin.com/in/ani-tiwary/"
         },
         {
-            "name": "Gokulraj Kumarassamy",
-            "position": "Team Lead",
-            "image": "images/people/gokul.jpeg",
-            "description": "Leading NJBPU research project.",
-            "team": [
-                "USDA",
-                "Virginia",
-                "NJBPU"
-            ],
-            "linkedin": "https://www.linkedin.com/in/gokulrajk1/"
-        },
-        {
-            "name": "Rahul Rajkumar",
-            "position": "Team Lead",
-            "image": "images/people/rahul.jpg",
-            "description": "Leading NJDEP research project.",
-            "team": [
-                "USDA",
-                "NJDOL",
-                "NJDEP"
-            ],
-            "linkedin": "https://www.linkedin.com/in/rahulrajkumar01"
-        },
-        {
             "name": "Arnav Nethula",
             "position": "Team Lead",
             "image": "images/people/arnav-nethula.jpeg",
-            "description": "Leading the VOA / Camden County Work Now research working group.",
+            "description": "Leading the VOA / Camden County Work Now research project.",
             "team": [
                 "RAIL"
             ],
             "linkedin": "https://www.linkedin.com/in/arnav-nethula/"
-        }
-    ],
-    "boardMembers": [],
-    "members": [
+        },
         {
             "name": "Priya Rana",
-            "position": "Data Analyst",
+            "position": "Team Lead",
             "image": "images/people/priya.jpeg",
-            "description": "Data analysis and research specialist.",
+            "description": "Leading the Rutgers Oral History Archives geospatial explorer project.",
             "team": [
                 "Virginia",
                 "NJDEP"
             ],
             "linkedin": "https://www.linkedin.com/in/prana24/"
-        },
+        }
+    ],
+    "boardMembers": [],
+    "members": [
         {
             "name": "Michelle Rozenfeld",
             "position": "Data Analyst",
@@ -252,16 +212,6 @@
                 "NJBPU"
             ],
             "linkedin": "https://www.linkedin.com/in/sarthak-talukdar/"
-        },
-        {
-            "name": "Yash Agarwal",
-            "position": "Data Analyst",
-            "image": "images/people/yash-agarwal.jpeg",
-            "description": "Data analysis and research specialist.",
-            "team": [
-                "HUD"
-            ],
-            "linkedin": "https://www.linkedin.com/in/yash-agarwal-ba6533297/"
         },
         {
             "name": "Julia Cook",
@@ -420,6 +370,58 @@
                 "NJBPU"
             ],
             "linkedin": "https://www.linkedin.com/in/naomi-george-312b07281/"
+        }
+    ],
+    "formerTeamLeads": [
+        {
+            "name": "Alex Zhang",
+            "position": "Former Team Lead",
+            "image": "images/people/alex-zhang.jpg",
+            "description": "Previously led the Federal HUD and NJDOL research projects.",
+            "team": [
+                "NJEDA",
+                "USDA",
+                "NJDOL",
+                "HUD"
+            ],
+            "linkedin": "https://www.linkedin.com/in/alexzhang0930"
+        },
+        {
+            "name": "Aryan Malik",
+            "position": "Former Team Lead",
+            "image": "images/people/aryan-malik.jpg",
+            "description": "Previously led NJDEP and Virginia public policy research.",
+            "team": [
+                "NJEDA",
+                "USDA",
+                "Virginia",
+                "NJDEP"
+            ],
+            "linkedin": "https://www.linkedin.com/in/aryan-malik-xd/"
+        },
+        {
+            "name": "Gokulraj Kumarassamy",
+            "position": "Former Team Lead",
+            "image": "images/people/gokul.jpeg",
+            "description": "Previously led the NJBPU research project.",
+            "team": [
+                "USDA",
+                "Virginia",
+                "NJBPU"
+            ],
+            "linkedin": "https://www.linkedin.com/in/gokulrajk1/"
+        },
+        {
+            "name": "Rahul Rajkumar",
+            "position": "Former Team Lead",
+            "image": "images/people/rahul.jpg",
+            "description": "Previously led the NJDEP research project.",
+            "team": [
+                "USDA",
+                "NJDOL",
+                "NJDEP"
+            ],
+            "linkedin": "https://www.linkedin.com/in/rahulrajkumar01"
         }
     ]
 }

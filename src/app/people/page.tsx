@@ -85,26 +85,31 @@ export default function PeoplePage() {
           </p>
         </div>
         {/* Executive Board */}
-        <div className="mb-20 text-center">
-          <h4 className="text-2xl font-bold text-[var(--text-primary)] mb-7 text-center">Executive Board</h4>
+        <section id="executive-board" aria-labelledby="executive-board-heading" className="mb-20 text-center scroll-mt-24">
+          <h2 id="executive-board-heading" className="text-2xl font-bold text-[var(--text-primary)] mb-7 text-center">Executive Board</h2>
           <div className="flex flex-wrap justify-center gap-8 text-center">
             {team.executiveBoard.map((member: TeamMember) => (
               <TeamMemberCard key={member.name} member={member} section="executive" />
             ))}
           </div>
-        </div>
+          <div className="flex flex-wrap justify-center gap-8 mt-8 text-center">
+            {team.formerTeamLeads.map((member: TeamMember) => (
+              <TeamMemberCard key={member.name} member={member} section="board" />
+            ))}
+          </div>
+        </section>
         {/* Team Leads */}
-        <div className="mb-20 text-center">
-          <h4 className="text-2xl font-bold text-[var(--text-primary)] mb-12 text-center">Team Leads</h4>
+        <section id="team-leads" aria-labelledby="team-leads-heading" className="mb-20 text-center scroll-mt-24">
+          <h2 id="team-leads-heading" className="text-2xl font-bold text-[var(--text-primary)] mb-12 text-center">Current Team Leads</h2>
           <div className="flex flex-wrap justify-center gap-6 text-center">
             {team.teamLeads.map((member: TeamMember) => (
               <TeamMemberCard key={member.name} member={member} section="leads" />
             ))}
           </div>
-        </div>
+        </section>
         {/* Members */}
         <div className="mb-20 text-center">
-          <h4 className="text-2xl font-bold text-[var(--text-primary)] mb-12 text-center">Members</h4>
+          <h2 className="text-2xl font-bold text-[var(--text-primary)] mb-12 text-center">Members</h2>
           <div className="flex flex-wrap justify-center gap-8 text-center">
             {team.members.map((member: TeamMember) => (
               <TeamMemberCard key={member.name} member={member} section="members" />
@@ -113,7 +118,7 @@ export default function PeoplePage() {
         </div>
         {/* Alumni */}
         <div className="text-center">
-          <h4 className="text-2xl font-bold text-[var(--text-primary)] mb-12 text-center">Alumni</h4>
+          <h2 className="text-2xl font-bold text-[var(--text-primary)] mb-12 text-center">Alumni</h2>
           <div className="flex flex-wrap justify-center gap-8 text-center">
             {team.alumni.map((member: TeamMember) => (
               <TeamMemberCard key={member.name} member={member} section="alumni" />
