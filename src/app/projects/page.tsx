@@ -1,8 +1,10 @@
 import { pageMetadata } from '@/lib/metadata';
 import projects from '../../data/projects.json';
 import Image from 'next/image';
+import Link from 'next/link';
+import { memberAnchor } from '@/lib/project-team';
 
-export const metadata = pageMetadata("Research projects", "Explore REL research in climate risk, housing, labor projections, energy markets, and public policy.", "/projects");
+export const metadata = pageMetadata("Research projects", "Explore REL research in conservation finance, coastal construction, oral history, program evaluation, and public policy.", "/projects");
 
 export default function ProjectsPage() {
 
@@ -14,7 +16,7 @@ export default function ProjectsPage() {
         </div>
         <div className="space-y-8">
           {projects.map((project, idx) => (
-            <div key={idx} className="bg-[var(--card-bg)] border border-[var(--card-border)] card-hover p-8 rounded-2xl">
+            <div key={project.id || idx} id={project.id} className="bg-[var(--card-bg)] border border-[var(--card-border)] card-hover p-8 rounded-2xl scroll-mt-24">
               <div className="flex flex-col lg:flex-row items-start lg:items-center lg:space-x-6">
                 <div className="w-full lg:w-16 lg:h-16 h-20 flex items-center justify-center flex-shrink-0 overflow-hidden mb-4 lg:mb-0">
                   <Image
@@ -28,7 +30,7 @@ export default function ProjectsPage() {
                 <div className="flex-1 w-full">
                   <h4 className="text-2xl font-bold text-[var(--text-primary)] mb-3">{project.title}</h4>
                   <p className="text-[var(--text-secondary)] mb-4 leading-relaxed">{project.description}</p>
-                  <div className={project.isPublic ? 'flex flex-wrap items-center gap-2 mb-4' : 'flex items-center space-x-4 mb-2'}>
+                  <div className="flex flex-wrap items-center gap-2 mb-4">
                     {project.tags.map((tag, i) => (
                       <span
                         key={i}
@@ -46,6 +48,19 @@ export default function ProjectsPage() {
                       </span>
                     ))}
                   </div>
+                  {project.statusNote && <p className="text-sm text-[var(--text-muted)] mb-4 leading-relaxed">{project.statusNote}</p>}
+                  {project.members && (
+                    <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+                      <span className="font-semibold">Team: </span>
+                      {project.members.map((name, index) => (
+                        <span key={name}>
+                          {index > 0 && ', '}
+                          <Link href={`/people#${memberAnchor(name)}`} className="hover:text-red-600 hover:underline focus-visible:outline-2 focus-visible:outline-red-600">{name}</Link>
+                          {project.lead === name && ' (Team Lead)'}
+                        </span>
+                      ))}
+                    </p>
+                  )}
                 </div>
                 {project.isPublic && project.pdfLink && (
                   <div className="w-full lg:w-auto flex lg:block justify-center lg:justify-end mt-2 lg:mt-0">
