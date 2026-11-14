@@ -82,17 +82,6 @@
     "boardMembers": [],
     "members": [
         {
-            "name": "Michelle Rozenfeld",
-            "position": "Data Analyst",
-            "image": "images/people/michelle.jpeg",
-            "description": "Data analysis and research specialist.",
-            "team": [
-                "Virginia",
-                "HUD"
-            ],
-            "linkedin": "https://www.linkedin.com/in/michelle5555/"
-        },
-        {
             "name": "Aadith Muthukumar",
             "position": "Data Analyst",
             "image": "images/people/aadith.jpeg",
@@ -102,26 +91,6 @@
                 "NJBPU"
             ],
             "linkedin": "https://www.linkedin.com/in/aadith-muthukumar-50b4a1280/"
-        },
-        {
-            "name": "Ryaan Zahidani",
-            "position": "Data Analyst",
-            "image": "images/people/ryaan.jpeg",
-            "description": "Data analysis and research specialist.",
-            "team": [
-                "Virginia"
-            ],
-            "linkedin": "https://www.linkedin.com/in/ryaan-zahidani-733064253/"
-        },
-        {
-            "name": "Ali Khan",
-            "position": "Data Analyst",
-            "image": "images/people/ali-khan.jpeg",
-            "description": "Data analysis and research specialist.",
-            "team": [
-                "RAIL"
-            ],
-            "linkedin": "https://www.linkedin.com/in/alikhan531/"
         },
         {
             "name": "Gourika Dhiman",
@@ -134,26 +103,6 @@
             "linkedin": "https://www.linkedin.com/in/gourikadhiman/"
         },
         {
-            "name": "Heath Deshpande",
-            "position": "Data Analyst",
-            "image": "images/people/heath-deshpande.jpeg",
-            "description": "Data analysis and research specialist.",
-            "team": [
-                "NJDEP"
-            ],
-            "linkedin": "https://www.linkedin.com/in/heathdesh/"
-        },
-        {
-            "name": "Joel Pulikkan",
-            "position": "Data Analyst",
-            "image": "images/people/joel.jpeg",
-            "description": "Data analysis and research specialist.",
-            "team": [
-                "RAIL"
-            ],
-            "linkedin": "https://www.linkedin.com/in/joel-pulikkan-022926274/"
-        },
-        {
             "name": "Krish Bansal",
             "position": "Data Analyst",
             "image": "images/people/krish-bansal.jpeg",
@@ -162,26 +111,6 @@
                 "NJBPU"
             ],
             "linkedin": "https://www.linkedin.com/in/krish-bansal-44725b328/"
-        },
-        {
-            "name": "Maria George",
-            "position": "Data Analyst",
-            "image": "images/people/maria-george.jpeg",
-            "description": "Data analysis and research specialist.",
-            "team": [
-                "RAIL"
-            ],
-            "linkedin": "https://www.linkedin.com/in/maria-g-913782274/"
-        },
-        {
-            "name": "Nikhil Sethuraman",
-            "position": "Data Analyst",
-            "image": "images/people/nikhil.jpeg",
-            "description": "Data analysis and research specialist.",
-            "team": [
-                "NJBPU"
-            ],
-            "linkedin": ""
         },
         {
             "name": "Raghul Krishna Srinivasan",
@@ -422,6 +351,79 @@
                 "NJDEP"
             ],
             "linkedin": "https://www.linkedin.com/in/rahulrajkumar01"
+        }
+    ],
+    "formerMembers": [
+        {
+            "name": "Michelle Rozenfeld",
+            "position": "Former Data Analyst",
+            "image": "images/people/michelle.jpeg",
+            "description": "Previously contributed to REL research projects.",
+            "team": [
+                "Virginia",
+                "HUD"
+            ],
+            "linkedin": "https://www.linkedin.com/in/michelle5555/"
+        },
+        {
+            "name": "Ryaan Zahidani",
+            "position": "Former Data Analyst",
+            "image": "images/people/ryaan.jpeg",
+            "description": "Previously contributed to REL research projects.",
+            "team": [
+                "Virginia"
+            ],
+            "linkedin": "https://www.linkedin.com/in/ryaan-zahidani-733064253/"
+        },
+        {
+            "name": "Ali Khan",
+            "position": "Former Data Analyst",
+            "image": "images/people/ali-khan.jpeg",
+            "description": "Previously contributed to REL research projects.",
+            "team": [
+                "RAIL"
+            ],
+            "linkedin": "https://www.linkedin.com/in/alikhan531/"
+        },
+        {
+            "name": "Heath Deshpande",
+            "position": "Former Data Analyst",
+            "image": "images/people/heath-deshpande.jpeg",
+            "description": "Previously contributed to REL research projects.",
+            "team": [
+                "NJDEP"
+            ],
+            "linkedin": "https://www.linkedin.com/in/heathdesh/"
+        },
+        {
+            "name": "Joel Pulikkan",
+            "position": "Former Data Analyst",
+            "image": "images/people/joel.jpeg",
+            "description": "Previously contributed to REL research projects.",
+            "team": [
+                "RAIL"
+            ],
+            "linkedin": "https://www.linkedin.com/in/joel-pulikkan-022926274/"
+        },
+        {
+            "name": "Maria George",
+            "position": "Former Data Analyst",
+            "image": "images/people/maria-george.jpeg",
+            "description": "Previously contributed to REL research projects.",
+            "team": [
+                "RAIL"
+            ],
+            "linkedin": "https://www.linkedin.com/in/maria-g-913782274/"
+        },
+        {
+            "name": "Nikhil Sethuraman",
+            "position": "Former Data Analyst",
+            "image": "images/people/nikhil.jpeg",
+            "description": "Previously contributed to REL research projects.",
+            "team": [
+                "NJBPU"
+            ],
+            "linkedin": ""
         }
     ]
 }

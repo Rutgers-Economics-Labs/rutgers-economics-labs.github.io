@@ -25,7 +25,7 @@ type TeamMember = (typeof team)[keyof typeof team][number];
 function TeamMemberCard({ member, section }: { member: TeamMember; section: string }) {
   const organizations = [...new Set([...member.team, ...currentProjectsFor(member.name).map((project) => project.abbreviation!)])];
   const isMember = section === 'members';
-  const isAlumni = section === 'alumni';
+  const isAlumni = section === 'alumni' || section === 'former';
   const isBoard = section === 'board';
 
   // Card sizing: Executive/Team Leads (large), Board (medium), Members/Alumni (small)
@@ -116,6 +116,17 @@ export default function PeoplePage() {
             ))}
           </div>
         </div>
+        {/* Former members */}
+        {team.formerMembers.length > 0 && (
+          <section aria-labelledby="former-members-heading" className="mb-20 text-center">
+            <h2 id="former-members-heading" className="text-2xl font-bold text-[var(--text-primary)] mb-12 text-center">Former Members</h2>
+            <div className="flex flex-wrap justify-center gap-8 text-center">
+              {team.formerMembers.map((member: TeamMember) => (
+                <TeamMemberCard key={member.name} member={member} section="former" />
+              ))}
+            </div>
+          </section>
+        )}
         {/* Alumni */}
         <div className="text-center">
           <h2 className="text-2xl font-bold text-[var(--text-primary)] mb-12 text-center">Alumni</h2>
